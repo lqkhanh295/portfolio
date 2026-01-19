@@ -99,6 +99,11 @@ const animateOnScroll = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
 
+            // Also add is-visible for fade-in-section
+            if (entry.target.classList.contains('fade-in-section')) {
+                entry.target.classList.add('is-visible');
+            }
+
             // Trigger skill bar animation
             if (entry.target.classList.contains('skill-category')) {
                 const progressBars = entry.target.querySelectorAll('.skill-progress');
@@ -113,106 +118,17 @@ const animateOnScroll = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements
-document.querySelectorAll('.skill-category, .timeline-item, .project-card, .about-card, .about-text').forEach(el => {
+document.querySelectorAll('.skill-category, .timeline-item, .project-card, .about-card, .about-text, .fade-in-section').forEach(el => {
     el.classList.add('animate-element');
     animateOnScroll.observe(el);
 });
 
-// ===== CONTACT FORM HANDLING =====
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+// ... (Rest of existing code) ...
 
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+// ===== TILT CARD EFFECT =====
+const tiltCards = document.querySelectorAll('.tilt-card');
 
-        // Create mailto link
-        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        const mailtoLink = `mailto:lqkhanh292005@gmail.com?subject=${subject}&body=${body}`;
-
-        // Open email client
-        window.location.href = mailtoLink;
-
-        // Show success message
-        showNotification('Opening your email client...', 'success');
-
-        // Reset form
-        this.reset();
-    });
-}
-
-// ===== NOTIFICATION SYSTEM =====
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <span>${message}</span>
-    `;
-
-    // Add styles
-    Object.assign(notification.style, {
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        padding: '16px 24px',
-        background: type === 'success' ? 'rgba(34, 197, 94, 0.9)' : 'rgba(99, 102, 241, 0.9)',
-        color: '#fff',
-        borderRadius: '8px',
-        fontWeight: '500',
-        zIndex: '10000',
-        animation: 'slideIn 0.3s ease'
-    });
-
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease forwards';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
-}
-
-// ===== TYPING EFFECT FOR TAGLINE =====
-const taglineElement = document.querySelector('.tagline-accent');
-if (taglineElement) {
-    const text = taglineElement.textContent;
-    taglineElement.textContent = '';
-    taglineElement.style.opacity = '1';
-
-    let charIndex = 0;
-    function typeText() {
-        if (charIndex < text.length) {
-            taglineElement.textContent += text.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeText, 50);
-        }
-    }
-
-    // Start typing after a delay
-    setTimeout(typeText, 1000);
-}
-
-// ===== PARALLAX EFFECT FOR HERO =====
-const heroSection = document.querySelector('.hero');
-const heroImage = document.querySelector('.hero-image');
-
-window.addEventListener('scroll', () => {
-    if (heroSection && heroImage) {
-        const scrolled = window.pageYOffset;
-        const heroRect = heroSection.getBoundingClientRect();
-
-        if (heroRect.bottom > 0) {
-            heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
-        }
-    }
-});
-
-// ===== PROJECT CARD TILT EFFECT =====
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach(card => {
+tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -225,10 +141,21 @@ projectCards.forEach(card => {
         const rotateY = (centerX - x) / 20;
 
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+
+        // Ensure content pops out
+        const content = card.querySelector('.tilt-content');
+        if (content) {
+            content.style.transform = 'translateZ(30px)';
+        }
     });
 
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+
+        const content = card.querySelector('.tilt-content');
+        if (content) {
+            content.style.transform = 'translateZ(0px)';
+        }
     });
 });
 
@@ -287,6 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightNavLink();
 
     // Log welcome message
-    console.log('%c👋 Welcome to my portfolio!', 'font-size: 20px; font-weight: bold; color: #6366f1;');
-    console.log('%cBuilt with ❤️ by Le Quoc Khanh', 'font-size: 14px; color: #a0a0b0;');
+    console.log('%cWelcome to my portfolio!', 'font-size: 20px; font-weight: bold; color: #6366f1;');
+    console.log('%cBuilt by Le Quoc Khanh', 'font-size: 14px; color: #a0a0b0;');
 });

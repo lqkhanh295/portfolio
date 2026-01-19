@@ -1,34 +1,34 @@
 /* ===== CSS VARIABLES - DEEP OCEANIC GLASSMORPHISM ===== */
 :root {
-    /* Deep Oceanic Background Colors */
-    --bg-primary: #001D3D;
-    --bg-secondary: #003566;
-    --bg-tertiary: #004080;
+    /* Professional Navy Background Colors */
+    --bg-primary: #0A192F;
+    --bg-secondary: #112240;
+    --bg-tertiary: #233554;
 
-    /* Glass Card: Royal Blue with 40% transparency */
-    --bg-glass: rgba(0, 53, 102, 0.4);
-    --bg-glass-hover: rgba(0, 53, 102, 0.6);
-    --bg-card: rgba(0, 53, 102, 0.4);
-    --bg-card-hover: rgba(0, 53, 102, 0.6);
+    /* Glass Card: Navy with transparency */
+    --bg-glass: rgba(17, 34, 64, 0.7);
+    --bg-glass-hover: rgba(23, 42, 69, 0.8);
+    --bg-card: rgba(17, 34, 64, 0.7);
+    --bg-card-hover: rgba(23, 42, 69, 0.8);
 
     /* Text Colors */
-    --text-primary: #E0E1DD;
-    --text-secondary: #B8C0CC;
-    --text-muted: #7A8599;
+    --text-primary: #CCD6F6;
+    --text-secondary: #8892B0;
+    --text-muted: #8892B0;
 
-    /* Accent Colors - Golden Yellow */
-    --accent-primary: #FFC300;
-    --accent-secondary: #FFD60A;
-    --accent-gradient: linear-gradient(135deg, #FFC300 0%, #FFD60A 100%);
-    --accent-glow: rgba(255, 195, 0, 0.5);
+    /* Accent Colors - Teal/Cyan */
+    --accent-primary: #64FFDA;
+    --accent-secondary: #5BC0DE;
+    --accent-gradient: linear-gradient(135deg, #64FFDA 0%, #5BC0DE 100%);
+    --accent-glow: rgba(100, 255, 218, 0.3);
 
     /* Glassmorphism Effects */
-    --glass-blur: blur(12px);
-    --glass-border: rgba(224, 225, 221, 0.1);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-blur: blur(10px);
+    --glass-border: rgba(100, 255, 218, 0.1);
+    --glass-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
 
-    --border-color: rgba(224, 225, 221, 0.1);
-    --border-hover: rgba(255, 195, 0, 0.3);
+    --border-color: rgba(136, 146, 176, 0.1);
+    --border-hover: rgba(100, 255, 218, 0.3);
 
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,14 +37,14 @@
 
     /* Sizing */
     --container-max: 1200px;
-    --section-padding: 120px;
-    --border-radius: 20px;
-    --border-radius-sm: 12px;
+    --section-padding: 100px;
+    --border-radius: 4px;
+    --border-radius-sm: 4px;
 
     /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    --transition-fast: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition-normal: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition-slow: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 /* ===== RESET & BASE ===== */
@@ -82,7 +82,7 @@ body::before {
     left: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255, 195, 0, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
 }
@@ -94,7 +94,7 @@ body::after {
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0, 53, 102, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(17, 34, 64, 0.2) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
 }
@@ -116,7 +116,7 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #003566 0%, #004080 100%);
+    background: linear-gradient(180deg, #112240 0%, #233554 100%);
     border-radius: 5px;
     border: 2px solid var(--bg-primary);
 }
@@ -128,7 +128,7 @@ body::after {
 /* Firefox scrollbar */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #003566 var(--bg-primary);
+    scrollbar-color: #112240 var(--bg-primary);
 }
 
 a {
@@ -146,21 +146,96 @@ ul {
     list-style: none;
 }
 
+/* ===== DYNAMIC BORDER & GLOW ===== */
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotation {
+    0% {
+        --gradient-angle: 0deg;
+    }
+
+    100% {
+        --gradient-angle: 360deg;
+    }
+}
+
+.gradient-border {
+    position: relative;
+    background: var(--bg-card);
+    border: none !important;
+    /* Override default borders */
+}
+
+.gradient-border::before,
+.gradient-border::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: conic-gradient(from var(--gradient-angle),
+            var(--bg-secondary),
+            var(--accent-primary),
+            var(--accent-secondary),
+            var(--bg-secondary));
+    border-radius: inherit;
+    animation: rotation 5s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before,
+.gradient-border:hover::after {
+    opacity: 1;
+}
+
+.gradient-border::after {
+    filter: blur(20px);
+}
+
+/* ===== 3D TILT EFFECT SUPPORT ===== */
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    will-change: transform;
+}
+
+.tilt-content {
+    transform: translateZ(20px);
+}
+
+/* ===== FADE IN ON SCROLL ===== */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ===== CURSOR GLOW ===== */
 .cursor-glow {
     position: fixed;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: screen;
 }
 
 body:hover .cursor-glow {
-    opacity: 1;
+    opacity: 0.6;
 }
 
 /* ===== CONTAINER ===== */
