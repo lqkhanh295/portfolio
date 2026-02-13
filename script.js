@@ -3,17 +3,11 @@ const navbar = document.querySelector('.navbar');
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
-const cursorGlow = document.querySelector('.cursor-glow');
+// const cursorGlow = document.querySelector('.cursor-glow'); // Removed
 const skillProgressBars = document.querySelectorAll('.skill-progress');
 const contactForm = document.getElementById('contactForm');
 
-// ===== CURSOR GLOW EFFECT =====
-document.addEventListener('mousemove', (e) => {
-    if (cursorGlow) {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
-    }
-});
+// ===== CURSOR GLOW EFFECT REMOVED =====
 
 // ===== NAVBAR SCROLL EFFECT =====
 let lastScroll = 0;
@@ -125,39 +119,7 @@ document.querySelectorAll('.skill-category, .timeline-item, .project-card, .abou
 
 // ... (Rest of existing code) ...
 
-// ===== TILT CARD EFFECT =====
-const tiltCards = document.querySelectorAll('.tilt-card');
-
-tiltCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-
-        // Ensure content pops out
-        const content = card.querySelector('.tilt-content');
-        if (content) {
-            content.style.transform = 'translateZ(30px)';
-        }
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-
-        const content = card.querySelector('.tilt-content');
-        if (content) {
-            content.style.transform = 'translateZ(0px)';
-        }
-    });
-});
+// ===== TILT CARD EFFECT REMOVED =====
 
 // ===== ADD CSS ANIMATIONS =====
 const styleSheet = document.createElement('style');
