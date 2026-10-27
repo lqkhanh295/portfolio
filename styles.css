@@ -8,31 +8,50 @@
 /* ===== DESIGN TOKENS (PAPER & INK SYSTEM) ===== */
 :root {
     /* Paper & Canvas Surfaces */
-    --bg-canvas: #FAF7F2;          /* Natural warm cream/ivory */
-    --bg-page: #FFFFFF;            /* Pure paper white for cards/plates */
-    --bg-parchment: #F4EFE6;       /* Slightly aged paper tone */
-    --bg-subtle: #F0EAE0;          /* Soft paper wash */
+    --bg-canvas: #FAF7F2;
+    /* Natural warm cream/ivory */
+    --bg-page: #FFFFFF;
+    /* Pure paper white for cards/plates */
+    --bg-parchment: #F4EFE6;
+    /* Slightly aged paper tone */
+    --bg-subtle: #F0EAE0;
+    /* Soft paper wash */
 
     /* Charcoal Ink & Graphite Typography */
-    --ink-primary: #262422;        /* Deep warm charcoal ink */
-    --ink-secondary: #5A554E;      /* Soft graphite / muted pencil */
-    --ink-muted: #88827A;          /* Faint margin notes / metadata */
-    --ink-faint: #BFB8AE;          /* Very faint rules & accents */
+    --ink-primary: #262422;
+    /* Deep warm charcoal ink */
+    --ink-secondary: #5A554E;
+    /* Soft graphite / muted pencil */
+    --ink-muted: #88827A;
+    /* Faint margin notes / metadata */
+    --ink-faint: #BFB8AE;
+    /* Very faint rules & accents */
 
     /* Paper Dividing Lines */
-    --rule-light: #E8E2D8;         /* Whisper-light paper rule */
-    --rule-medium: #D9D2C6;        /* Structural division line */
-    --rule-dark: #A69E92;          /* Bold editorial underline */
+    --rule-light: #E8E2D8;
+    /* Whisper-light paper rule */
+    --rule-medium: #D9D2C6;
+    /* Structural division line */
+    --rule-dark: #A69E92;
+    /* Bold editorial underline */
 
     /* Storybook Watercolor Accents (Earthy, Muted, Never Neon) */
-    --moss-green: #3D5A45;         /* Muted forest moss */
-    --moss-tint: #EEF3EF;          /* Pale moss wash */
-    --indigo-blue: #456277;        /* Faded denim blue */
-    --indigo-tint: #EDF3F7;        /* Pale sky wash */
-    --terracotta: #B65742;         /* Warm clay / terracotta */
-    --terracotta-tint: #FCEFEA;    /* Pale clay wash */
-    --warm-ochre: #8A623B;         /* Dusty leather / tea stain */
-    --ochre-tint: #F8F3EC;         /* Pale tea wash */
+    --moss-green: #3D5A45;
+    /* Muted forest moss */
+    --moss-tint: #EEF3EF;
+    /* Pale moss wash */
+    --indigo-blue: #456277;
+    /* Faded denim blue */
+    --indigo-tint: #EDF3F7;
+    /* Pale sky wash */
+    --terracotta: #B65742;
+    /* Warm clay / terracotta */
+    --terracotta-tint: #FCEFEA;
+    /* Pale clay wash */
+    --warm-ochre: #94683c;
+    /* Dusty leather / tea stain */
+    --ochre-tint: #F8F3EC;
+    /* Pale tea wash */
 
     /* Typography Families */
     --font-display: 'Fraunces', Georgia, serif;
@@ -356,10 +375,34 @@ code {
     z-index: 2;
     pointer-events: none;
 }
-.corner-top-left { top: 8px; left: 8px; border-right: none; border-bottom: none; }
-.corner-top-right { top: 8px; right: 8px; border-left: none; border-bottom: none; }
-.corner-bottom-left { bottom: 8px; left: 8px; border-right: none; border-top: none; }
-.corner-bottom-right { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+.corner-top-left {
+    top: 8px;
+    left: 8px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-top-right {
+    top: 8px;
+    right: 8px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-bottom-left {
+    bottom: 8px;
+    left: 8px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-bottom-right {
+    bottom: 8px;
+    right: 8px;
+    border-left: none;
+    border-top: none;
+}
 
 .photo-matting {
     width: 100%;
@@ -850,7 +893,7 @@ code {
     font-weight: 500;
 }
 
-.letter-body-content > p {
+.letter-body-content>p {
     font-size: 1.12rem;
     color: var(--ink-secondary);
     line-height: 1.75;
