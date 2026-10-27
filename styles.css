@@ -1,50 +1,59 @@
 /* ==========================================================================
-   JAPANESE STORYBOOK / ILLUSTRATED DEVELOPER JOURNAL
-   Developer: Lê Quốc Khánh // Software Engineer
-   Typography: Fraunces (Editorial Display) & DM Sans (Humanist Body)
-   Aesthetic: Warm cream paper, charcoal ink, muted watercolor tones, quiet craft
+   JAPANESE ANIMATED STORYBOOK WORLD · PORTFOLIO STYLES
+   Developer: Lê Quốc Khánh // Software Engineer (.NET Backend)
+   Art Direction: 1980s–1990s Japanese Animation & Studio Ghibli Countryside
+   Typography: Fraunces (Editorial Display) & DM Sans (Humanist Body/UI)
+   Palette: Paper Ivory, Warm Cream, Forest Green, Moss, Sky Blue, Terracotta, Warm Ink
    ========================================================================== */
 
-/* ===== DESIGN TOKENS (PAPER & INK SYSTEM) ===== */
+/* ===== 1. DESIGN TOKENS ===== */
 :root {
-    /* Paper & Canvas Surfaces */
-    --bg-canvas: #FAF7F2;          /* Natural warm cream/ivory */
-    --bg-page: #FFFFFF;            /* Pure paper white for cards/plates */
-    --bg-parchment: #F4EFE6;       /* Slightly aged paper tone */
-    --bg-subtle: #F0EAE0;          /* Soft paper wash */
+    /* Atmospheric Color Tokens */
+    --c-paper-ivory: #F4EBD8;       /* Primary paper canvas */
+    --c-warm-cream: #E9DFC8;        /* Slightly deeper aged paper / card wash */
+    --c-paper-light: #FAF6ED;       /* Crisp reading plate */
+    --c-forest-green: #526B45;      /* Deep country foliage / primary brand accent */
+    --c-moss-green: #84966B;        /* Muted garden moss / secondary accent */
+    --c-moss-wash: #EDF2E8;         /* Whispering pale moss wash */
+    --c-sky-blue: #A8C9D8;          /* Pale afternoon sky */
+    --c-denim-blue: #66879A;        /* Faded twilight denim */
+    --c-sky-wash: #EDF4F8;          /* Soft sky wash */
+    --c-terracotta: #BD795B;        /* Warm roof tile / clay accent */
+    --c-terracotta-wash: #FBF0EB;   /* Pale clay wash */
+    --c-warm-ink: #393A30;          /* Warm charcoal ink for headings & text */
+    --c-ink-secondary: #5A5C4F;     /* Muted pencil graphite */
+    --c-ink-muted: #848775;         /* Metadata, rules & captions */
+    --c-ink-faint: #D4D1C3;         /* Very delicate borders & separators */
+    --c-sunlight-gold: #D9B56E;     /* Warm golden sunlight highlight */
+    --c-sunlight-glow: rgba(217, 181, 110, 0.28);
+    --c-wood-bark: #483A2C;         /* Weathered window timber */
+    --c-wood-warm: #70543E;         /* Desk timber */
 
-    /* Charcoal Ink & Graphite Typography */
-    --ink-primary: #262422;        /* Deep warm charcoal ink */
-    --ink-secondary: #5A554E;      /* Soft graphite / muted pencil */
-    --ink-muted: #88827A;          /* Faint margin notes / metadata */
-    --ink-faint: #BFB8AE;          /* Very faint rules & accents */
-
-    /* Paper Dividing Lines */
-    --rule-light: #E8E2D8;         /* Whisper-light paper rule */
-    --rule-medium: #D9D2C6;        /* Structural division line */
-    --rule-dark: #A69E92;          /* Bold editorial underline */
-
-    /* Storybook Watercolor Accents (Earthy, Muted, Never Neon) */
-    --moss-green: #3D5A45;         /* Muted forest moss */
-    --moss-tint: #EEF3EF;          /* Pale moss wash */
-    --indigo-blue: #456277;        /* Faded denim blue */
-    --indigo-tint: #EDF3F7;        /* Pale sky wash */
-    --terracotta: #B65742;         /* Warm clay / terracotta */
-    --terracotta-tint: #FCEFEA;    /* Pale clay wash */
-    --warm-ochre: #8A623B;         /* Dusty leather / tea stain */
-    --ochre-tint: #F8F3EC;         /* Pale tea wash */
-
-    /* Typography Families */
+    /* Typography */
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-jp: 'Noto Serif JP', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
 
-    /* Sizing & Container */
-    --container-max: 1080px;
-    --transition-gentle: 0.22s ease-out;
+    /* Sizing & Geometry */
+    --container-max: 1140px;
+    --container-narrow: 840px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Organic Shadows & Outlines */
+    --shadow-soft: 0 4px 20px rgba(57, 58, 48, 0.08);
+    --shadow-card: 0 8px 28px rgba(57, 58, 48, 0.10);
+    --shadow-cinematic: 0 16px 48px rgba(40, 42, 32, 0.18);
+    --border-ink: 1px solid rgba(57, 58, 48, 0.16);
+    --border-faint: 1px solid rgba(57, 58, 48, 0.09);
+
+    /* Transitions */
+    --transition-gentle: 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ===== RESET & BASE STYLES ===== */
+/* ===== 2. RESET & BASE ===== */
 *,
 *::before,
 *::after {
@@ -56,33 +65,31 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-    background-color: var(--bg-canvas);
+    background-color: var(--c-paper-ivory);
 }
 
-body.journal-body {
+body.anime-world-body {
     font-family: var(--font-body);
     font-size: 1.05rem;
-    line-height: 1.72;
-    color: var(--ink-primary);
-    background-color: var(--bg-canvas);
-    /* Subtle natural paper grain texture via SVG noise filter */
+    line-height: 1.74;
+    color: var(--c-warm-ink);
+    background-color: var(--c-paper-ivory);
+    /* Subtle natural handmade paper grain overlay */
     background-image:
-        radial-gradient(ellipse at 10% 15%, rgba(182, 87, 66, 0.015) 0%, transparent 50%),
-        radial-gradient(ellipse at 90% 85%, rgba(61, 90, 69, 0.02) 0%, transparent 50%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)' opacity='0.022'/%3E%3C/svg%3E");
+        radial-gradient(ellipse at 8% 12%, rgba(189, 121, 91, 0.025) 0%, transparent 60%),
+        radial-gradient(ellipse at 92% 88%, rgba(82, 107, 69, 0.035) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperGrain)' opacity='0.028'/%3E%3C/svg%3E");
     overflow-x: hidden;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Selection */
 ::selection {
-    background-color: var(--terracotta-tint);
-    color: var(--terracotta);
+    background-color: var(--c-terracotta-wash);
+    color: var(--c-terracotta);
 }
 
-/* Base Links & Buttons */
 a {
     color: inherit;
     text-decoration: none;
@@ -98,1048 +105,1398 @@ button {
     color: inherit;
 }
 
-code {
-    font-family: 'DM Mono', Consolas, Monaco, monospace;
-    font-size: 0.9em;
-    color: var(--warm-ochre);
-    background: var(--bg-subtle);
-    padding: 2px 6px;
-    border-radius: 3px;
-    border: 1px solid var(--rule-light);
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Shared Container */
 .container {
     width: 100%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 1.5rem;
 }
 
-.section {
-    padding: 100px 0;
-    position: relative;
-}
-
-/* ==========================================================================
-   JOURNAL HEADER & NAVIGATION
-   ========================================================================== */
-.journal-header {
-    position: sticky;
+/* ===== 3. NAVIGATION (QUIET & INTEGRATED) ===== */
+.site-nav {
+    position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 100;
-    background-color: rgba(250, 247, 242, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--rule-light);
-    transition: background-color var(--transition-gentle);
+    padding: 1.1rem 0;
+    background: rgba(244, 235, 216, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: var(--border-faint);
+    transition: padding var(--transition-gentle), background var(--transition-gentle);
 }
 
-.header-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 20px 32px;
+.site-nav.scrolled {
+    padding: 0.75rem 0;
+    background: rgba(244, 235, 216, 0.96);
+    box-shadow: 0 2px 14px rgba(57, 58, 48, 0.05);
+}
+
+.nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.brand-signature {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-name {
+.nav-wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.6rem;
     font-family: var(--font-display);
+    font-weight: 700;
     font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--ink-primary);
     letter-spacing: -0.01em;
+    color: var(--c-warm-ink);
 }
 
-.brand-role {
-    font-size: 0.82rem;
-    color: var(--ink-muted);
+.nav-wordmark .wordmark-dot {
+    color: var(--c-forest-green);
+}
+
+.nav-tagline {
+    font-family: var(--font-body);
     font-weight: 400;
+    font-size: 0.82rem;
+    color: var(--c-ink-muted);
+    letter-spacing: 0.02em;
 }
 
-.journal-nav .nav-links {
+.nav-links-list {
     display: flex;
     align-items: center;
-    gap: 28px;
     list-style: none;
+    gap: 1.8rem;
 }
 
-.nav-anchor {
-    font-size: 0.92rem;
+.nav-item a {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
     font-weight: 500;
-    color: var(--ink-secondary);
-    padding: 4px 0;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--c-ink-secondary);
     position: relative;
+    padding: 0.3rem 0;
 }
 
-.nav-anchor::after {
+.nav-item a::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 0;
     width: 0;
-    height: 1px;
-    background-color: var(--terracotta);
+    height: 1.5px;
+    background-color: var(--c-forest-green);
     transition: width var(--transition-gentle);
 }
 
-.nav-anchor:hover,
-.nav-anchor.active {
-    color: var(--ink-primary);
+.nav-item a:hover,
+.nav-item a.active {
+    color: var(--c-forest-green);
 }
 
-.nav-anchor:hover::after,
-.nav-anchor.active::after {
+.nav-item a:hover::after,
+.nav-item a.active::after {
     width: 100%;
 }
 
-.nav-resume {
-    color: var(--moss-green);
-    font-weight: 600;
-}
-
-.nav-resume::after {
-    background-color: var(--moss-green);
-}
-
-/* ==========================================================================
-   HERO SECTION: OPENING PAGE OF AN ILLUSTRATED JOURNAL
-   ========================================================================== */
-.hero-section {
-    padding: 90px 0 80px;
-    border-bottom: 1px solid var(--rule-light);
-}
-
-.hero-container {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px;
-    align-items: center;
-}
-
-.journal-chapter-tag {
+.nav-cv-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: var(--moss-green);
+    gap: 0.4rem;
+    padding: 0.45rem 1rem !important;
+    background-color: var(--c-forest-green);
+    color: #FAF6ED !important;
+    border-radius: var(--radius-sm);
+    font-size: 0.84rem !important;
     font-weight: 500;
-    margin-bottom: 18px;
-    background: var(--moss-tint);
-    padding: 3px 10px;
-    border-radius: 2px;
-    border: 1px solid rgba(61, 90, 69, 0.15);
+    box-shadow: 0 2px 8px rgba(82, 107, 69, 0.25);
+    transition: background-color var(--transition-gentle), transform var(--transition-gentle);
 }
 
-.chapter-number {
-    font-family: var(--font-display);
-    font-weight: 600;
+.nav-cv-btn::after {
+    display: none !important;
 }
 
-.chapter-separator {
-    color: var(--ink-faint);
-}
-
-.hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.1rem, 4.8vw, 3.8rem);
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--ink-primary);
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-    max-width: 100%;
-    overflow-wrap: break-word;
-}
-
-.hero-narrative {
-    font-size: 1.12rem;
-    line-height: 1.75;
-    color: var(--ink-secondary);
-    margin-bottom: 20px;
-}
-
-.hero-narrative strong {
-    color: var(--ink-primary);
-    font-weight: 600;
-}
-
-.hero-motto {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    color: var(--terracotta);
-    margin-bottom: 36px;
-    padding-left: 16px;
-    border-left: 2px solid var(--terracotta);
-    font-style: italic;
-}
-
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 18px;
-}
-
-/* Action Buttons: Restrained, tactile, handmade */
-.action-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 12px 24px;
-    border-radius: 3px;
-    transition: var(--transition-gentle);
-}
-
-.action-primary {
-    background-color: var(--ink-primary);
-    color: #FFFFFF;
-    border: 1px solid var(--ink-primary);
-}
-
-.action-primary:hover {
-    background-color: #383532;
-    border-color: #383532;
+.nav-cv-btn:hover {
+    background-color: #3e5334;
     transform: translateY(-1px);
+    color: #FFFFFF !important;
 }
 
-.action-secondary {
-    background-color: var(--bg-page);
-    color: var(--ink-primary);
-    border: 1px solid var(--rule-medium);
-}
-
-.action-secondary:hover {
-    border-color: var(--ink-primary);
-    background-color: var(--bg-subtle);
-}
-
-/* ==========================================================================
-   PORTRAIT / PHOTO-JOURNAL FRAME
-   ========================================================================== */
-.hero-visual-block {
-    display: flex;
+/* Mobile Nav Toggle */
+.nav-mobile-toggle {
+    display: none;
+    flex-direction: column;
     justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
 }
 
-.photo-journal-frame {
+.nav-mobile-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--c-warm-ink);
+    border-radius: 2px;
+    transition: transform var(--transition-gentle), opacity var(--transition-gentle);
+}
+
+/* ===== 4. SCENE 01: THE WORKSPACE (HERO) ===== */
+.scene-hero {
     position: relative;
-    background: var(--bg-page);
-    padding: 16px 16px 20px;
-    border: 1px solid var(--rule-light);
-    box-shadow: 0 4px 20px rgba(38, 36, 34, 0.05);
-    max-width: 360px;
-    width: 100%;
-    transform: rotate(1deg);
-    transition: transform var(--transition-gentle);
+    padding-top: 5.5rem;
+    padding-bottom: 3.5rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
-.photo-journal-frame:hover {
-    transform: rotate(0deg);
-}
-
-/* Photo Corner Tabs (Handmade Photo Album Style) */
-.corner-tab {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--ink-faint);
-    z-index: 2;
-    pointer-events: none;
-}
-.corner-top-left { top: 8px; left: 8px; border-right: none; border-bottom: none; }
-.corner-top-right { top: 8px; right: 8px; border-left: none; border-bottom: none; }
-.corner-bottom-left { bottom: 8px; left: 8px; border-right: none; border-top: none; }
-.corner-bottom-right { bottom: 8px; right: 8px; border-left: none; border-top: none; }
-
-.photo-matting {
-    width: 100%;
-    aspect-ratio: 4 / 5;
+.hero-viewport-frame {
+    position: relative;
+    background-color: var(--c-warm-cream);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(72, 58, 44, 0.22);
+    box-shadow: var(--shadow-cinematic);
     overflow: hidden;
-    background: var(--bg-parchment);
-    border: 1px solid var(--rule-light);
 }
 
-.journal-portrait {
+/* The 16:9 Illustrated Anime Canvas */
+.hero-scenic-window {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 520px;
+    background-color: #2F382E;
+    overflow: hidden;
+}
+
+.hero-bg-painting {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-    filter: sepia(8%) contrast(98%);
-}
-
-.photo-caption {
-    margin-top: 14px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--rule-light);
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.caption-handwritten {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--ink-primary);
-}
-
-.caption-sub {
-    font-size: 0.8rem;
-    color: var(--ink-muted);
-}
-
-/* ==========================================================================
-   SECTION INTRO & HEADINGS
-   ========================================================================== */
-.section-intro {
-    margin-bottom: 56px;
-    max-width: 680px;
-}
-
-.section-kicker {
+    object-position: center bottom;
     display: block;
-    font-size: 0.82rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--terracotta);
-    margin-bottom: 8px;
+    transform: scale(1.02);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.section-heading {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 3.6vw, 2.85rem);
-    font-weight: 600;
-    color: var(--ink-primary);
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    margin-bottom: 14px;
-}
-
-.section-subtext {
-    font-size: 1.1rem;
-    color: var(--ink-secondary);
-    line-height: 1.65;
-}
-
-/* ==========================================================================
-   SECTION 01: SELECTED WORKS (Case Studies)
-   ========================================================================== */
-.works-list {
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-}
-
-.work-article {
-    background: var(--bg-page);
-    border: 1px solid var(--rule-light);
-    border-radius: 3px;
-    padding: 36px 40px;
-    box-shadow: 0 2px 12px rgba(38, 36, 34, 0.03);
-    transition: border-color var(--transition-gentle), box-shadow var(--transition-gentle);
-}
-
-.work-article:hover {
-    border-color: var(--rule-medium);
-    box-shadow: 0 6px 24px rgba(38, 36, 34, 0.06);
-}
-
-.work-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--rule-light);
-    margin-bottom: 24px;
-}
-
-.work-index {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--ink-muted);
-}
-
-.work-meta-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.meta-chip {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--indigo-blue);
-    background: var(--indigo-tint);
-    padding: 2px 10px;
-    border-radius: 2px;
-    border: 1px solid rgba(69, 98, 119, 0.15);
-}
-
-.work-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 2.4vw, 1.95rem);
-    font-weight: 600;
-    color: var(--ink-primary);
-    line-height: 1.25;
-    margin-bottom: 6px;
-}
-
-.work-subtitle {
-    font-size: 0.95rem;
-    color: var(--moss-green);
-    font-weight: 500;
-    margin-bottom: 16px;
-}
-
-.work-description {
-    font-size: 1.05rem;
-    color: var(--ink-secondary);
-    line-height: 1.7;
-    margin-bottom: 22px;
-}
-
-.work-technical-note {
-    background: var(--bg-parchment);
-    border: 1px solid var(--rule-light);
-    padding: 20px 24px;
-    border-radius: 2px;
-    margin-bottom: 22px;
-}
-
-.note-label {
-    font-size: 0.82rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--ink-primary);
-    margin-bottom: 10px;
-}
-
-.note-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.note-points li {
-    font-size: 0.96rem;
-    color: var(--ink-secondary);
-    line-height: 1.6;
-    padding-left: 18px;
-    position: relative;
-}
-
-.note-points li::before {
-    content: "—";
+/* Environmental Anime Overlays */
+.hero-environment-layers {
     position: absolute;
-    left: 0;
-    color: var(--ink-muted);
+    inset: 0;
+    pointer-events: none;
 }
 
-.work-stack-line {
-    font-size: 0.92rem;
-    color: var(--ink-secondary);
-    margin-bottom: 22px;
-    padding-top: 10px;
-    border-top: 1px solid var(--rule-light);
+/* Subtle Sunlight Rays */
+.env-layer-sunlight {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 25%, rgba(217, 181, 110, 0.24) 0%, rgba(217, 181, 110, 0.08) 45%, transparent 70%),
+                linear-gradient(135deg, rgba(255, 245, 215, 0.16) 0%, transparent 60%);
+    mix-blend-mode: soft-light;
+    animation: sunlight-breathe 8s ease-in-out infinite alternate;
 }
 
-.stack-label {
-    font-weight: 600;
-    color: var(--ink-primary);
-    margin-right: 6px;
+/* Warm Lamp Glow */
+.env-layer-lampglow {
+    position: absolute;
+    right: 28%;
+    bottom: 35%;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(235, 188, 107, 0.45) 0%, rgba(217, 181, 110, 0.15) 50%, transparent 70%);
+    mix-blend-mode: screen;
+    animation: lamp-pulse 6s ease-in-out infinite alternate;
 }
 
-.stack-items {
-    color: var(--ink-secondary);
+/* Drifting Gouache Cloud Overlay */
+.env-layer-clouds {
+    position: absolute;
+    top: 5%;
+    left: -20%;
+    width: 140%;
+    height: 40%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.22) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
+    filter: blur(12px);
+    animation: cloud-drift 42s linear infinite;
 }
 
-.work-links {
-    display: flex;
+/* Window Timber Matting & Corner Tabs */
+.hero-window-matte {
+    position: absolute;
+    inset: 0;
+    border: 8px solid rgba(72, 58, 44, 0.14);
+    pointer-events: none;
+    box-shadow: inset 0 0 30px rgba(40, 32, 22, 0.22);
+}
+
+.matte-tab {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: rgba(72, 58, 44, 0.45);
+    border-style: solid;
+    pointer-events: none;
+}
+
+.matte-tab.top-left { top: 6px; left: 6px; border-width: 2px 0 0 2px; }
+.matte-tab.top-right { top: 6px; right: 6px; border-width: 2px 2px 0 0; }
+.matte-tab.bottom-left { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; }
+.matte-tab.bottom-right { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
+
+/* Dedicated Developer Identity Plate (High Contrast, Human, Clear) */
+.hero-identity-overlay {
+    position: absolute;
+    left: 2.2rem;
+    bottom: 2.2rem;
+    max-width: 480px;
+    background: rgba(250, 246, 237, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(72, 58, 44, 0.18);
+    box-shadow: 0 10px 32px rgba(40, 32, 22, 0.22);
+    padding: 2rem 2.2rem;
+    z-index: 10;
+}
+
+.hero-chapter-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 14px;
-}
-
-.text-link {
-    font-size: 0.94rem;
-    font-weight: 600;
-    color: var(--ink-primary);
-    border-bottom: 1px solid var(--rule-dark);
-    padding-bottom: 1px;
-}
-
-.text-link:hover {
-    color: var(--terracotta);
-    border-bottom-color: var(--terracotta);
-}
-
-.link-separator {
-    color: var(--ink-faint);
-}
-
-.more-works-note {
-    margin-top: 50px;
-    padding: 24px 32px;
-    background: var(--bg-subtle);
-    border: 1px solid var(--rule-light);
-    border-radius: 2px;
-    text-align: center;
-    font-size: 0.98rem;
-    color: var(--ink-secondary);
-}
-
-/* ==========================================================================
-   SECTION 02: ABOUT & PROCESS ("How I Think")
-   ========================================================================== */
-.process-flow {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    margin-bottom: 56px;
-}
-
-.process-node {
-    background: var(--bg-page);
-    border: 1px solid var(--rule-light);
-    padding: 32px 30px;
-    border-radius: 2px;
-    position: relative;
-    box-shadow: 0 2px 10px rgba(38, 36, 34, 0.02);
-}
-
-.node-sequence {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--moss-green);
-    margin-bottom: 12px;
-}
-
-.node-title {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--ink-primary);
-    margin-bottom: 12px;
-}
-
-.node-text {
-    font-size: 0.98rem;
-    color: var(--ink-secondary);
-    line-height: 1.68;
-}
-
-.narrative-journal-card {
-    background: var(--bg-page);
-    border: 1px solid var(--rule-light);
-    border-radius: 3px;
-    padding: 36px 40px;
-    box-shadow: 0 2px 12px rgba(38, 36, 34, 0.03);
-}
-
-.journal-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--rule-light);
-    margin-bottom: 20px;
-    font-size: 0.85rem;
-}
-
-.card-tag {
-    font-weight: 600;
-    color: var(--warm-ochre);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.card-date {
-    color: var(--ink-muted);
-}
-
-.journal-card-body p {
-    font-size: 1.05rem;
-    color: var(--ink-secondary);
-    line-height: 1.75;
-    margin-bottom: 14px;
-}
-
-.journal-card-body p:last-child {
-    margin-bottom: 0;
-}
-
-/* ==========================================================================
-   SECTION 03: TECHNICAL REPERTOIRE (Skills Catalog)
-   ========================================================================== */
-.repertoire-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-}
-
-.repertoire-card {
-    background: var(--bg-page);
-    border: 1px solid var(--rule-light);
-    border-radius: 2px;
-    padding: 28px 30px;
-    box-shadow: 0 2px 8px rgba(38, 36, 34, 0.02);
-}
-
-.repertoire-domain {
+    gap: 0.5rem;
+    font-family: var(--font-body);
     font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--ink-muted);
-    display: block;
-    margin-bottom: 4px;
+    letter-spacing: 0.08em;
+    color: var(--c-forest-green);
+    margin-bottom: 0.6rem;
 }
 
-.repertoire-title {
+.hero-chapter-pill .pill-leaf {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--c-forest-green);
+}
+
+.hero-developer-name {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--ink-primary);
-    margin-bottom: 16px;
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--c-warm-ink);
+    margin-bottom: 0.4rem;
 }
 
-.repertoire-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.rep-item {
-    font-size: 0.88rem;
+.hero-developer-role {
+    font-family: var(--font-body);
+    font-size: 1.02rem;
     font-weight: 500;
-    color: var(--ink-primary);
-    background: var(--bg-subtle);
-    padding: 3px 9px;
-    border-radius: 2px;
-    border: 1px solid var(--rule-light);
-}
-
-.repertoire-note {
-    font-size: 0.88rem;
-    color: var(--ink-secondary);
-    line-height: 1.55;
-    padding-top: 12px;
-    border-top: 1px dashed var(--rule-light);
-}
-
-/* ==========================================================================
-   SECTION 04: CHRONICLE (Experience & Education)
-   ========================================================================== */
-.chronicle-journal {
+    color: var(--c-forest-green);
+    margin-bottom: 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 48px;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-developer-role .role-dot {
+    color: var(--c-terracotta);
+}
+
+.hero-philosophy-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--c-ink-secondary);
+    border-left: 2.5px solid var(--c-terracotta);
+    padding-left: 0.9rem;
+    margin-bottom: 1.1rem;
+}
+
+.hero-narrative-lead {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: var(--c-ink-secondary);
+    margin-bottom: 1.4rem;
+}
+
+.hero-narrative-lead strong {
+    color: var(--c-warm-ink);
+    font-weight: 600;
+}
+
+.hero-action-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.btn-anime-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background-color: var(--c-forest-green);
+    color: #FAF6ED;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(82, 107, 69, 0.28);
+    transition: background-color var(--transition-gentle), transform var(--transition-gentle), box-shadow var(--transition-gentle);
+}
+
+.btn-anime-primary:hover {
+    background-color: #3f5535;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(82, 107, 69, 0.35);
+}
+
+.btn-anime-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background-color: transparent;
+    color: var(--c-warm-ink);
+    padding: 0.62rem 1.35rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(57, 58, 48, 0.25);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background-color var(--transition-gentle), border-color var(--transition-gentle), transform var(--transition-gentle);
+}
+
+.btn-anime-secondary:hover {
+    background-color: rgba(57, 58, 48, 0.05);
+    border-color: var(--c-warm-ink);
+    transform: translateY(-2px);
+}
+
+/* Hero Vignette Stamp */
+.hero-vignette-stamp {
+    position: absolute;
+    right: 2.2rem;
+    top: 2.2rem;
+    background: rgba(250, 246, 237, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px dashed rgba(72, 58, 44, 0.28);
+    font-size: 0.76rem;
+    font-family: var(--font-mono);
+    color: var(--c-ink-muted);
+    letter-spacing: 0.03em;
+    pointer-events: none;
+}
+
+/* ===== 5. SECTION HEADERS (THE 6 FILM SCENES) ===== */
+.scene-section {
+    padding: 6rem 0;
     position: relative;
 }
 
-.chronicle-entry {
+.scene-intro-block {
+    margin-bottom: 3.2rem;
+}
+
+.scene-intro-block.centered {
+    text-align: center;
+    max-width: var(--container-narrow);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scene-chapter-tag {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--c-forest-green);
+    margin-bottom: 0.5rem;
+}
+
+.scene-title {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--c-warm-ink);
+    margin-bottom: 0.85rem;
+}
+
+.scene-subtitle {
+    font-size: 1.08rem;
+    line-height: 1.68;
+    color: var(--c-ink-secondary);
+    max-width: 680px;
+}
+
+.scene-intro-block.centered .scene-subtitle {
+    margin: 0 auto;
+}
+
+/* ===== 6. SCENE 02: THE PROJECT NOTEBOOK (SELECTED PROJECTS) ===== */
+.scene-projects {
+    background-color: var(--c-paper-ivory);
+    border-top: var(--border-faint);
+}
+
+/* Featured Project: SkaEV */
+.featured-project-plate {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-lg);
+    border: var(--border-ink);
+    box-shadow: var(--shadow-card);
+    padding: 2.5rem;
+    margin-bottom: 3.5rem;
     display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 36px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--rule-light);
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.8rem;
+    align-items: center;
+    position: relative;
 }
 
-.chronicle-entry:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+.featured-project-plate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    width: 60px;
+    height: 3px;
+    background-color: var(--c-terracotta);
 }
 
-.chronicle-time {
+.featured-photo-frame {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: #1A1D20;
+    border: 1px solid rgba(72, 58, 44, 0.22);
+    box-shadow: 0 8px 24px rgba(40, 32, 22, 0.12);
+}
+
+.featured-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+}
+
+.featured-photo-frame:hover .featured-photo-img {
+    transform: scale(1.025);
+}
+
+.photo-caption-strip {
+    padding: 0.6rem 0.8rem;
+    background-color: var(--c-warm-cream);
+    border-top: var(--border-faint);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--c-ink-secondary);
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.chronicle-year {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
+.featured-meta-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+}
+
+.project-chip {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    background-color: var(--c-moss-wash);
+    color: var(--c-forest-green);
+    font-size: 0.76rem;
     font-weight: 600;
-    color: var(--ink-primary);
-    line-height: 1.1;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
 }
 
-.chronicle-span {
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    margin-top: 4px;
+.project-chip.chip-primary {
+    background-color: var(--c-forest-green);
+    color: #FAF6ED;
 }
 
-.chronicle-role {
+.project-chip.chip-warm {
+    background-color: var(--c-terracotta-wash);
+    color: var(--c-terracotta);
+}
+
+.featured-project-title {
     font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--ink-primary);
-    margin-bottom: 4px;
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--c-warm-ink);
+    margin-bottom: 0.35rem;
 }
 
-.chronicle-org {
+.featured-project-subtitle {
     font-size: 0.95rem;
-    color: var(--moss-green);
+    color: var(--c-ink-muted);
+    margin-bottom: 1.1rem;
     font-weight: 500;
-    margin-bottom: 14px;
 }
 
-.chronicle-description {
-    font-size: 1.02rem;
-    color: var(--ink-secondary);
-    line-height: 1.7;
-    margin-bottom: 16px;
+.featured-project-desc {
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: var(--c-ink-secondary);
+    margin-bottom: 1.3rem;
 }
 
-.chronicle-subpoints {
+.technical-field-notes {
+    background-color: var(--c-warm-cream);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1.4rem;
+    border-left: 3px solid var(--c-forest-green);
+}
+
+.notes-label {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-forest-green);
+    margin-bottom: 0.5rem;
+}
+
+.notes-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
-.chronicle-subpoints li {
-    font-size: 0.95rem;
-    color: var(--ink-secondary);
+.notes-list li {
+    font-size: 0.88rem;
     line-height: 1.6;
-    padding-left: 18px;
+    color: var(--c-ink-secondary);
+    position: relative;
+    padding-left: 1.1rem;
+}
+
+.notes-list li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--c-forest-green);
+    font-size: 0.85rem;
+}
+
+.notes-list code {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    background: rgba(82, 107, 69, 0.12);
+    color: var(--c-forest-green);
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+}
+
+.project-stack-strip {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.86rem;
+    color: var(--c-ink-muted);
+    margin-bottom: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.project-stack-strip .stack-label {
+    font-weight: 600;
+    color: var(--c-warm-ink);
+}
+
+.project-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.text-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--c-forest-green);
     position: relative;
 }
 
-.chronicle-subpoints li::before {
-    content: "•";
+.text-action-link::after {
+    content: '';
     position: absolute;
+    bottom: -1px;
     left: 0;
-    color: var(--ink-muted);
+    width: 100%;
+    height: 1px;
+    background-color: var(--c-forest-green);
+    opacity: 0.45;
+    transition: opacity var(--transition-gentle);
 }
 
-/* ==========================================================================
-   SECTION 05: LETTER & INVITATION (Contact)
-   ========================================================================== */
-.letter-card {
-    background: var(--bg-page);
-    border: 1px solid var(--rule-light);
-    border-radius: 3px;
-    padding: 44px 48px;
-    box-shadow: 0 4px 18px rgba(38, 36, 34, 0.04);
+.text-action-link:hover::after {
+    opacity: 1;
 }
 
-.letter-top-meta {
+/* Secondary Projects Grid (5 Projects) */
+.projects-notebook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.notebook-project-card {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-md);
+    border: var(--border-ink);
+    box-shadow: var(--shadow-soft);
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform var(--transition-gentle), box-shadow var(--transition-gentle);
+}
+
+.notebook-project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+}
+
+.card-top-marker {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--rule-light);
-    margin-bottom: 24px;
-    font-size: 0.85rem;
-    color: var(--ink-muted);
+    align-items: center;
+    margin-bottom: 0.85rem;
+}
+
+.card-index {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--c-ink-muted);
+}
+
+.card-project-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--c-warm-ink);
+    margin-bottom: 0.35rem;
+}
+
+.card-project-sub {
+    font-size: 0.88rem;
+    color: var(--c-ink-muted);
+    margin-bottom: 0.85rem;
     font-weight: 500;
 }
 
-.letter-body-content > p {
-    font-size: 1.12rem;
-    color: var(--ink-secondary);
-    line-height: 1.75;
-    margin-bottom: 28px;
+.card-project-desc {
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: var(--c-ink-secondary);
+    margin-bottom: 1.1rem;
+    flex-grow: 1;
 }
 
-.contact-channels {
+.card-tech-points {
+    background-color: var(--c-warm-cream);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.1rem;
+    font-size: 0.84rem;
+    color: var(--c-ink-secondary);
+    line-height: 1.55;
+    border-left: 2.5px solid var(--c-moss-green);
+}
+
+.card-stack-row {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--c-ink-muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.card-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-top: 0.85rem;
+    border-top: var(--border-faint);
+}
+
+/* ===== 7. SCENE 03: THE PATH THROUGH THE GARDEN (EXPERIENCE) ===== */
+.scene-chronicle {
+    background-color: var(--c-warm-cream);
+    border-top: var(--border-faint);
+}
+
+.garden-path-timeline {
+    position: relative;
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding-left: 2.8rem;
+}
+
+/* Hand-drawn ink spine */
+.garden-path-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 11px;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--c-forest-green) 0,
+        var(--c-forest-green) 8px,
+        transparent 8px,
+        transparent 14px
+    );
+    opacity: 0.45;
+}
+
+.timeline-milestone {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-milestone:last-child {
+    margin-bottom: 0;
+}
+
+/* Marker Leaf / Stepping Stone */
+.milestone-stepper {
+    position: absolute;
+    left: -2.8rem;
+    top: 0.35rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--c-paper-light);
+    border: 2.5px solid var(--c-forest-green);
+    box-shadow: 0 0 0 4px var(--c-warm-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.milestone-stepper::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--c-forest-green);
+}
+
+.milestone-content-card {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-md);
+    border: var(--border-ink);
+    box-shadow: var(--shadow-soft);
+    padding: 2rem 2.2rem;
+}
+
+.milestone-time-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--c-forest-green);
+    background-color: var(--c-moss-wash);
+    padding: 0.2rem 0.65rem;
+    border-radius: 3px;
+    margin-bottom: 0.65rem;
+}
+
+.milestone-role {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--c-warm-ink);
+    margin-bottom: 0.2rem;
+}
+
+.milestone-org {
+    font-size: 0.95rem;
+    color: var(--c-ink-muted);
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+}
+
+.milestone-summary {
+    font-size: 0.96rem;
+    line-height: 1.68;
+    color: var(--c-ink-secondary);
+    margin-bottom: 1rem;
+}
+
+.milestone-subpoints {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 36px;
-    padding: 22px 26px;
-    background: var(--bg-parchment);
-    border: 1px solid var(--rule-light);
-    border-radius: 2px;
+    gap: 0.55rem;
 }
 
-.channel-row {
+.milestone-subpoints li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--c-ink-secondary);
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.milestone-subpoints li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--c-forest-green);
+    font-weight: 700;
+}
+
+/* ===== 8. SCENE 04: THE WORKBENCH (TECHNICAL REPERTOIRE) ===== */
+.scene-workbench {
+    background-color: var(--c-paper-ivory);
+    border-top: var(--border-faint);
+}
+
+.workbench-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.workbench-tool-tray {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-md);
+    border: var(--border-ink);
+    box-shadow: var(--shadow-soft);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform var(--transition-gentle), box-shadow var(--transition-gentle);
+}
+
+.workbench-tool-tray:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.tray-domain-kicker {
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-forest-green);
+    margin-bottom: 0.4rem;
+}
+
+.tray-domain-title {
+    font-family: var(--font-display);
+    font-size: 1.32rem;
+    font-weight: 700;
+    color: var(--c-warm-ink);
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+}
+
+.tray-tools-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.3rem;
+}
+
+.tool-tag {
+    font-size: 0.85rem;
+    color: var(--c-warm-ink);
+    background-color: var(--c-warm-cream);
+    padding: 0.28rem 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(57, 58, 48, 0.12);
+    font-weight: 500;
+    transition: background-color var(--transition-gentle), border-color var(--transition-gentle);
+}
+
+.tool-tag:hover {
+    background-color: #E2D7BE;
+    border-color: rgba(57, 58, 48, 0.28);
+}
+
+.tray-practical-note {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--c-ink-secondary);
+    padding-top: 1rem;
+    border-top: var(--border-faint);
+}
+
+/* ===== 9. SCENE 05: THE PERSONAL JOURNAL (ABOUT & PHILOSOPHY) ===== */
+.scene-journal {
+    background-color: var(--c-warm-cream);
+    border-top: var(--border-faint);
+}
+
+.journal-layout-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+}
+
+/* Thought Principles (1, 2, 3, 4) */
+.principles-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.principle-entry {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-md);
+    border: var(--border-ink);
+    padding: 1.6rem 1.8rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+}
+
+.principle-num {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-forest-green);
+    background-color: var(--c-moss-wash);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid rgba(82, 107, 69, 0.25);
+}
+
+.principle-title {
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--c-warm-ink);
+    margin-bottom: 0.4rem;
+}
+
+.principle-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--c-ink-secondary);
+}
+
+/* Personal Dossier & Authentic Portrait */
+.personal-dossier-card {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-md);
+    border: var(--border-ink);
+    box-shadow: var(--shadow-card);
+    padding: 2.2rem;
+    position: sticky;
+    top: 6rem;
+}
+
+.portrait-photo-matte {
+    position: relative;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+    background-color: var(--c-warm-cream);
+    border: 1px solid rgba(72, 58, 44, 0.2);
+}
+
+.portrait-actual-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+}
+
+.dossier-caption {
+    font-size: 0.8rem;
+    color: var(--c-ink-muted);
+    font-family: var(--font-mono);
+    margin-top: 0.5rem;
+    display: block;
+    text-align: center;
+}
+
+.dossier-body-text {
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--c-ink-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+/* ===== 10. SCENE 06: THE EVENING WINDOW (CONTACT & LETTER) ===== */
+.scene-evening-window {
+    background-color: var(--c-paper-ivory);
+    border-top: var(--border-faint);
+    padding-bottom: 6rem;
+}
+
+.evening-scenic-banner {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: var(--border-ink);
+    box-shadow: var(--shadow-cinematic);
+    margin-bottom: 3.5rem;
+    aspect-ratio: 21 / 9;
+    max-height: 380px;
+}
+
+.evening-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+
+.evening-banner-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30, 32, 26, 0.78) 0%, rgba(30, 32, 26, 0.18) 60%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2.4rem;
+}
+
+.evening-banner-content {
+    color: #FAF6ED;
+}
+
+.evening-tag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--c-sunlight-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35rem;
+}
+
+.evening-heading {
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+/* Contact Letter & Stationery */
+.correspondence-card {
+    background-color: var(--c-paper-light);
+    border-radius: var(--radius-lg);
+    border: var(--border-ink);
+    box-shadow: var(--shadow-card);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3.5rem;
+}
+
+.stationery-note-intro {
+    font-size: 1.02rem;
+    line-height: 1.72;
+    color: var(--c-ink-secondary);
+    margin-bottom: 2rem;
+}
+
+.contact-channels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+}
+
+.channel-item {
     display: flex;
     align-items: baseline;
-    gap: 12px;
-    font-size: 0.98rem;
+    gap: 0.8rem;
+    font-size: 0.92rem;
 }
 
-.channel-title {
+.channel-label {
     font-weight: 600;
-    color: var(--ink-primary);
-    min-width: 110px;
+    color: var(--c-warm-ink);
+    min-width: 80px;
 }
 
-.channel-value {
-    color: var(--ink-secondary);
+.channel-link {
+    color: var(--c-forest-green);
+    position: relative;
+    word-break: break-all;
 }
 
-a.channel-value {
-    color: var(--ink-primary);
-    border-bottom: 1px solid var(--rule-medium);
-}
-
-a.channel-value:hover {
-    color: var(--terracotta);
-    border-bottom-color: var(--terracotta);
+.channel-link:hover {
+    color: #2F3F29;
+    text-decoration: underline;
 }
 
 /* Stationery Form */
 .stationery-form {
-    border-top: 1px solid var(--rule-light);
-    padding-top: 32px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.3rem;
 }
 
-.form-grid {
+.form-row-duo {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 1.2rem;
 }
 
-.form-group {
+.form-field-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 0.4rem;
 }
 
 .form-label {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: var(--ink-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-warm-ink);
 }
 
 .paper-input {
-    background-color: var(--bg-canvas);
-    border: 1px solid var(--rule-medium);
-    border-radius: 2px;
-    padding: 12px 14px;
+    width: 100%;
+    padding: 0.75rem 0.95rem;
     font-family: var(--font-body);
-    font-size: 0.98rem;
-    color: var(--ink-primary);
-    outline: none;
-    transition: border-color var(--transition-gentle);
+    font-size: 0.95rem;
+    color: var(--c-warm-ink);
+    background-color: var(--c-paper-ivory);
+    border: 1px solid rgba(57, 58, 48, 0.24);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-gentle), background-color var(--transition-gentle);
 }
 
 .paper-input:focus {
-    border-color: var(--ink-primary);
+    outline: none;
+    border-color: var(--c-forest-green);
     background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(82, 107, 69, 0.15);
 }
 
 .paper-input::placeholder {
-    color: var(--ink-faint);
+    color: var(--c-ink-muted);
+    opacity: 0.7;
 }
 
-textarea.paper-input {
-    resize: vertical;
-}
-
-.form-footer {
+.form-submit-row {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-top: 8px;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
 }
 
-.form-status {
-    font-size: 0.9rem;
-    color: var(--moss-green);
+.form-status-msg {
+    font-size: 0.88rem;
+    color: var(--c-forest-green);
     font-weight: 500;
 }
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-.journal-footer {
-    border-top: 1px solid var(--rule-light);
-    padding: 60px 0 30px;
-    background-color: var(--bg-canvas);
+/* ===== 11. FOOTER ===== */
+.site-footer {
+    background-color: var(--c-warm-cream);
+    border-top: var(--border-ink);
+    padding: 3rem 0;
+    font-size: 0.88rem;
+    color: var(--c-ink-muted);
 }
 
-.footer-container {
+.footer-inner {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .footer-brand {
     font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--ink-primary);
-    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--c-warm-ink);
+    font-size: 1.1rem;
 }
 
-.footer-caption {
-    font-size: 0.9rem;
-    color: var(--ink-muted);
-    max-width: 380px;
-    line-height: 1.6;
-}
-
-.footer-links {
+.footer-nav {
     display: flex;
-    gap: 24px;
+    gap: 1.6rem;
 }
 
-.footer-links a {
-    font-size: 0.9rem;
-    color: var(--ink-secondary);
-    border-bottom: 1px solid transparent;
+.footer-nav a:hover {
+    color: var(--c-forest-green);
 }
 
-.footer-links a:hover {
-    color: var(--ink-primary);
-    border-bottom-color: var(--ink-primary);
+/* ===== 12. ANIMATIONS & PERFORMANCE ===== */
+@keyframes cloud-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20%); }
 }
 
-.footer-bottom-line {
-    border-top: 1px solid var(--rule-light);
-    padding-top: 24px;
-    font-size: 0.82rem;
-    color: var(--ink-muted);
+@keyframes sunlight-breathe {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.04); }
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (Tablets & Mobile)
-   ========================================================================== */
-@media (max-width: 900px) {
-    .hero-container {
+@keyframes lamp-pulse {
+    0% { opacity: 0.75; transform: scale(0.96); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .env-layer-clouds,
+    .env-layer-sunlight,
+    .env-layer-lampglow {
+        animation: none !important;
+    }
+}
+
+/* ===== 13. RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 1024px) {
+    .featured-project-plate {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 2rem;
     }
 
-    .hero-visual-block {
-        order: 1;
-        justify-content: flex-start;
-    }
-
-    .photo-journal-frame {
-        max-width: 320px;
-        transform: rotate(0deg);
-    }
-
-    .process-flow {
+    .journal-layout-grid {
         grid-template-columns: 1fr;
     }
 
-    .repertoire-grid {
+    .personal-dossier-card {
+        position: static;
+    }
+
+    .correspondence-card {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
-    .chronicle-entry {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        gap: 24px;
-    }
-}
-
-@media (max-width: 640px) {
-    .container {
-        padding: 0 20px;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .journal-header {
+    .hero-identity-overlay {
         position: relative;
-    }
-
-    .header-inner {
-        padding: 16px 20px 14px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        width: 100%;
+        left: auto;
+        bottom: auto;
         max-width: 100%;
+        margin: 1.5rem 1.5rem 2rem;
+    }
+    
+    .hero-scenic-window {
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-mobile-toggle {
+        display: flex;
     }
 
-    .journal-nav {
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .journal-nav::-webkit-scrollbar {
+    .nav-links-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--c-paper-ivory);
+        border-bottom: var(--border-ink);
+        box-shadow: var(--shadow-card);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        align-items: flex-start;
         display: none;
     }
 
-    .journal-nav .nav-links {
-        gap: 18px;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        padding-bottom: 2px;
+    .nav-links-list.open {
+        display: flex;
     }
 
-    .hero-section {
-        padding: 48px 0 60px;
+    .scene-title {
+        font-size: 2rem;
     }
 
-    .hero-title {
-        font-size: clamp(1.75rem, 6.8vw, 2.2rem);
-        line-height: 1.22;
-        letter-spacing: -0.015em;
-        max-width: 100%;
-        overflow-wrap: break-word;
+    .hero-developer-name {
+        font-size: 1.85rem;
     }
 
-    .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
+    .hero-scenic-window {
+        aspect-ratio: 4 / 3;
+        min-height: 320px;
     }
 
-    .action-btn {
-        width: 100%;
-        text-align: center;
+    .hero-vignette-stamp {
+        display: none;
     }
 
-    .section {
-        padding: 60px 0;
-    }
-
-    .work-article {
-        padding: 24px 20px;
-    }
-
-    .work-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .letter-card {
-        padding: 28px 20px;
-    }
-
-    .form-grid {
+    .form-row-duo {
         grid-template-columns: 1fr;
     }
 
-    .channel-row {
-        flex-direction: column;
-        gap: 2px;
+    .featured-project-plate {
+        padding: 1.5rem;
     }
 
-    .channel-title {
-        min-width: auto;
+    .correspondence-card {
+        padding: 1.8rem;
+    }
+
+    .garden-path-timeline {
+        padding-left: 2.2rem;
+    }
+
+    .milestone-stepper {
+        left: -2.2rem;
     }
 }

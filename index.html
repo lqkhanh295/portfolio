@@ -5,691 +5,419 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Lê Quốc Khánh — Software Engineer & .NET Backend Developer. An illustrated developer journal of systems, architecture, and craft.">
+        content="Lê Quốc Khánh — Software Engineer & .NET Backend Developer. An illustrated Japanese storybook world of backend systems, engineering field notes, and quiet craft.">
     <meta name="author" content="Lê Quốc Khánh">
-    <title>Lê Quốc Khánh — Software Engineer &amp; Developer Journal</title>
+    <title>Lê Quốc Khánh — Software Engineer &amp; .NET Developer</title>
 
     <!-- Google Fonts: Fraunces (Editorial Display) & DM Sans (Clean Humanist Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Noto+Serif+JP:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="journal-body">
-    <!-- Paper Header & Navigation -->
-    <header class="journal-header" id="siteHeader">
-        <div class="header-inner">
-            <a href="#hero" class="brand-signature">
-                <span class="brand-name">Lê Quốc Khánh</span>
-                <span class="brand-role">Software Engineer</span>
+<body class="anime-world-body">
+    <!-- Navigation: Quiet and Integrated -->
+    <header class="site-nav" id="siteHeader">
+        <div class="container nav-inner">
+            <a href="#hero" class="nav-wordmark">
+                KHANH<span class="wordmark-dot">.</span>
+                <span class="nav-tagline">Software Engineer</span>
             </a>
 
-            <nav class="journal-nav" id="journalNav" aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="#works" class="nav-anchor">Works</a></li>
-                    <li><a href="#about" class="nav-anchor">Process</a></li>
-                    <li><a href="#skills" class="nav-anchor">Repertoire</a></li>
-                    <li><a href="#chronicle" class="nav-anchor">Chronicle</a></li>
-                    <li><a href="#letter" class="nav-anchor">Letter</a></li>
-                    <li><a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="nav-anchor nav-resume">Resume
-                            ↓</a></li>
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-links-list" id="navMenu">
+                    <li class="nav-item"><a href="#projects" class="nav-anchor">Work</a></li>
+                    <li class="nav-item"><a href="#chronicle" class="nav-anchor">Experience</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-anchor">Workbench</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-anchor">About</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-anchor">Contact</a></li>
+                    <li class="nav-item">
+                        <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="nav-cv-btn">
+                            Resume ↓
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
     <main id="mainContent">
-        <!-- Hero Section: The Opening Page of an Illustrated Journal -->
-        <section class="section hero-section" id="hero">
-            <div class="container hero-container">
-                <div class="hero-text-block">
-                    <div class="journal-chapter-tag">
-                        <span class="chapter-number">Entry 01</span>
-                        <span class="chapter-separator">—</span>
-                        <span class="chapter-topic">Software Engineering &amp; Backend Development</span>
-                    </div>
+        <!-- ==========================================================================
+             SCENE 01: THE WORKSPACE (HERO)
+             A wide 16:9 cinematic illustrated window looking into a Japanese-inspired
+             countryside workspace on a warm late summer afternoon.
+             ========================================================================== -->
+        <section class="scene-hero" id="hero">
+            <div class="container">
+                <div class="hero-viewport-frame">
+                    <!-- The 16:9 Illustrated Anime Canvas -->
+                    <div class="hero-scenic-window">
+                        <img src="hero-anime-workspace.jpg"
+                            alt="Japanese anime-style hand-painted countryside developer workspace with an open wooden window overlooking rolling green hills and blue sky"
+                            class="hero-bg-painting" loading="eager">
 
-                    <h1 class="hero-title">
-                        Building quiet, reliable backend systems with code and curiosity.
-                    </h1>
-
-                    <p class="hero-narrative">
-                        I am <strong>Lê Quốc Khánh</strong>, a final-year Software Engineering student at <strong>FPT
-                            University</strong>. My focus centers on <strong>C#, .NET, Clean Architecture</strong>, and
-                        building dependable backend APIs. Previously, I worked at <strong>FPT Software</strong> as a QA
-                        Tester
-                        Intern, learning how enterprise software behaves—and how it breaks—under real-world pressure.
-                    </p>
-
-                    <p class="hero-motto">
-                        <em>“First, make it work. Then, make it right. Then, make it fast.”</em>
-                    </p>
-
-                    <div class="hero-actions">
-                        <a href="#works" class="action-btn action-primary">Explore Selected Works</a>
-                        <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf"
-                            class="action-btn action-secondary">Download Resume (PDF)</a>
-                    </div>
-                </div>
-
-                <!-- Editorial Portrait / Desk Vignette -->
-                <div class="hero-visual-block">
-                    <div class="photo-journal-frame">
-                        <div class="corner-tab corner-top-left" aria-hidden="true"></div>
-                        <div class="corner-tab corner-top-right" aria-hidden="true"></div>
-                        <div class="corner-tab corner-bottom-left" aria-hidden="true"></div>
-                        <div class="corner-tab corner-bottom-right" aria-hidden="true"></div>
-
-                        <div class="photo-matting">
-                            <img src="avatar-profile.jpg" alt="Lê Quốc Khánh — Portrait in Ho Chi Minh City"
-                                class="journal-portrait" loading="eager">
+                        <!-- Environmental Atmosphere Overlays -->
+                        <div class="hero-environment-layers" aria-hidden="true">
+                            <div class="env-layer-sunlight"></div>
+                            <div class="env-layer-clouds"></div>
+                            <div class="env-layer-lampglow"></div>
                         </div>
 
-                        <div class="photo-caption">
-                            <span class="caption-handwritten">Lê Quốc Khánh — Ho Chi Minh City, 2026.</span>
-                            <span class="caption-sub">Backend developer &amp; student at FPT University.</span>
+                        <!-- Window Timber Matte & Corner Tabs -->
+                        <div class="hero-window-matte" aria-hidden="true">
+                            <span class="matte-tab top-left"></span>
+                            <span class="matte-tab top-right"></span>
+                            <span class="matte-tab bottom-left"></span>
+                            <span class="matte-tab bottom-right"></span>
+                        </div>
+
+                        <!-- Vignette Stamp -->
+                        <div class="hero-vignette-stamp" aria-hidden="true">
+                            SAIGON · 2026 // FIELD LOG
+                        </div>
+
+                        <!-- Integrated Developer Identity Card (High Contrast & Readable) -->
+                        <div class="hero-identity-overlay">
+                            <div class="hero-chapter-pill">
+                                <span class="pill-leaf" aria-hidden="true"></span>
+                                Scene 01 · The Workspace
+                            </div>
+
+                            <h1 class="hero-developer-name">LE QUOC KHANH</h1>
+
+                            <div class="hero-developer-role">
+                                <span>Software Engineer</span>
+                                <span class="role-dot" aria-hidden="true">·</span>
+                                <span>Backend-focused · .NET / C#</span>
+                            </div>
+
+                            <blockquote class="hero-philosophy-quote">
+                                “I like understanding how things work, then building something useful from that
+                                understanding.”
+                            </blockquote>
+
+                            <p class="hero-narrative-lead">
+                                Final-year Software Engineering student at <strong>FPT University</strong>. Former QA
+                                Tester Intern at <strong>FPT Software</strong>. Building quiet, dependable backend
+                                systems centered on <strong>.NET 9, Clean Architecture, and relational integrity</strong>.
+                            </p>
+
+                            <div class="hero-action-group">
+                                <a href="#projects" class="btn-anime-primary">
+                                    Explore My Projects →
+                                </a>
+                                <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="btn-anime-secondary">
+                                    Download CV (PDF)
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 01: Works / Selected Case Studies -->
-        <section class="section works-section" id="works">
+        <!-- ==========================================================================
+             SCENE 02: THE PROJECT NOTEBOOK (SELECTED PROJECTS)
+             Moved immediately after Hero so HR and technical reviewers see real evidence.
+             ========================================================================== -->
+        <section class="scene-section scene-projects" id="projects">
             <div class="container">
-                <div class="section-intro">
-                    <span class="section-kicker">Entry 02 · Project Archives</span>
-                    <h2 class="section-heading">Selected Case Studies</h2>
-                    <p class="section-subtext">
-                        A curation of systems built with an emphasis on clean domain separation, real-time
-                        communication, and resilient database transactions.
+                <div class="scene-intro-block">
+                    <span class="scene-chapter-tag">Scene 02 · The Project Notebook</span>
+                    <h2 class="scene-title">Selected Engineering Works</h2>
+                    <p class="scene-subtitle">
+                        Field notes, architectural decisions, and working implementations from capstone systems and web
+                        platforms.
                     </p>
                 </div>
 
-                <div class="works-list">
-                    <!-- Project 01: SkaEV -->
-                    <article class="work-article">
-                        <div class="work-header">
-                            <div class="work-index">01 / 06</div>
-                            <div class="work-meta-chips">
-                                <span class="meta-chip">Team Lead &amp; Backend</span>
-                                <span class="meta-chip">.NET 9</span>
-                                <span class="meta-chip">Clean Architecture</span>
-                            </div>
+                <!-- Featured Project: SkaEV -->
+                <article class="featured-project-plate">
+                    <div class="featured-photo-frame">
+                        <img src="skaev-preview.jpg"
+                            alt="SkaEV EV Charging Station Operations Command Center UI showing live geospatial station map and battery telemetry"
+                            class="featured-photo-img" loading="lazy">
+                        <div class="photo-caption-strip">
+                            <span>Fig 01. SkaEV Operations Dashboard</span>
+                            <span>.NET 9 · React · SignalR</span>
+                        </div>
+                    </div>
+
+                    <div class="featured-project-info">
+                        <div class="featured-meta-chips">
+                            <span class="project-chip chip-primary">Featured Case Study</span>
+                            <span class="project-chip">Team Lead &amp; Backend</span>
+                            <span class="project-chip chip-warm">.NET 9</span>
                         </div>
 
-                        <div class="work-body">
-                            <div class="work-summary-col">
-                                <h3 class="work-title">EV Charging Station Management System</h3>
-                                <div class="work-subtitle">SkaEV Platform · Web-based Station Operations</div>
-                                <p class="work-description">
-                                    Led a four-person engineering team to design and implement a comprehensive EV
-                                    charging platform. The system handles driver bookings, geolocation-based station
-                                    discovery, dynamic invoicing, and live battery telemetry.
-                                </p>
+                        <h3 class="featured-project-title">EV Charging Station Management System</h3>
+                        <div class="featured-project-subtitle">SkaEV Platform · Web-based Station Operations &amp; Live
+                            Telemetry</div>
 
-                                <div class="work-technical-note">
-                                    <div class="note-label">Architecture &amp; Key Challenges:</div>
-                                    <ul class="note-points">
-                                        <li>Structured backend services following Clean Architecture principles with
-                                            JWT-based role access control and Serilog structured audit logging.</li>
-                                        <li>Integrated <code>NetTopologySuite</code> with SQL Server for geospatial
-                                            radius station search and slot allocation.</li>
-                                        <li>Implemented SignalR WebSockets to broadcast live charging slot availability
-                                            and State-of-Charge (SOC) metrics across concurrent driver sessions.</li>
-                                        <li>Implemented SQL Server Stored Procedures and transactions for reservation
-                                            payments, preventing duplicate booking conflicts.</li>
-                                    </ul>
-                                </div>
+                        <p class="featured-project-desc">
+                            Led a four-person engineering team to design and build an EV charging platform handling driver
+                            reservations, geospatial station discovery, automated invoicing, and live battery telemetry.
+                        </p>
 
-                                <div class="work-stack-line">
-                                    <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">C# · .NET 9 · ASP.NET Core · React · SQL Server · EF Core
-                                        8 · SignalR · NetTopologySuite</span>
-                                </div>
-
-                                <div class="work-links">
-                                    <a href="https://github.com/lqkhanh295/FPTU_FA25_SWP391_G4_SkaEV" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Inspect Source Repository →
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="technical-field-notes">
+                            <div class="notes-label">Architecture &amp; Key Challenges:</div>
+                            <ul class="notes-list">
+                                <li>Structured backend services following Clean Architecture principles with JWT
+                                    role-based access control and Serilog structured logging.</li>
+                                <li>Integrated <code>NetTopologySuite</code> with SQL Server for geospatial radius
+                                    station search and slot allocation.</li>
+                                <li>Implemented SignalR WebSockets broadcasting live charging slot availability and
+                                    State-of-Charge (SOC) metrics across concurrent driver sessions.</li>
+                                <li>Implemented SQL Server Stored Procedures and transactions for reservation payments,
+                                    preventing duplicate booking conflicts.</li>
+                            </ul>
                         </div>
-                    </article>
 
+                        <div class="project-stack-strip">
+                            <span class="stack-label">Stack:</span>
+                            <span>C# · .NET 9 · ASP.NET Core · React · SQL Server · EF Core · SignalR ·
+                                NetTopologySuite</span>
+                        </div>
+
+                        <div class="project-actions-row">
+                            <a href="https://github.com/lqkhanh295/FPTU_FA25_SWP391_G4_SkaEV" target="_blank"
+                                rel="noopener noreferrer" class="text-action-link">
+                                Inspect Source Repository →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Secondary Projects Grid (5 Projects) -->
+                <div class="projects-notebook-grid">
                     <!-- Project 02: OmniStock -->
-                    <article class="work-article">
-                        <div class="work-header">
-                            <div class="work-index">02 / 06</div>
-                            <div class="work-meta-chips">
-                                <span class="meta-chip">Backend Developer</span>
-                                <span class="meta-chip">CQRS Pattern</span>
-                                <span class="meta-chip">PostgreSQL</span>
+                    <article class="notebook-project-card">
+                        <div>
+                            <div class="card-top-marker">
+                                <span class="card-index">02 / 06</span>
+                                <span class="project-chip">Backend Developer</span>
+                            </div>
+
+                            <h3 class="card-project-title">OmniStock — Inventory &amp; Order Management</h3>
+                            <div class="card-project-sub">Decoupled Order Fulfillment &amp; Real-Time Stock Sync</div>
+
+                            <p class="card-project-desc">
+                                Developed a modular backend system handling inventory tracking, multi-warehouse order
+                                workflows, and real-time stock synchronization across client sessions.
+                            </p>
+
+                            <div class="card-tech-points">
+                                Applied CQRS via <code>MediatR</code> pipelines to decouple write commands from read
+                                projections. Maintained strict transactional consistency during order cancellations using
+                                Unit of Work and EF Core transactions.
                             </div>
                         </div>
 
-                        <div class="work-body">
-                            <div class="work-summary-col">
-                                <h3 class="work-title">OmniStock — Inventory &amp; Order Management</h3>
-                                <div class="work-subtitle">Order Fulfillment &amp; Real-time Stock Synchronization</div>
-                                <p class="work-description">
-                                    Developed a modular backend system handling inventory tracking, multi-warehouse
-                                    order workflows, and real-time stock synchronization across client sessions.
-                                </p>
-
-                                <div class="work-technical-note">
-                                    <div class="note-label">Architecture &amp; Key Challenges:</div>
-                                    <ul class="note-points">
-                                        <li>Applied the CQRS pattern via <code>MediatR</code> pipelines to decouple
-                                            business write commands from high-speed query read projections.</li>
-                                        <li>Integrated real-time SignalR hubs to synchronize stock changes instantly
-                                            when warehouse operators process rapid order placements.</li>
-                                        <li>Maintained strict transactional consistency during multi-step order
-                                            cancellations using the Unit of Work pattern combined with EF Core
-                                            transactions and FluentValidation request filters.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="work-stack-line">
-                                    <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">.NET 9 · ASP.NET Core · React · TypeScript · EF Core ·
-                                        PostgreSQL · MediatR · SignalR</span>
-                                </div>
-
-                                <div class="work-links">
-                                    <a href="https://github.com/lqkhanh295/OmniStock" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Inspect Source Repository →
-                                    </a>
-                                </div>
+                        <div>
+                            <div class="card-stack-row">
+                                .NET 9 · ASP.NET Core · React · TypeScript · EF Core · PostgreSQL · MediatR · SignalR
+                            </div>
+                            <div class="card-footer-links">
+                                <a href="https://github.com/lqkhanh295/OmniStock" target="_blank"
+                                    rel="noopener noreferrer" class="text-action-link">
+                                    Source Repository →
+                                </a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 03: DORMI -->
-                    <article class="work-article">
-                        <div class="work-header">
-                            <div class="work-index">03 / 06</div>
-                            <div class="work-meta-chips">
-                                <span class="meta-chip">Full-Stack Developer</span>
-                                <span class="meta-chip">PostGIS Geospatial</span>
-                                <span class="meta-chip">SignalR Real-Time</span>
+                    <article class="notebook-project-card">
+                        <div>
+                            <div class="card-top-marker">
+                                <span class="card-index">03 / 06</span>
+                                <span class="project-chip chip-warm">Full-Stack</span>
+                            </div>
+
+                            <h3 class="card-project-title">DORMI — Smart Rental &amp; Roommate Platform</h3>
+                            <div class="card-project-sub">Geospatial Housing Discovery &amp; 3D Virtual Room Inspection</div>
+
+                            <p class="card-project-desc">
+                                Developed a full-stack platform designed to connect university students and young
+                                professionals with verified rental listings and compatible roommates.
+                            </p>
+
+                            <div class="card-tech-points">
+                                Built ASP.NET Core backend (.NET 9) with Clean Architecture and multi-role RBAC.
+                                Engineered proximity queries with PostgreSQL &amp; PostGIS, alongside an interactive 3D
+                                virtual room viewer using React Three Fiber.
                             </div>
                         </div>
 
-                        <div class="work-body">
-                            <div class="work-summary-col">
-                                <h3 class="work-title">DORMI — Smart Rental &amp; Roommate Platform</h3>
-                                <div class="work-subtitle">Geospatial Housing Discovery, Roommate Matching &amp; Real-Time Tour Scheduling
-                                </div>
-                                <p class="work-description">
-                                    Developed a full-stack platform designed to connect university students and young
-                                    professionals with verified rental listings and compatible roommates.
-                                </p>
-
-                                <div class="work-technical-note">
-                                    <div class="note-label">Architecture &amp; Key Challenges:</div>
-                                    <ul class="note-points">
-                                        <li>Built a robust ASP.NET Core backend (.NET 9) utilizing Clean Architecture
-                                            and multi-role RBAC for Tenants, Landlords, and Platform Admins.</li>
-                                        <li>Engineered geospatial proximity queries with PostgreSQL and PostGIS,
-                                            complemented by a lifestyle compatibility scoring algorithm.</li>
-                                        <li>Integrated ASP.NET Core SignalR hubs for real-time bidirectional
-                                            messaging between tenants and landlords, viewing tour appointment
-                                            scheduling, and live listing moderation events.</li>
-                                        <li>Implemented landlord subscription billing pipelines integrated with VNPay
-                                            Sandbox using HMAC-SHA512 checksum security for VIP listing upgrades.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="work-stack-line">
-                                    <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">.NET 9 / 10 · React · TypeScript · PostgreSQL (PostGIS) ·
-                                        SignalR · Leaflet · VNPay · Cloudinary</span>
-                                </div>
-
-                                <div class="work-links">
-                                    <a href="https://www.dormi.space/" target="_blank" rel="noopener noreferrer"
-                                        class="text-link">
-                                        Visit Live Platform ↗
-                                    </a>
-                                    <a href="https://github.com/lqkhanh295/DORMI" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Inspect Source Repository →
-                                    </a>
-                                </div>
+                        <div>
+                            <div class="card-stack-row">
+                                .NET 9 · React · TypeScript · PostgreSQL (PostGIS) · Three.js (R3F) · SignalR
+                            </div>
+                            <div class="card-footer-links">
+                                <a href="https://www.dormi.space/" target="_blank" rel="noopener noreferrer"
+                                    class="text-action-link">
+                                    Visit Live ↗
+                                </a>
+                                <a href="https://github.com/lqkhanh295/DORMI" target="_blank" rel="noopener noreferrer"
+                                    class="text-action-link">
+                                    Repository →
+                                </a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 04: Daihoi2026-Vote -->
-                    <article class="work-article">
-                        <div class="work-header">
-                            <div class="work-index">04 / 06</div>
-                            <div class="work-meta-chips">
-                                <span class="meta-chip">Full-Stack &amp; Cloud</span>
-                                <span class="meta-chip">React 18</span>
-                                <span class="meta-chip">Cloud Firestore</span>
+                    <article class="notebook-project-card">
+                        <div>
+                            <div class="card-top-marker">
+                                <span class="card-index">04 / 06</span>
+                                <span class="project-chip">Full-Stack &amp; Cloud</span>
+                            </div>
+
+                            <h3 class="card-project-title">Đại Hội 2026 — Real-Time Voting Platform</h3>
+                            <div class="card-project-sub">DH Vote · Whitelisted Polling &amp; Anti-Duplicate Cooldown</div>
+
+                            <p class="card-project-desc">
+                                Developed a real-time voting web application for the annual Cóc Sài Gòn (CSG) General
+                                Assembly &amp; Awards Gala with strict ballot integrity checks.
+                            </p>
+
+                            <div class="card-tech-points">
+                                Implemented Firestore email whitelist authorization and 24-hour voting cooldown
+                                verification via composite queries. Leveraged real-time snapshot streams and Zustand for
+                                live percentage tallying.
                             </div>
                         </div>
 
-                        <div class="work-body">
-                            <div class="work-summary-col">
-                                <h3 class="work-title">Đại Hội 2026 — Real-Time Voting Platform</h3>
-                                <div class="work-subtitle">DH Vote · Whitelisted Polling, Anti-Spam Cooldown &amp; Live
-                                    Tallying</div>
-                                <p class="work-description">
-                                    Developed a real-time voting web application for the annual Cóc Sài Gòn (CSG)
-                                    General Assembly &amp; Awards Gala. The platform empowers verified members to cast
-                                    ballots across multiple award categories with integrity checks and live result
-                                    broadcasting.
-                                </p>
-
-                                <div class="work-technical-note">
-                                    <div class="note-label">Architecture &amp; Key Challenges:</div>
-                                    <ul class="note-points">
-                                        <li>Implemented email whitelist verification in Cloud Firestore, restricting
-                                            voting access exclusively to authorized attendees alongside role-based admin
-                                            controls.</li>
-                                        <li>Implemented a 24-hour voting cooldown rule using Firestore composite queries
-                                            (<code>userId</code>, <code>candidateId</code>, <code>categoryId</code>,
-                                            <code>timestamp</code>) to prevent duplicate votes.</li>
-                                        <li>Leveraged Firestore real-time snapshot listeners and Zustand state
-                                            management for live tallying, candidate percentage visualization, and
-                                            interactive leaderboards.</li>
-                                        <li>Built an administrative dashboard enabling dynamic CRUD operations for
-                                            categories, candidate rosters, custom category color themes, and asset
-                                            uploads via Firebase Storage.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="work-stack-line">
-                                    <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth ·
-                                        Cloud Firestore · Firebase Storage · React Router v6</span>
-                                </div>
-
-                                <div class="work-links">
-                                    <a href="https://vote.cocsaigon.club/" target="_blank" rel="noopener noreferrer"
-                                        class="text-link">
-                                        Visit Live Platform ↗
-                                    </a>
-                                    <a href="https://github.com/lqkhanh295/Daihoi2026-Vote" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Inspect Source Repository →
-                                    </a>
-                                </div>
+                        <div>
+                            <div class="card-stack-row">
+                                React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth · Cloud Firestore
+                            </div>
+                            <div class="card-footer-links">
+                                <a href="https://github.com/lqkhanh295/Daihoi2026-Vote" target="_blank"
+                                    rel="noopener noreferrer" class="text-action-link">
+                                    Source Repository →
+                                </a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 05: Event Department Web -->
-                    <article class="work-article">
-                        <div class="work-header">
-                            <div class="work-index">05 / 06</div>
-                            <div class="work-meta-chips">
-                                <span class="meta-chip">Developer</span>
-                                <span class="meta-chip">Real-time Cloud</span>
-                                <span class="meta-chip">Production</span>
+                    <article class="notebook-project-card">
+                        <div>
+                            <div class="card-top-marker">
+                                <span class="card-index">05 / 06</span>
+                                <span class="project-chip">Developer</span>
+                            </div>
+
+                            <h3 class="card-project-title">Event Operations Platform — Cóc Sài Gòn</h3>
+                            <div class="card-project-sub">Centralized Logistics, Contracts &amp; Budgeting</div>
+
+                            <p class="card-project-desc">
+                                Engineered an end-to-end event operations platform for the Cóc Sài Gòn student
+                                organization, streamlining vendor contracts, team budgeting, and timeline schedules.
+                            </p>
+
+                            <div class="card-tech-points">
+                                Employed Firebase Firestore real-time snapshot listeners for collaborative scheduling
+                                across committees with responsive React component architecture.
                             </div>
                         </div>
 
-                        <div class="work-body">
-                            <div class="work-summary-col">
-                                <h3 class="work-title">Event Operations Platform — Cóc Sài Gòn</h3>
-                                <div class="work-subtitle">Centralized Logistics, Automated Contracts &amp; Vendor
-                                    Management</div>
-                                <p class="work-description">
-                                    Engineered an end-to-end event operations platform for the Cóc Sài Gòn student
-                                    organization, streamlining vendor contracts, team budgeting, and timeline schedules.
-                                </p>
-
-                                <div class="work-technical-note">
-                                    <div class="note-label">Architecture &amp; Key Challenges:</div>
-                                    <ul class="note-points">
-                                        <li>Employed Firebase Firestore real-time snapshot listeners for collaborative
-                                            event scheduling across multiple sub-committees.</li>
-                                        <li>Constructed clean component architecture with React, Material-UI, and Ant
-                                            Design for responsive coordination dashboards.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="work-stack-line">
-                                    <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">React · Firebase Firestore · Material-UI · Ant Design ·
-                                        Vercel</span>
-                                </div>
-
-                                <div class="work-links">
-                                    <a href="https://event-department-web.vercel.app/" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Visit Live Platform ↗
-                                    </a>
-                                    <span class="link-separator">·</span>
-                                    <a href="https://github.com/lqkhanh295/EventDepartmentWeb" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Repository →
-                                    </a>
-                                </div>
+                        <div>
+                            <div class="card-stack-row">
+                                React · Firebase Firestore · Material-UI · Ant Design · Vercel
+                            </div>
+                            <div class="card-footer-links">
+                                <a href="https://event-department-web.vercel.app/" target="_blank"
+                                    rel="noopener noreferrer" class="text-action-link">
+                                    Visit Live ↗
+                                </a>
+                                <a href="https://github.com/lqkhanh295/EventDepartmentWeb" target="_blank"
+                                    rel="noopener noreferrer" class="text-action-link">
+                                    Repository →
+                                </a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 06: FlappyBird Game Engine -->
-                    <article class="work-article">
-                        <div class="work-header">
-                            <div class="work-index">06 / 06</div>
-                            <div class="work-meta-chips">
-                                <span class="meta-chip">Desktop Engineering</span>
-                                <span class="meta-chip">C# .NET 9</span>
-                                <span class="meta-chip">WPF</span>
+                    <article class="notebook-project-card">
+                        <div>
+                            <div class="card-top-marker">
+                                <span class="card-index">06 / 06</span>
+                                <span class="project-chip">Desktop Engineering</span>
+                            </div>
+
+                            <h3 class="card-project-title">Desktop Game Engine — FlappyBird</h3>
+                            <div class="card-project-sub">Layered Desktop Architecture &amp; Custom 60 FPS Game Loop</div>
+
+                            <p class="card-project-desc">
+                                Desktop arcade recreation built natively with WPF on .NET 9, emphasizing clean
+                                architectural separation between presentation canvas, game loop mechanics, and
+                                persistence.
+                            </p>
+
+                            <div class="card-tech-points">
+                                Decoupled three-tier architecture separating the XAML UI Canvas, Tick-based Game Physics
+                                service, and High-score Repository with deterministic collision detection.
                             </div>
                         </div>
 
-                        <div class="work-body">
-                            <div class="work-summary-col">
-                                <h3 class="work-title">Desktop Game Engine — FlappyBird</h3>
-                                <div class="work-subtitle">Layered Desktop Architecture &amp; Custom 60 FPS Game Loop
-                                </div>
-                                <p class="work-description">
-                                    Desktop arcade recreation built natively with WPF on .NET 9, emphasizing clean
-                                    architectural separation between presentation canvas, game loop mechanics, and
-                                    persistence.
-                                </p>
-
-                                <div class="work-technical-note">
-                                    <div class="note-label">Architecture &amp; Key Challenges:</div>
-                                    <ul class="note-points">
-                                        <li>Decoupled three-tier architecture separating the XAML UI Canvas, Tick-based
-                                            Game Physics service, and High-score Repository.</li>
-                                        <li>Implemented deterministic collision detection, gravity physics, skin
-                                            selection, and audio triggers without third-party frameworks.</li>
-                                    </ul>
-                                </div>
-
-                                <div class="work-stack-line">
-                                    <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">C# · .NET 9 · WPF · XAML · Custom Tick Physics</span>
-                                </div>
-
-                                <div class="work-links">
-                                    <a href="https://github.com/lqkhanh295/Flappy-Bird-Game" target="_blank"
-                                        rel="noopener noreferrer" class="text-link">
-                                        Inspect Source Repository →
-                                    </a>
-                                </div>
+                        <div>
+                            <div class="card-stack-row">
+                                C# · .NET 9 · WPF · XAML · Custom Tick Physics
+                            </div>
+                            <div class="card-footer-links">
+                                <a href="https://github.com/lqkhanh295/Flappy-Bird-Game" target="_blank"
+                                    rel="noopener noreferrer" class="text-action-link">
+                                    Source Repository →
+                                </a>
                             </div>
                         </div>
                     </article>
                 </div>
-
-                <div class="more-works-note">
-                    <p>
-                        Additional repositories, open-source explorations, and utilities can be found in my public
-                        notebook on <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer"
-                            class="text-link">GitHub (@lqkhanh295)</a>.
-                    </p>
-                </div>
             </div>
         </section>
 
-        <!-- Section 02: About & Philosophy ("How I Think") -->
-        <section class="section about-section" id="about">
+        <!-- ==========================================================================
+             SCENE 03: THE PATH THROUGH THE GARDEN (EXPERIENCE & EDUCATION)
+             Restrained editorial timeline with thin, organic ink lines.
+             ========================================================================== -->
+        <section class="scene-section scene-chronicle" id="chronicle">
             <div class="container">
-                <div class="section-intro">
-                    <span class="section-kicker">Entry 03 · Engineering Philosophy</span>
-                    <h2 class="section-heading">How I Think &amp; Build</h2>
-                    <p class="section-subtext">
-                        A perspective shaped by testing enterprise applications in QA, writing disciplined database
-                        queries, and respecting clear layer boundaries.
-                    </p>
-                </div>
-
-                <div class="process-flow">
-                    <!-- Step 1 -->
-                    <div class="process-node">
-                        <div class="node-sequence">01</div>
-                        <div class="node-content">
-                            <h3 class="node-title">Observe &amp; Deconstruct</h3>
-                            <p class="node-text">
-                                Before writing a single line of backend logic, I spend time understanding the actual
-                                business domain, edge conditions, and data lifecycles. Requirements are never just
-                                endpoints; they are contracts between people, systems, and time.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="process-node">
-                        <div class="node-sequence">02</div>
-                        <div class="node-content">
-                            <h3 class="node-title">Structure with Clean Boundaries</h3>
-                            <p class="node-text">
-                                I favor Clean Architecture principles because they keep business logic organized and
-                                decoupled from database drivers or external libraries. This makes code easier to test,
-                                refactor, and maintain.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="process-node">
-                        <div class="node-sequence">03</div>
-                        <div class="node-content">
-                            <h3 class="node-title">Respect Data Consistency &amp; Edge Cases</h3>
-                            <p class="node-text">
-                                Real systems encounter unexpected inputs, simultaneous writes, and failed transactions.
-                                I rely on proper database transactions, input validation, and state handling to ensure
-                                business data stays consistent and dependable.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="process-node">
-                        <div class="node-sequence">04</div>
-                        <div class="node-content">
-                            <h3 class="node-title">Verify from the Outside In</h3>
-                            <p class="node-text">
-                                My internship as a Software Tester at FPT Software taught me that green unit tests can
-                                still harbor unexpected edge-case defects and payload mismatches. I verify by inspecting
-                                direct database states with T-SQL, testing edge cases with Postman, and thinking like a
-                                skeptical user.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Background Note -->
-                <div class="narrative-journal-card">
-                    <div class="journal-card-header">
-                        <span class="card-tag">Personal Dossier</span>
-                        <span class="card-date">Ho Chi Minh City, Vietnam</span>
-                    </div>
-                    <div class="journal-card-body">
-                        <p>
-                            I grew up fascinated by how things work under the hood. In software, that translated to a
-                            deep fondness for the backend—the invisible machinery of API routing, data queries, and
-                            reliable transactions that makes user experiences feel seamless.
-                        </p>
-                        <p>
-                            Outside of coding, I study software architecture patterns, explore spatial indexing and real-time distributed patterns, and learn Japanese (currently basic proficiency). I value clear communication,
-                            quiet focus, and teams that take pride in craft.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 03: Skills / Repertoire -->
-        <section class="section skills-section" id="skills">
-            <div class="container">
-                <div class="section-intro">
-                    <span class="section-kicker">Entry 04 · Technical Field Guide</span>
-                    <h2 class="section-heading">Technical Repertoire</h2>
-                    <p class="section-subtext">
-                        A practical skillset built through university projects and internship experience, centered on
-                        .NET, relational databases, clean coding principles, and web standards.
-                    </p>
-                </div>
-
-                <div class="repertoire-grid">
-                    <!-- Group 1: Backend -->
-                    <div class="repertoire-card">
-                        <div class="repertoire-header">
-                            <span class="repertoire-domain">Primary Focus</span>
-                            <h3 class="repertoire-title">Backend Development (.NET)</h3>
-                        </div>
-                        <div class="repertoire-items">
-                            <span class="rep-item">C# (.NET 8 / 9)</span>
-                            <span class="rep-item">ASP.NET Core Web API</span>
-                            <span class="rep-item">Entity Framework Core</span>
-                            <span class="rep-item">RESTful API Design</span>
-                            <span class="rep-item">SignalR (Real-time WebSockets)</span>
-                            <span class="rep-item">Dependency Injection</span>
-                            <span class="rep-item">Repository &amp; Unit of Work</span>
-                            <span class="rep-item">FluentValidation</span>
-                            <span class="rep-item">Serilog (Logging)</span>
-                            <span class="rep-item">JWT Authentication</span>
-                        </div>
-                        <p class="repertoire-note">
-                            Applied in university capstone and personal projects with clear layered structure,
-                            async/await pipelines, and secure authentication.
-                        </p>
-                    </div>
-
-                    <!-- Group 2: Databases -->
-                    <div class="repertoire-card">
-                        <div class="repertoire-header">
-                            <span class="repertoire-domain">Data &amp; Persistence</span>
-                            <h3 class="repertoire-title">Databases &amp; ORM</h3>
-                        </div>
-                        <div class="repertoire-items">
-                            <span class="rep-item">SQL Server (T-SQL)</span>
-                            <span class="rep-item">PostgreSQL</span>
-                            <span class="rep-item">Relational Schema Design</span>
-                            <span class="rep-item">Stored Procedures &amp; Transactions</span>
-                            <span class="rep-item">Basic Query Optimization</span>
-                            <span class="rep-item">PostGIS &amp; NetTopologySuite</span>
-                            <span class="rep-item">Firebase Firestore</span>
-                        </div>
-                        <p class="repertoire-note">
-                            Experience designing normalized relational tables, writing multi-table joins, managing ACID
-                            transactions, and spatial radius queries.
-                        </p>
-                    </div>
-
-                    <!-- Group 3: Architecture -->
-                    <div class="repertoire-card">
-                        <div class="repertoire-header">
-                            <span class="repertoire-domain">Methodology</span>
-                            <h3 class="repertoire-title">Software Design &amp; Principles</h3>
-                        </div>
-                        <div class="repertoire-items">
-                            <span class="rep-item">Clean Architecture (Layered)</span>
-                            <span class="rep-item">SOLID Principles</span>
-                            <span class="rep-item">OOP Fundamentals</span>
-                            <span class="rep-item">CQRS Pattern (MediatR basics)</span>
-                            <span class="rep-item">Common Design Patterns</span>
-                            <span class="rep-item">API Error &amp; Exception Handling</span>
-                        </div>
-                        <p class="repertoire-note">
-                            Emphasis on writing maintainable, readable code by separating domain logic from external
-                            libraries, database drivers, and UI layers.
-                        </p>
-                    </div>
-
-                    <!-- Group 4: Frontend & Web UI -->
-                    <div class="repertoire-card">
-                        <div class="repertoire-header">
-                            <span class="repertoire-domain">User Interface</span>
-                            <h3 class="repertoire-title">Frontend &amp; Web UI</h3>
-                        </div>
-                        <div class="repertoire-items">
-                            <span class="rep-item">React.js</span>
-                            <span class="rep-item">TypeScript / JavaScript</span>
-                            <span class="rep-item">HTML5 &amp; CSS3</span>
-                            <span class="rep-item">Tailwind CSS</span>
-                            <span class="rep-item">Zustand (State Management)</span>
-                            <span class="rep-item">Leaflet Maps (GIS Integration)</span>
-                        </div>
-                        <p class="repertoire-note">
-                            Capable of building responsive, accessible web interfaces, consuming RESTful APIs, and integrating interactive geospatial maps and state stores.
-                        </p>
-                    </div>
-
-                    <!-- Group 5: Tools & QA -->
-                    <div class="repertoire-card">
-                        <div class="repertoire-header">
-                            <span class="repertoire-domain">Verification &amp; Delivery</span>
-                            <h3 class="repertoire-title">Tools, Testing &amp; Workflow</h3>
-                        </div>
-                        <div class="repertoire-items">
-                            <span class="rep-item">Git &amp; GitHub</span>
-                            <span class="rep-item">Postman &amp; Swagger</span>
-                            <span class="rep-item">xUnit (Unit Testing)</span>
-                            <span class="rep-item">Azure DevOps (Task Tracking)</span>
-                            <span class="rep-item">Docker (Fundamentals)</span>
-                            <span class="rep-item">Agile / Scrum Sprints</span>
-                        </div>
-                        <p class="repertoire-note">
-                            Practical experience from software QA internship: verifying API payloads, writing clear bug
-                            reports, and collaborating across sprint ceremonies.
-                        </p>
-                    </div>
-
-                    <!-- Group 6: Languages -->
-                    <div class="repertoire-card">
-                        <div class="repertoire-header">
-                            <span class="repertoire-domain">Communication</span>
-                            <h3 class="repertoire-title">Spoken Languages</h3>
-                        </div>
-                        <div class="repertoire-items">
-                            <span class="rep-item">Vietnamese (Native)</span>
-                            <span class="rep-item">English (Professional Working)</span>
-                            <span class="rep-item">Japanese (Basic / Elementary)</span>
-                        </div>
-                        <p class="repertoire-note">
-                            Comfortable reading technical documentation, writing clear commit/PR messages, and
-                            collaborating in professional environments.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 04: Chronicle / Journey -->
-        <section class="section chronicle-section" id="chronicle">
-            <div class="container">
-                <div class="section-intro">
-                    <span class="section-kicker">Entry 05 · Chronicle</span>
-                    <h2 class="section-heading">Experience &amp; Milestones</h2>
-                    <p class="section-subtext">
+                <div class="scene-intro-block centered">
+                    <span class="scene-chapter-tag">Scene 03 · The Chronicle</span>
+                    <h2 class="scene-title">Experience &amp; Education</h2>
+                    <p class="scene-subtitle">
                         A sequential record of academic study and enterprise quality assurance experience.
                     </p>
                 </div>
 
-                <div class="chronicle-journal">
-                    <!-- Milestone 1 -->
-                    <div class="chronicle-entry">
-                        <div class="chronicle-time">
-                            <span class="chronicle-year">2026</span>
-                            <span class="chronicle-span">Jan – May</span>
-                        </div>
-                        <div class="chronicle-details">
-                            <div class="chronicle-role">Software Tester Intern</div>
-                            <div class="chronicle-org">FPT Software · Ho Chi Minh City, Vietnam</div>
-                            <p class="chronicle-description">
+                <div class="garden-path-timeline">
+                    <!-- Milestone 1: FPT Software QA Internship -->
+                    <div class="timeline-milestone">
+                        <div class="milestone-stepper" aria-hidden="true"></div>
+                        <div class="milestone-content-card">
+                            <span class="milestone-time-badge">2026 · Jan – May</span>
+                            <h3 class="milestone-role">Software Tester Intern</h3>
+                            <div class="milestone-org">FPT Software · Ho Chi Minh City, Vietnam</div>
+                            <p class="milestone-summary">
                                 Embedded within an Agile/Scrum team delivering enterprise web applications. Responsible
                                 for functional, edge-case, and regression validation across complex user workflows.
                             </p>
-                            <ul class="chronicle-subpoints">
+                            <ul class="milestone-subpoints">
                                 <li>Executed direct T-SQL queries to inspect underlying database state, ensuring
                                     business transactions matched API response payloads.</li>
                                 <li>Logged, prioritized, and tracked technical defects via Azure DevOps, collaborating
@@ -700,20 +428,18 @@
                         </div>
                     </div>
 
-                    <!-- Milestone 2 -->
-                    <div class="chronicle-entry">
-                        <div class="chronicle-time">
-                            <span class="chronicle-year">2023 — 2027</span>
-                            <span class="chronicle-span">Expected June 2027</span>
-                        </div>
-                        <div class="chronicle-details">
-                            <div class="chronicle-role">Bachelor of Software Engineering</div>
-                            <div class="chronicle-org">FPT University · Ho Chi Minh City, Vietnam</div>
-                            <p class="chronicle-description">
+                    <!-- Milestone 2: FPT University -->
+                    <div class="timeline-milestone">
+                        <div class="milestone-stepper" aria-hidden="true"></div>
+                        <div class="milestone-content-card">
+                            <span class="milestone-time-badge">2023 — 2027 · Expected June 2027</span>
+                            <h3 class="milestone-role">Bachelor of Software Engineering</h3>
+                            <div class="milestone-org">FPT University · Ho Chi Minh City, Vietnam</div>
+                            <p class="milestone-summary">
                                 Formal computer science and software engineering curriculum with an emphasis on building
-                                production-grade software systems.
+                                robust software systems.
                             </p>
-                            <ul class="chronicle-subpoints">
+                            <ul class="milestone-subpoints">
                                 <li>Key Coursework: Software Architecture &amp; Design, Database Management Systems,
                                     Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Web
                                     Development.</li>
@@ -725,122 +451,347 @@
             </div>
         </section>
 
-        <!-- Section 05: Letter / Contact -->
-        <section class="section letter-section" id="letter">
+        <!-- ==========================================================================
+             SCENE 04: THE WORKBENCH (TECHNICAL REPERTOIRE)
+             Arranged like instruments on a craftsman's wooden bench.
+             ========================================================================== -->
+        <section class="scene-section scene-workbench" id="skills">
             <div class="container">
-                <div class="section-intro">
-                    <span class="section-kicker">Entry 06 · Correspondence</span>
-                    <h2 class="section-heading">An Invitation to Connect</h2>
-                    <p class="section-subtext">
-                        I am currently seeking a <strong>.NET / Backend Developer Intern</strong> position. Whether you
-                        have an open role, an engineering problem, or simply want to talk architecture—my desk is always
-                        open.
+                <div class="scene-intro-block centered">
+                    <span class="scene-chapter-tag">Scene 04 · The Workbench</span>
+                    <h2 class="scene-title">Technical Repertoire</h2>
+                    <p class="scene-subtitle">
+                        A practical skillset built through university projects and internship experience, centered on
+                        .NET, relational databases, clean coding principles, and web standards.
                     </p>
                 </div>
 
-                <div class="letter-card">
-                    <div class="letter-top-meta">
-                        <span class="meta-label">To: Engineering Leads &amp; Collaborators</span>
-                        <span class="meta-label">From: Lê Quốc Khánh</span>
+                <div class="workbench-grid">
+                    <!-- Group 1: Backend -->
+                    <div class="workbench-tool-tray">
+                        <div>
+                            <span class="tray-domain-kicker">Primary Focus</span>
+                            <h3 class="tray-domain-title">Backend Development (.NET)</h3>
+                            <div class="tray-tools-cluster">
+                                <span class="tool-tag">C# (.NET 8 / 9)</span>
+                                <span class="tool-tag">ASP.NET Core Web API</span>
+                                <span class="tool-tag">Entity Framework Core</span>
+                                <span class="tool-tag">RESTful API Design</span>
+                                <span class="tool-tag">SignalR (WebSockets)</span>
+                                <span class="tool-tag">Dependency Injection</span>
+                                <span class="tool-tag">Repository &amp; Unit of Work</span>
+                                <span class="tool-tag">FluentValidation</span>
+                                <span class="tool-tag">Serilog (Logging)</span>
+                                <span class="tool-tag">JWT Authentication</span>
+                            </div>
+                        </div>
+                        <p class="tray-practical-note">
+                            Applied in university capstone and personal projects with clear layered structure, async/await
+                            pipelines, and secure authentication.
+                        </p>
                     </div>
 
-                    <div class="letter-body-content">
-                        <p>
-                            Thank you for taking the time to read through my journal. If your team is building
-                            dependable backend services, developing modern web applications, or looking for a motivated
-                            intern eager to learn and contribute, I would welcome the opportunity to connect.
+                    <!-- Group 2: Databases -->
+                    <div class="workbench-tool-tray">
+                        <div>
+                            <span class="tray-domain-kicker">Data &amp; Persistence</span>
+                            <h3 class="tray-domain-title">Databases &amp; ORM</h3>
+                            <div class="tray-tools-cluster">
+                                <span class="tool-tag">SQL Server (T-SQL)</span>
+                                <span class="tool-tag">PostgreSQL</span>
+                                <span class="tool-tag">Relational Schema Design</span>
+                                <span class="tool-tag">Stored Procedures &amp; Transactions</span>
+                                <span class="tool-tag">Basic Query Optimization</span>
+                                <span class="tool-tag">PostGIS &amp; NetTopologySuite</span>
+                                <span class="tool-tag">Firebase Firestore</span>
+                            </div>
+                        </div>
+                        <p class="tray-practical-note">
+                            Experience designing normalized relational tables, writing multi-table joins, managing ACID
+                            transactions, and spatial radius queries.
                         </p>
+                    </div>
 
-                        <div class="contact-channels">
-                            <div class="channel-row">
-                                <span class="channel-title">Email:</span>
-                                <a href="mailto:lqkhanh292005@gmail.com"
-                                    class="channel-value">lqkhanh292005@gmail.com</a>
+                    <!-- Group 3: Architecture -->
+                    <div class="workbench-tool-tray">
+                        <div>
+                            <span class="tray-domain-kicker">Methodology</span>
+                            <h3 class="tray-domain-title">Software Design &amp; Principles</h3>
+                            <div class="tray-tools-cluster">
+                                <span class="tool-tag">Clean Architecture (Layered)</span>
+                                <span class="tool-tag">SOLID Principles</span>
+                                <span class="tool-tag">OOP Fundamentals</span>
+                                <span class="tool-tag">CQRS Pattern (MediatR basics)</span>
+                                <span class="tool-tag">Common Design Patterns</span>
+                                <span class="tool-tag">API Error &amp; Exception Handling</span>
                             </div>
+                        </div>
+                        <p class="tray-practical-note">
+                            Emphasis on writing maintainable, readable code by separating domain logic from external
+                            libraries, database drivers, and UI layers.
+                        </p>
+                    </div>
 
-                            <div class="channel-row">
-                                <span class="channel-title">Phone / Zalo:</span>
-                                <a href="https://zalo.me/0911887141" target="_blank" rel="noopener noreferrer"
-                                    class="channel-value">0911 887 141</a>
+                    <!-- Group 4: Frontend -->
+                    <div class="workbench-tool-tray">
+                        <div>
+                            <span class="tray-domain-kicker">User Interface</span>
+                            <h3 class="tray-domain-title">Frontend &amp; Web UI</h3>
+                            <div class="tray-tools-cluster">
+                                <span class="tool-tag">React.js</span>
+                                <span class="tool-tag">TypeScript / JavaScript</span>
+                                <span class="tool-tag">HTML5 &amp; CSS3</span>
+                                <span class="tool-tag">Tailwind CSS</span>
+                                <span class="tool-tag">Zustand (State Management)</span>
+                                <span class="tool-tag">Three.js / R3F (Basic 3D)</span>
                             </div>
+                        </div>
+                        <p class="tray-practical-note">
+                            Capable of building responsive web interfaces, consuming RESTful APIs, and integrating
+                            interactive UI components including basic 3D room viewers.
+                        </p>
+                    </div>
 
-                            <div class="channel-row">
-                                <span class="channel-title">LinkedIn:</span>
-                                <a href="https://www.linkedin.com/in/lqkhanh295" target="_blank"
-                                    rel="noopener noreferrer" class="channel-value">linkedin.com/in/lqkhanh295</a>
+                    <!-- Group 5: Tools & QA -->
+                    <div class="workbench-tool-tray">
+                        <div>
+                            <span class="tray-domain-kicker">Verification &amp; Delivery</span>
+                            <h3 class="tray-domain-title">Tools, Testing &amp; Workflow</h3>
+                            <div class="tray-tools-cluster">
+                                <span class="tool-tag">Git &amp; GitHub</span>
+                                <span class="tool-tag">Postman &amp; Swagger</span>
+                                <span class="tool-tag">xUnit (Unit Testing)</span>
+                                <span class="tool-tag">Azure DevOps (Task Tracking)</span>
+                                <span class="tool-tag">Docker (Fundamentals)</span>
+                                <span class="tool-tag">Agile / Scrum Sprints</span>
                             </div>
+                        </div>
+                        <p class="tray-practical-note">
+                            Practical experience from software QA internship: verifying API payloads, writing clear bug
+                            reports, and collaborating across sprint ceremonies.
+                        </p>
+                    </div>
 
-                            <div class="channel-row">
-                                <span class="channel-title">GitHub:</span>
-                                <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer"
-                                    class="channel-value">github.com/lqkhanh295</a>
+                    <!-- Group 6: Languages -->
+                    <div class="workbench-tool-tray">
+                        <div>
+                            <span class="tray-domain-kicker">Communication</span>
+                            <h3 class="tray-domain-title">Spoken Languages</h3>
+                            <div class="tray-tools-cluster">
+                                <span class="tool-tag">Vietnamese (Native)</span>
+                                <span class="tool-tag">English (Professional Working)</span>
+                                <span class="tool-tag">Japanese (Basic / Elementary)</span>
                             </div>
+                        </div>
+                        <p class="tray-practical-note">
+                            Comfortable reading technical documentation, writing clear commit/PR messages, and
+                            collaborating in professional environments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                            <div class="channel-row">
-                                <span class="channel-title">Location:</span>
-                                <span class="channel-value">Ho Chi Minh City, Vietnam (UTC+07:00)</span>
+        <!-- ==========================================================================
+             SCENE 05: THE PERSONAL JOURNAL (ABOUT & PHILOSOPHY)
+             Curiosity, problem-solving, and understanding how systems work under the hood.
+             ========================================================================== -->
+        <section class="scene-section scene-journal" id="about">
+            <div class="container">
+                <div class="scene-intro-block">
+                    <span class="scene-chapter-tag">Scene 05 · The Journal</span>
+                    <h2 class="scene-title">How I Think &amp; Build</h2>
+                    <p class="scene-subtitle">
+                        A perspective shaped by testing enterprise applications in QA, writing disciplined database
+                        queries, and respecting clear layer boundaries.
+                    </p>
+                </div>
+
+                <div class="journal-layout-grid">
+                    <!-- Left: 4 Thought Principles -->
+                    <div class="principles-stack">
+                        <div class="principle-entry">
+                            <span class="principle-num">01</span>
+                            <div>
+                                <h3 class="principle-title">Observe &amp; Deconstruct</h3>
+                                <p class="principle-text">
+                                    Before writing a single line of backend logic, I spend time understanding the actual
+                                    business domain, edge conditions, and data lifecycles. Requirements are never just
+                                    endpoints; they are contracts between people, systems, and time.
+                                </p>
                             </div>
                         </div>
 
-                        <!-- Stationery Contact Form -->
-                        <form class="stationery-form" id="contactForm">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="nameInput" class="form-label">Your Name</label>
-                                    <input type="text" id="nameInput" name="name" required class="paper-input"
-                                        placeholder="e.g. Anh Nguyễn / Tech Lead">
-                                </div>
-                                <div class="form-group">
-                                    <label for="emailInput" class="form-label">Your Email</label>
-                                    <input type="email" id="emailInput" name="email" required class="paper-input"
-                                        placeholder="e.g. recruiter@company.com">
-                                </div>
+                        <div class="principle-entry">
+                            <span class="principle-num">02</span>
+                            <div>
+                                <h3 class="principle-title">Structure with Clean Boundaries</h3>
+                                <p class="principle-text">
+                                    I favor Clean Architecture principles because they keep business logic organized and
+                                    decoupled from database drivers or external libraries. This makes code easier to test,
+                                    refactor, and maintain.
+                                </p>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="messageInput" class="form-label">Message / Note</label>
-                                <textarea id="messageInput" name="message" rows="4" required class="paper-input"
-                                    placeholder="Write a brief note or share role details..."></textarea>
+                        <div class="principle-entry">
+                            <span class="principle-num">03</span>
+                            <div>
+                                <h3 class="principle-title">Respect Data Consistency &amp; Edge Cases</h3>
+                                <p class="principle-text">
+                                    Real systems encounter unexpected inputs, simultaneous writes, and failed transactions.
+                                    I rely on proper database transactions, input validation, and state handling to ensure
+                                    business data stays consistent and dependable.
+                                </p>
                             </div>
+                        </div>
 
-                            <div class="form-footer">
-                                <button type="submit" class="action-btn action-primary" id="sendBtn">Send Note Directly
-                                    →</button>
-                                <span class="form-status" id="formStatus"></span>
+                        <div class="principle-entry">
+                            <span class="principle-num">04</span>
+                            <div>
+                                <h3 class="principle-title">Verify from the Outside In</h3>
+                                <p class="principle-text">
+                                    My internship as a Software Tester at FPT Software taught me that green unit tests can
+                                    still harbor unexpected edge-case defects and payload mismatches. I verify by inspecting
+                                    direct database states with T-SQL, testing edge cases with Postman, and thinking like a skeptical user.
+                                </p>
                             </div>
-                        </form>
+                        </div>
                     </div>
+
+                    <!-- Right: Personal Dossier & Portrait -->
+                    <div class="personal-dossier-card">
+                        <div class="portrait-photo-matte">
+                            <img src="avatar-profile.jpg" alt="Lê Quốc Khánh — Software Engineer"
+                                class="portrait-actual-img" loading="lazy">
+                            <span class="dossier-caption">Lê Quốc Khánh · Ho Chi Minh City, 2026</span>
+                        </div>
+
+                        <div class="dossier-body-text">
+                            <p>
+                                I grew up fascinated by how things work under the hood. In software, that translated to a
+                                deep fondness for the backend—the invisible machinery of API routing, data queries, and
+                                reliable transactions that makes user experiences feel seamless.
+                            </p>
+                            <p>
+                                Outside of coding, I study software architecture patterns, tinker with 3D web rendering in
+                                Three.js, and learn Japanese (currently basic proficiency). I value clear communication,
+                                quiet focus, and teams that take pride in craft.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SCENE 06: THE EVENING WINDOW (CONTACT & CORRESPONDENCE)
+             A warm late afternoon / dusk countryside atmosphere closing the experience.
+             ========================================================================== -->
+        <section class="scene-section scene-evening-window" id="contact">
+            <div class="container">
+                <!-- Evening Scenic Banner (Anime Artwork) -->
+                <div class="evening-scenic-banner">
+                    <img src="contact-anime-dusk.jpg"
+                        alt="Hand-painted Japanese anime countryside desk at dusk twilight, lit by a warm glowing desk lamp"
+                        class="evening-bg-img" loading="lazy">
+                    <div class="evening-banner-scrim">
+                        <div class="evening-banner-content">
+                            <div class="evening-tag">Scene 06 · The Evening Window</div>
+                            <h2 class="evening-heading">An Invitation to Connect</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Correspondence Card & Form -->
+                <div class="correspondence-card">
+                    <div>
+                        <p class="stationery-note-intro">
+                            Thank you for taking the time to read through my journal. If your team is building dependable
+                            backend services, developing modern web applications, or looking for a motivated intern eager to
+                            learn and contribute, I would welcome the opportunity to connect.
+                        </p>
+
+                        <div class="contact-channels-list">
+                            <div class="channel-item">
+                                <span class="channel-label">Email:</span>
+                                <a href="mailto:lqkhanh292005@gmail.com"
+                                    class="channel-link">lqkhanh292005@gmail.com</a>
+                            </div>
+                            <div class="channel-item">
+                                <span class="channel-label">Phone/Zalo:</span>
+                                <a href="https://zalo.me/0911887141" target="_blank" rel="noopener noreferrer"
+                                    class="channel-link">0911 887 141</a>
+                            </div>
+                            <div class="channel-item">
+                                <span class="channel-label">LinkedIn:</span>
+                                <a href="https://www.linkedin.com/in/lqkhanh295" target="_blank"
+                                    rel="noopener noreferrer" class="channel-link">linkedin.com/in/lqkhanh295</a>
+                            </div>
+                            <div class="channel-item">
+                                <span class="channel-label">GitHub:</span>
+                                <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer"
+                                    class="channel-link">github.com/lqkhanh295</a>
+                            </div>
+                            <div class="channel-item">
+                                <span class="channel-label">Location:</span>
+                                <span>Ho Chi Minh City, Vietnam (UTC+07:00)</span>
+                            </div>
+                        </div>
+
+                        <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="btn-anime-primary">
+                            Download Resume (PDF) ↓
+                        </a>
+                    </div>
+
+                    <!-- Stationery Form -->
+                    <form class="stationery-form" id="contactForm">
+                        <div class="form-row-duo">
+                            <div class="form-field-group">
+                                <label for="nameInput" class="form-label">Your Name</label>
+                                <input type="text" id="nameInput" name="name" required class="paper-input"
+                                    placeholder="e.g. Anh Nguyễn / Tech Lead">
+                            </div>
+                            <div class="form-field-group">
+                                <label for="emailInput" class="form-label">Your Email</label>
+                                <input type="email" id="emailInput" name="email" required class="paper-input"
+                                    placeholder="e.g. recruiter@company.com">
+                            </div>
+                        </div>
+
+                        <div class="form-field-group">
+                            <label for="messageInput" class="form-label">Message / Note</label>
+                            <textarea id="messageInput" name="message" rows="4" required class="paper-input"
+                                placeholder="Write a brief note or share role details..."></textarea>
+                        </div>
+
+                        <div class="form-submit-row">
+                            <button type="submit" class="btn-anime-primary" id="sendBtn">
+                                Send Note Directly →
+                            </button>
+                            <span class="form-status-msg" id="formStatus"></span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Editorial Footer -->
-    <footer class="journal-footer">
-        <div class="container footer-container">
-            <div class="footer-left">
-                <div class="footer-brand">Lê Quốc Khánh</div>
-                <p class="footer-caption">
-                    Designed as a quiet, illustrated developer journal. Written with clean HTML, CSS, and respect for
-                    typography.
-                </p>
-            </div>
-
-            <div class="footer-links">
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">Lê Quốc Khánh</div>
+            <div>&copy; 2026 Lê Quốc Khánh · Illustrated Developer Journal &amp; Countryside Workspace</div>
+            <div class="footer-nav">
                 <a href="#hero">Back to Top ↑</a>
-                <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf">Download Resume (PDF)</a>
+                <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf">Resume</a>
                 <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://www.linkedin.com/in/lqkhanh295" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
         </div>
-        <div class="footer-bottom-line">
-            <div class="container">
-                <p>&copy; 2026 Lê Quốc Khánh. All thoughts, projects, and code maintained with care.</p>
-            </div>
-        </div>
     </footer>
 
-    <!-- Clean Script Logic -->
+    <!-- Interactive Script -->
     <script src="script.js"></script>
 </body>
 
