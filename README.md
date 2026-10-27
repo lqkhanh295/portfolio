@@ -17,11 +17,11 @@ An illustrated developer journal and personal portfolio designed with an **edito
 
 ## 🛠️ Technical Repertoire
 
-- **Backend**: C# (Modern 10–13), .NET 8 / 9 / 10, ASP.NET Core, Entity Framework Core, SignalR WebSockets, RESTful APIs, MediatR (CQRS), Unit of Work, Serilog, FluentValidation.
-- **Databases & Spatial**: SQL Server (T-SQL, Stored Procedures, Indexing), PostgreSQL, PostGIS (Geospatial via NetTopologySuite), Firebase Firestore.
-- **Architecture**: Clean Architecture, SOLID Principles, CQRS, Concurrency & Race Condition Control.
-- **Frontend & 3D**: React 18 / 19, TypeScript, Three.js (React Three Fiber), Tailwind CSS, Zustand.
-- **DevOps & QA**: Azure DevOps, Git & GitHub, xUnit, Postman, Swagger / OpenAPI, Agile / Scrum.
+- **Backend**: C# (.NET 8 / 9), ASP.NET Core Web API, Entity Framework Core, SignalR (WebSockets), RESTful APIs, Dependency Injection, Repository & Unit of Work, FluentValidation, Serilog.
+- **Databases & ORM**: SQL Server (T-SQL, Stored Procedures, Transactions), PostgreSQL, PostGIS & NetTopologySuite (Geospatial), Firebase Firestore.
+- **Software Design**: Clean Architecture (Layered), SOLID Principles, OOP Fundamentals, CQRS (MediatR basics), Common Design Patterns.
+- **Frontend & UI**: React.js, TypeScript / JavaScript, HTML5 & CSS3, Tailwind CSS, Zustand, Three.js / R3F (Basic 3D).
+- **Tools, Testing & QA**: Git & GitHub, Postman, Swagger / OpenAPI, xUnit (Unit Testing), Azure DevOps (Defect & Task Tracking), Docker (Fundamentals), Agile / Scrum.
 
 ---
 
@@ -30,20 +30,24 @@ An illustrated developer journal and personal portfolio designed with an **edito
 1. **EV Charging Station Management System (SkaEV)**
    - *Role*: Team Lead & Backend Developer (4-person team)
    - *Stack*: C# · .NET 9 · ASP.NET Core · React · SQL Server · SignalR · NetTopologySuite · Serilog
-   - *Focus*: Clean Architecture, geospatial station search, real-time battery SOC WebSocket telemetry, race-condition-free Stored Procedures.
-2. **OmniStock — Enterprise ERP System**
+   - *Focus*: Clean Architecture, geospatial station search, real-time battery SOC WebSocket telemetry, transactional Stored Procedures preventing duplicate bookings.
+2. **OmniStock — Inventory & Order Management System**
    - *Role*: Backend Developer
    - *Stack*: .NET 9 · ASP.NET Core · React · TypeScript · EF Core · PostgreSQL · MediatR · SignalR
-   - *Focus*: CQRS pattern via MediatR, real-time inventory synchronization, transactional Unit of Work order cancellation pipelines.
+   - *Focus*: CQRS pattern via MediatR, real-time inventory synchronization, transactional Unit of Work order cancellation workflows.
 3. **DORMI — Smart Rental & Roommate Matching Platform**
    - *Role*: Full-Stack Developer
-   - *Stack*: .NET 10 · React 19 · TypeScript · PostgreSQL (PostGIS) · Three.js (R3F) · SignalR · Cloudinary
+   - *Stack*: .NET 9 · React · TypeScript · PostgreSQL (PostGIS) · Three.js (R3F) · SignalR · Cloudinary
    - *Focus*: PostGIS geospatial queries, lifestyle compatibility scoring, interactive 3D virtual room inspection viewer.
-4. **Event Operations Platform — Cóc Sài Gòn**
+4. **Đại Hội 2026 — Real-Time Awards Voting Platform (DH Vote)**
+   - *Role*: Full-Stack & Cloud Developer
+   - *Stack*: React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth · Cloud Firestore · Firebase Storage
+   - *Focus*: Whitelisted email authentication, atomic 24-hour vote cooldown protocol, Firestore composite query indexing, real-time ballot tallying.
+5. **Event Operations Platform — Cóc Sài Gòn**
    - *Role*: Developer
    - *Stack*: React · Firebase Firestore · Ant Design · Material-UI · Vercel
    - *Focus*: Live Firestore document synchronization for vendor management, budget approvals, and automated contracts.
-5. **Desktop Game Engine — FlappyBird**
+6. **Desktop Game Engine — FlappyBird**
    - *Role*: Desktop Developer
    - *Stack*: C# · .NET 9 · WPF · XAML
    - *Focus*: Decoupled 3-tier desktop architecture, custom 60 FPS physics tick loop, collision detection, and high-score serialization.
