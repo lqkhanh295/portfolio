@@ -42,7 +42,7 @@ An illustrated developer journal and personal portfolio designed with an **edito
 4. **Đại Hội 2026 — Real-Time Awards Voting Platform (DH Vote)**
    - *Role*: Full-Stack & Cloud Developer
    - *Stack*: React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth · Cloud Firestore · Firebase Storage
-   - *Focus*: Whitelisted email authentication, atomic 24-hour vote cooldown protocol, Firestore composite query indexing, real-time ballot tallying.
+   - *Focus*: Whitelisted email authentication, 24-hour vote cooldown verification, Firestore composite query indexing, real-time ballot tallying.
 5. **Event Operations Platform — Cóc Sài Gòn**
    - *Role*: Developer
    - *Stack*: React · Firebase Firestore · Ant Design · Material-UI · Vercel
