@@ -5,534 +5,1254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Le Quoc Khanh - Junior Software Engineer specializing in C# .NET Core, Java, ReactJS, and SQL Server">
-    <meta name="keywords" content="Le Quoc Khanh, Software Engineer, Developer, ReactJS, C#, Java, .NET">
+        content="Le Quoc Khanh (Lê Quốc Khánh) - .NET Backend Developer & Software Engineer. Clean Architecture, Real-Time Systems, SignalR, ASP.NET Core, React.">
+    <meta name="keywords"
+        content="Le Quoc Khanh, Lê Quốc Khánh, .NET Backend Developer, ASP.NET Core, C#, Clean Architecture, SignalR, SQL Server, PostgreSQL, React, Anime Portfolio">
     <meta name="author" content="Le Quoc Khanh">
-    <title>Le Quoc Khanh | Junior Software Engineer</title>
+    <title>Lê Quốc Khánh // .NET Backend Architect [レ・クォック・カイン]</title>
+
+    <!-- Google Fonts: Retro Anime & Cyberpunk Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Noto+Sans+JP:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Devicons CDN for Tech Arsenal -->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <!-- Cursor glow effect -->
-    <!-- Cursor glow effect removed for Organic design -->
+<body class="anime-theme crt-mode">
+    <!-- CRT Scanline & Phosphor Overlay (Can be toggled in header) -->
+    <div id="crt-overlay" class="crt-overlay" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">LQK<span class="accent">.</span></a>
-            <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <!-- Retro Anime Canvas: Sakura Blossoms & Synthwave Cyber Dust -->
+    <canvas id="anime-canvas" class="anime-canvas" aria-hidden="true"></canvas>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-greeting">
-                    <span class="greeting-line"></span>
-                    <span class="greeting-text">Hello, I'm</span>
-                </div>
-                <h1 class="hero-name">
-                    Le Quoc <span class="name-highlight">Khanh</span>
-                </h1>
-                <h2 class="hero-title">Junior Software Engineer</h2>
-                <p class="hero-tagline">
-                    Crafting digital solutions with passion and precision.
-                    <br>
-                    <span class="tagline-accent">Turning ideas into elegant code.</span>
-                </p>
-                <div class="hero-cta">
-                    <a href="Lê Quốc Khánh.pdf" download class="btn btn-primary">
-                        <span>Download CV</span>
-                        <span class="btn-arrow">↓</span>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">6+</span>
-                        <span class="stat-label">Technologies</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">2027</span>
-                        <span class="stat-label">Graduate</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-wrapper">
-                    <div class="image-glow"></div>
-                    <div class="image-border"></div>
-                    <img src="Lê Quốc Khánh (2) (1).jpg" alt="Le Quoc Khanh" class="profile-img">
-                </div>
-                <div class="floating-badge badge-1">
-                    <span class="badge-dot"></span>
-                    <span>Available for hire</span>
-                </div>
+    <!-- Navigation Header -->
+    <header class="cyber-header" id="header">
+        <div class="header-container">
+            <!-- Brand / Call-sign -->
+            <a href="#hero" class="cyber-logo" aria-label="Home">
+                <span class="logo-symbol">⚡</span>
+                <span class="logo-text">LQK<span class="logo-jp">.SYS</span></span>
+                <span class="status-pill"><span class="pulse-dot"></span>READY</span>
+            </a>
+
+            <!-- Primary Navigation Links -->
+            <nav class="cyber-nav" id="cyberNav">
+                <ul class="nav-list">
+                    <li><a href="#about" class="nav-item"><span class="nav-num">01</span><span class="nav-label">DOSSIER</span><span class="nav-kanji">経歴</span></a></li>
+                    <li><a href="#skills" class="nav-item"><span class="nav-num">02</span><span class="nav-label">ARSENAL</span><span class="nav-kanji">スキル</span></a></li>
+                    <li><a href="#projects" class="nav-item"><span class="nav-num">03</span><span class="nav-label">MISSIONS</span><span class="nav-kanji">実績</span></a></li>
+                    <li><a href="#experience" class="nav-item"><span class="nav-num">04</span><span class="nav-label">LOGS</span><span class="nav-kanji">履歴</span></a></li>
+                    <li><a href="#stats" class="nav-item"><span class="nav-num">05</span><span class="nav-label">RADAR</span><span class="nav-kanji">統計</span></a></li>
+                    <li><a href="#contact" class="nav-item"><span class="nav-num">06</span><span class="nav-label">TRANSMIT</span><span class="nav-kanji">交信</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Retro Anime Control Deck -->
+            <div class="control-deck">
+                <!-- CRT Scanline Toggle -->
+                <button type="button" class="deck-btn" id="crtToggle" title="Toggle Retro CRT Scanlines" aria-label="Toggle CRT">
+                    <span class="btn-icon">📺</span>
+                    <span class="btn-txt">CRT</span>
+                </button>
+
+                <!-- Sakura / Cyber Particle Toggle -->
+                <button type="button" class="deck-btn active" id="sakuraToggle" title="Toggle Anime Sakura Petals" aria-label="Toggle Sakura">
+                    <span class="btn-icon">🌸</span>
+                    <span class="btn-txt">SAKURA</span>
+                </button>
+
+                <!-- Retro SFX Toggle -->
+                <button type="button" class="deck-btn active" id="sfxToggle" title="Toggle 8-bit Sound FX" aria-label="Toggle Sound Effects">
+                    <span class="btn-icon" id="sfxIcon">🔊</span>
+                    <span class="btn-txt">SFX</span>
+                </button>
+
+                <!-- Cyber Terminal Launcher -->
+                <button type="button" class="deck-btn terminal-trigger" id="termTrigger" title="Launch Cyber Terminal (or press >)" aria-label="Open Terminal">
+                    <span class="btn-icon">&gt;_</span>
+                    <span class="btn-txt">CLI</span>
+                </button>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">01</span>
-                <h2 class="section-title">About Me</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-intro">
-                        I'm a <span class="highlight">passionate software engineer</span> currently pursuing my degree
-                        at
-                        <span class="highlight">FPT University</span>. With a strong foundation in both frontend and
-                        backend
-                        technologies, I love building applications that make a difference.
+    <main>
+        <!-- Hero Section: Anime Mech Pilot / Operative Station -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-layout">
+                <!-- Left: Cyber Bio & Title -->
+                <div class="hero-info">
+                    <!-- HUD Top Meta -->
+                    <div class="hud-top-meta">
+                        <span class="meta-tag">SYS.LOC // HO CHI MINH CITY (VN)</span>
+                        <span class="meta-divider">|</span>
+                        <span class="meta-tag">SPEC // .NET BACKEND ARCHITECT</span>
+                        <span class="meta-divider">|</span>
+                        <span class="meta-tag live-badge"><span class="live-blink"></span>OPEN FOR HIRE</span>
+                    </div>
+
+                    <!-- Japanese Subtitle & Operative Callout -->
+                    <div class="hero-kanji-sub">
+                        <span class="kanji-badge">新世代開発者</span>
+                        <span class="romaji-text">NEO-TOKYO CLASS // 2027 GRADUATE</span>
+                    </div>
+
+                    <!-- Main Name Headline -->
+                    <h1 class="hero-name">
+                        <span class="name-first">LÊ QUỐC</span>
+                        <span class="name-last glitch-text" data-text="KHÁNH">KHÁNH</span>
+                        <span class="name-kanji-watermark" aria-hidden="true">レ・クォック・カイン</span>
+                    </h1>
+
+                    <!-- Dynamic Role & Typewriter -->
+                    <div class="typewriter-box">
+                        <span class="term-prefix">&gt; ROLE:</span>
+                        <span class="typewriter-text" id="typewriterText">ASP.NET Core | Clean Architecture | SignalR ⚡</span>
+                        <span class="typewriter-cursor">_</span>
+                    </div>
+
+                    <!-- Mission Philosophy -->
+                    <p class="hero-summary">
+                        Software Engineering student at <strong>FPT University</strong> & former QA Intern at <strong>FPT Software</strong>.
+                        Obsessed with architecting bulletproof backend systems, real-time WebSockets, concurrency handling, and enterprise clean architectures.
+                        <br>
+                        <span class="quote-accent">"First, make it work. Then, make it right. Then, make it fast."</span>
                     </p>
-                    <p>
-                        My journey in software development started with curiosity and has evolved into a deep commitment
-                        to crafting clean, efficient, and user-friendly solutions. I believe in continuous learning and
-                        staying updated with the latest technologies.
-                    </p>
-                    <p>
-                        Currently, I'm expanding my expertise through an <span class="highlight">internship at FPT
-                            Software</span>
-                        as a Tester, where I'm gaining valuable insights into software quality assurance and the
-                        full development lifecycle.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <span class="highlight-icon">◆</span>
-                            <span>Full-stack Development</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">◆</span>
-                            <span>Problem Solving</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">◆</span>
-                            <span>Team Collaboration</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">◆</span>
-                            <span>Agile Methodology</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-card fade-in-section">
-                    <div class="card-header">
-                        <span class="card-icon">{ }</span>
-                        <span class="card-title">Quick Facts</span>
-                    </div>
-                    <div class="card-content">
-                        <div class="fact">
-                            <span class="fact-label">Name</span>
-                            <span class="fact-value">Le Quoc Khanh</span>
-                        </div>
-                        <div class="fact">
-                            <span class="fact-label">Education</span>
-                            <span class="fact-value">FPT University</span>
-                        </div>
-                        <div class="fact">
-                            <span class="fact-label">Role</span>
-                            <span class="fact-value">Junior Software Engineer</span>
-                        </div>
-                        <div class="fact">
-                            <span class="fact-label">Focus</span>
-                            <span class="fact-value">Full-stack Development</span>
-                        </div>
-                        <div class="fact">
-                            <span class="fact-label">Email</span>
-                            <span class="fact-value">lqkhanh292005@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">02</span>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="skills-container">
-                <div class="skill-group fade-in-section">
-                    <h3 class="group-title">Languages</h3>
-                    <div class="skill-logos">
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-                                alt="C#">
-                            <span>C#</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-                                alt="Java">
-                            <span>Java</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                                alt="JavaScript">
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                                alt="C++">
-                            <span>C/C++</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-group fade-in-section">
-                    <h3 class="group-title">Frontend</h3>
-                    <div class="skill-logos">
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                                alt="React">
-                            <span>React</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                                alt="HTML5">
-                            <span>HTML5</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                                alt="CSS3">
-                            <span>CSS3</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-group fade-in-section">
-                    <h3 class="group-title">Backend & Framework</h3>
-                    <div class="skill-logos">
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
-                                alt=".NET Core">
-                            <span>.NET Core</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                                alt="Node.js">
-                            <span>Node.js</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-group fade-in-section">
-                    <h3 class="group-title">Database</h3>
-                    <div class="skill-logos">
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
-                                alt="SQL Server">
-                            <span>SQL Server</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                                alt="Firebase">
-                            <span>Firebase</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-group fade-in-section">
-                    <h3 class="group-title">Tools</h3>
-                    <div class="skill-logos">
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                                alt="Git">
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                                alt="GitHub">
-                            <span>GitHub</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
-                                alt="Postman">
-                            <span>Postman</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg"
-                                alt="Visual Studio">
-                            <span>VS</span>
-                        </div>
-                        <div class="skill-logo-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                                alt="VS Code">
-                            <span>VS Code</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- Tactical Action Buttons -->
+                    <div class="hero-actions">
+                        <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="cyber-btn cyber-btn-primary" id="downloadCvBtn">
+                            <span class="btn-glare"></span>
+                            <span class="btn-icon">💾</span>
+                            <span class="btn-label">DOWNLOAD CV.PDF</span>
+                            <span class="btn-sub">履歴書</span>
+                        </a>
 
+                        <a href="#projects" class="cyber-btn cyber-btn-secondary">
+                            <span class="btn-icon">🎮</span>
+                            <span class="btn-label">VIEW MISSIONS</span>
+                            <span class="btn-sub">プロジェクト</span>
+                        </a>
 
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">03</span>
-                <h2 class="section-title">Experience & Education</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <span class="timeline-date">Jan 2026 - Present</span>
-                            <span class="timeline-badge">Current</span>
-                        </div>
-                        <h3 class="timeline-title">Intern Tester</h3>
-                        <h4 class="timeline-company">FPT Software</h4>
-                        <p class="timeline-description">
-                            Contributing to software quality assurance processes, performing testing activities,
-                            and collaborating with development teams to ensure high-quality software delivery.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Testing</span>
-                            <span class="tag">QA</span>
-                            <span class="tag">Agile</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <span class="timeline-date">2022 - 2026</span>
-                            <span class="timeline-badge education">Education</span>
-                        </div>
-                        <h3 class="timeline-title">Software Engineering</h3>
-                        <h4 class="timeline-company">FPT University</h4>
-                        <p class="timeline-description">
-                            Pursuing a Bachelor's degree in Software Engineering with focus on full-stack development,
-                            database management, and software design principles.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Software Engineering</span>
-                            <span class="tag">Computer Science</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">04</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="projects-list">
-                <article class="project-row fade-in-section">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <span class="project-number">01</span>
-                            <span class="project-role">Backend Developer, Team Leader</span>
-                        </div>
-                        <h3 class="project-title">EV Charging System (SkaEV)</h3>
-                        <p class="project-description">
-                            Engineered the backend for a comprehensive EV charging platform. Delivered core modules
-                            for bookings, real-time SOC tracking, QR workflows, and dynamic invoicing. Implemented
-                            secure JWT/BCrypt authentication and ensured high availability using SignalR for real-time
-                            updates and Stored Procedures for complex transaction handling.
-                        </p>
-                        <div class="project-tech">
-                            <span>ASP.NET Core 8</span>
-                            <span>Entity Framework</span>
-                            <span>SQL Server</span>
-                            <span>SignalR</span>
-                            <span>JWT</span>
-                        </div>
-                    </div>
-                    <div class="project-action">
-                        <a href="https://github.com/lqkhanh295/FPTU_FA25_SWP391_G4_SkaEV" target="_blank"
-                            class="btn btn-outline">
-                            View GitHub
+                        <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline">
+                            <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                            <span class="btn-label">GITHUB</span>
+                            <span class="btn-sub">コード</span>
                         </a>
                     </div>
-                </article>
 
-                <article class="project-row fade-in-section">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <span class="project-number">02</span>
-                            <span class="project-role">Developer</span>
+                    <!-- Retro RPG HUD Stats -->
+                    <div class="rpg-stats-grid">
+                        <div class="rpg-stat-cell">
+                            <span class="stat-glyph">★</span>
+                            <div class="stat-details">
+                                <span class="stat-val">LVL 21</span>
+                                <span class="stat-name">CLASS OF 2027</span>
+                            </div>
                         </div>
-                        <h3 class="project-title">Event Department Web</h3>
-                        <p class="project-description">
-                            Engineered a comprehensive event operations platform for Coc Sai Gon,
-                            integrating modules for vendor management, automated contracts, and AI tools.
-                            Built on Firebase Firestore for real-time capabilities.
-                        </p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Firebase</span>
-                            <span>Material-UI</span>
-                            <span>Ant Design</span>
+                        <div class="rpg-stat-cell">
+                            <span class="stat-glyph">⚡</span>
+                            <div class="stat-details">
+                                <span class="stat-val">4+ CORE</span>
+                                <span class="stat-name">ENTERPRISE SYSTEMS</span>
+                            </div>
+                        </div>
+                        <div class="rpg-stat-cell">
+                            <span class="stat-glyph">🚀</span>
+                            <div class="stat-details">
+                                <span class="stat-val">200+ CONCURRENT</span>
+                                <span class="stat-name">WEBSOCKET TESTED</span>
+                            </div>
+                        </div>
+                        <div class="rpg-stat-cell">
+                            <span class="stat-glyph">🛡️</span>
+                            <div class="stat-details">
+                                <span class="stat-val">100%</span>
+                                <span class="stat-name">CLEAN ARCHITECTURE</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-action">
-                        <a href="https://event-department-web.vercel.app/" target="_blank" class="btn btn-outline">
-                            View Website
-                        </a>
-                    </div>
-                </article>
+                </div>
 
-                <article class="project-row fade-in-section">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <span class="project-number">03</span>
-                            <span class="project-role">Developer</span>
+                <!-- Right: Cyber Anime Avatar Frame -->
+                <div class="hero-visual">
+                    <div class="cyber-card-frame">
+                        <!-- Hologram Header -->
+                        <div class="frame-header">
+                            <span class="frame-dot red"></span>
+                            <span class="frame-dot yellow"></span>
+                            <span class="frame-dot green"></span>
+                            <span class="frame-title">OPERATIVE_ID // LQK-2005.SYS</span>
+                            <span class="frame-badge">ONLINE</span>
                         </div>
-                        <h3 class="project-title">FlappyBird Game</h3>
-                        <p class="project-description">
-                            Desktop Flappy Bird built with WPF on .NET 9, organized in layers (UI, business services,
-                            data repository). Implements game loop, canvas rendering, animation, skins, audio,
-                            settings and high-score persistence.
-                        </p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>.NET 9</span>
-                            <span>WPF</span>
-                            <span>XAML</span>
+
+                        <!-- Image Container with Retro Anime HUD Borders -->
+                        <div class="avatar-wrapper">
+                            <!-- Reticle & Brackets -->
+                            <div class="hud-bracket top-left"></div>
+                            <div class="hud-bracket top-right"></div>
+                            <div class="hud-bracket bottom-left"></div>
+                            <div class="hud-bracket bottom-right"></div>
+
+                            <!-- Target Crosshair -->
+                            <div class="target-crosshair"></div>
+
+                            <!-- User Portrait Image -->
+                            <img src="avatar-profile.jpg" alt="Lê Quốc Khánh - .NET Backend Developer" class="avatar-photo" loading="eager">
+
+                            <!-- Scanline Sweep Effect -->
+                            <div class="avatar-scanner"></div>
+
+                            <!-- Floating Badges -->
+                            <div class="floating-sticker sticker-level">
+                                <span class="sticker-ico">⚡</span>
+                                <div class="sticker-text">
+                                    <strong>BACKEND SPEC</strong>
+                                    <small>.NET 8/9/10 · SignalR</small>
+                                </div>
+                            </div>
+
+                            <div class="floating-sticker sticker-fpt">
+                                <span class="sticker-ico">🎓</span>
+                                <div class="sticker-text">
+                                    <strong>FPT UNIVERSITY</strong>
+                                    <small>Software Engineering</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer HUD -->
+                        <div class="frame-footer">
+                            <div class="hud-signal">
+                                <span class="signal-bar b1"></span>
+                                <span class="signal-bar b2"></span>
+                                <span class="signal-bar b3"></span>
+                                <span class="signal-bar b4"></span>
+                                <span class="signal-text">SYNC: 99.8%</span>
+                            </div>
+                            <span class="frame-code">SEC.LVL: ALPHA</span>
                         </div>
                     </div>
-                    <div class="project-action">
-                        <a href="https://github.com/lqkhanh295/Flappy-Bird-Game" target="_blank"
-                            class="btn btn-outline">
-                            View GitHub
-                        </a>
-                    </div>
-                </article>
+                </div>
             </div>
-            <div class="projects-cta">
-                <p>Want to see more of my work?</p>
-                <a href="https://github.com/lqkhanh295" target="_blank" class="btn btn-outline">
-                    View All Projects
+
+            <!-- Scroll Down Indicator -->
+            <div class="scroll-cue">
+                <a href="#about" class="cue-link">
+                    <span class="cue-txt">SCROLL TO INITIALIZE</span>
+                    <div class="cue-arrow">
+                        <span></span>
+                        <span></span>
+                    </div>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">05</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="contact-content">
-                <div class="contact-text">
-                    <h3 class="contact-heading">Let's Work Together</h3>
-                    <p class="contact-description">
-                        I'm currently looking for new opportunities and would love to hear from you.
-                        Whether you have a project in mind, a question, or just want to say hi,
-                        feel free to reach out!
-                    </p>
-                    <div class="contact-info">
-                        <a href="mailto:lqkhanh292005@gmail.com" class="contact-item">
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">lqkhanh292005@gmail.com</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/khanh-le-87a017286/" target="_blank" class="contact-item">
-                            <span class="contact-label">LinkedIn</span>
-                            <span class="contact-value">linkedin.com/in/khanh-le</span>
-                        </a>
-                        <a href="https://github.com/lqkhanh295" target="_blank" class="contact-item">
-                            <span class="contact-label">GitHub</span>
-                            <span class="contact-value">github.com/lqkhanh295</span>
-                        </a>
-                        <a href="https://zalo.me/0911887141" target="_blank" class="contact-item">
-                            <span class="contact-label">Zalo</span>
-                            <span class="contact-value">0911887141</span>
-                        </a>
+        <!-- Section 01: About / Dossier -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="retro-section-header">
+                    <div class="header-prefix">
+                        <span class="prefix-tag">[ 01 // DOSSIER ]</span>
+                        <span class="prefix-kanji">自己紹介</span>
+                    </div>
+                    <h2 class="section-title">OPERATIVE DOSSIER</h2>
+                    <p class="section-lead">Profile, engineering background, and mission objectives.</p>
+                </div>
+
+                <div class="dossier-grid">
+                    <!-- Left: Detailed Narrative -->
+                    <div class="dossier-narrative retro-window">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">📄</i> biography_lqk.md</span>
+                            <span class="win-controls">_ □ ×</span>
+                        </div>
+                        <div class="window-body">
+                            <div class="code-line"><span class="line-no">01</span><span class="code-comment">// Software Engineering Student &amp; Backend Engineer</span></div>
+                            <div class="code-line"><span class="line-no">02</span><span class="code-kw">const</span> <span class="code-var">operative</span> = {</div>
+                            <div class="code-line"><span class="line-no">03</span>    name: <span class="code-str">"Lê Quốc Khánh"</span>,</div>
+                            <div class="code-line"><span class="line-no">04</span>    university: <span class="code-str">"FPT University"</span>,</div>
+                            <div class="code-line"><span class="line-no">05</span>    expectedGraduation: <span class="code-num">2027</span>,</div>
+                            <div class="code-line"><span class="line-no">06</span>    focus: [<span class="code-str">"C#"</span>, <span class="code-str">".NET Core"</span>, <span class="code-str">"Clean Architecture"</span>, <span class="code-str">"SignalR"</span>, <span class="code-str">"SQL"</span>]</div>
+                            <div class="code-line"><span class="line-no">07</span>};</div>
+                            
+                            <div class="narrative-prose">
+                                <p>
+                                    I am a Software Engineering student at <strong>FPT University</strong> with hands-on experience building mission-critical backend services using <strong>C#, .NET 8/9/10, ASP.NET Core, EF Core, and SQL</strong>.
+                                </p>
+                                <p>
+                                    Previously interned at <strong>FPT Software</strong> (Jan 2026 – May 2026), working with enterprise web applications, deep API validation, T-SQL database verification, defect root-cause analysis, and Azure DevOps within Agile/Scrum sprints.
+                                </p>
+                                <p>
+                                    My architectural philosophy revolves around <strong>Clean Architecture</strong>, <strong>CQRS (MediatR)</strong>, and high-concurrency real-time communication via <strong>SignalR WebSockets</strong>. I solve race conditions, optimize complex SQL transactions, and engineer high-performance systems with precision.
+                                </p>
+                            </div>
+
+                            <!-- Highlights Checkpoints -->
+                            <div class="dossier-checkpoints">
+                                <div class="checkpoint-item">
+                                    <span class="cp-icon">⚡</span>
+                                    <div class="cp-text">
+                                        <strong>Clean Architecture &amp; CQRS</strong>
+                                        <p>Strict isolation of domain logic, MediatR command/query dispatch, and Unit of Work patterns.</p>
+                                    </div>
+                                </div>
+                                <div class="checkpoint-item">
+                                    <span class="cp-icon">🔄</span>
+                                    <div class="cp-text">
+                                        <strong>Real-Time Synchronization</strong>
+                                        <p>SignalR WebSockets for live station slot updates, instant ERP inventory adjustments, and chat.</p>
+                                    </div>
+                                </div>
+                                <div class="checkpoint-item">
+                                    <span class="cp-icon">🗄️</span>
+                                    <div class="cp-text">
+                                        <strong>Database &amp; Spatial Mastery</strong>
+                                        <p>SQL Server Stored Procedures, transactions, indexing, and PostgreSQL PostGIS geospatial queries.</p>
+                                    </div>
+                                </div>
+                                <div class="checkpoint-item">
+                                    <span class="cp-icon">🌐</span>
+                                    <div class="cp-text">
+                                        <strong>Full-Stack &amp; 3D Capabilities</strong>
+                                        <p>Modern frontend with React 18/19, TypeScript, Tailwind CSS, and interactive 3D Web using Three.js (R3F).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Operative Character Sheet / Quick Specs -->
+                    <div class="dossier-specsheet retro-window">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">⚙️</i> character_sheet.dat</span>
+                            <span class="win-controls">_ □ ×</span>
+                        </div>
+                        <div class="window-body">
+                            <div class="spec-avatar-mini">
+                                <div class="mini-avatar-frame">
+                                    <img src="avatar-profile.jpg" alt="Lê Quốc Khánh">
+                                </div>
+                                <div class="mini-avatar-meta">
+                                    <span class="meta-name">LÊ QUỐC KHÁNH</span>
+                                    <span class="meta-callsign">ALIAS: lqkhanh295</span>
+                                    <span class="meta-role-tag">.NET BACKEND SPEC</span>
+                                </div>
+                            </div>
+
+                            <!-- Spec List -->
+                            <ul class="spec-list">
+                                <li class="spec-row">
+                                    <span class="spec-label">AFFILIATION</span>
+                                    <span class="spec-value highlight">FPT University (SE)</span>
+                                </li>
+                                <li class="spec-row">
+                                    <span class="spec-label">EXPERIENCE</span>
+                                    <span class="spec-value">FPT Software (Tester Intern)</span>
+                                </li>
+                                <li class="spec-row">
+                                    <span class="spec-label">LOCATION</span>
+                                    <span class="spec-value">Ho Chi Minh City, VN (GMT+7)</span>
+                                </li>
+                                <li class="spec-row">
+                                    <span class="spec-label">STATUS</span>
+                                    <span class="spec-value green">Full-time eligible alongside study</span>
+                                </li>
+                                <li class="spec-row">
+                                    <span class="spec-label">LANGUAGES</span>
+                                    <span class="spec-value">Vietnamese (Native) · English (Working) · Japanese (Basic)</span>
+                                </li>
+                                <li class="spec-row">
+                                    <span class="spec-label">GITHUB REPOS</span>
+                                    <span class="spec-value">30+ Repositories (<a href="https://github.com/lqkhanh295" target="_blank" rel="noopener">@lqkhanh295</a>)</span>
+                                </li>
+                                <li class="spec-row">
+                                    <span class="spec-label">CONTACT EMAIL</span>
+                                    <span class="spec-value link"><a href="mailto:lqkhanh292005@gmail.com">lqkhanh292005@gmail.com</a></span>
+                                </li>
+                            </ul>
+
+                            <!-- Quick Action Bar -->
+                            <div class="spec-actions">
+                                <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="cyber-btn cyber-btn-primary btn-block">
+                                    <span>💾 DOWNLOAD FULL CV</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required placeholder=" ">
-                            <label for="name">Your Name</label>
+            </div>
+        </section>
+
+        <!-- Section 02: Tech Arsenal / Skills -->
+        <section class="section skills-section" id="skills">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="retro-section-header">
+                    <div class="header-prefix">
+                        <span class="prefix-tag">[ 02 // TECH ARSENAL ]</span>
+                        <span class="prefix-kanji">能力値</span>
+                    </div>
+                    <h2 class="section-title">COMBAT TECH ARSENAL</h2>
+                    <p class="section-lead">Technologies, frameworks, databases, and architectural weapons in my repository.</p>
+                </div>
+
+                <!-- Skill Filter Tabs -->
+                <div class="arsenal-filters" id="skillFilters">
+                    <button type="button" class="filter-chip active" data-filter="all">ALL WEAPONS</button>
+                    <button type="button" class="filter-chip" data-filter="backend">BACKEND &amp; .NET</button>
+                    <button type="button" class="filter-chip" data-filter="database">DATABASES &amp; SPATIAL</button>
+                    <button type="button" class="filter-chip" data-filter="frontend">FRONTEND &amp; 3D</button>
+                    <button type="button" class="filter-chip" data-filter="devops">ARCHITECTURE &amp; TOOLS</button>
+                </div>
+
+                <!-- Arsenal Grid of Modules -->
+                <div class="arsenal-grid" id="arsenalGrid">
+                    <!-- Backend: C# -->
+                    <div class="arsenal-card" data-category="backend">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-csharp-plain colored"></i>
+                            <span class="card-type">CORE LANGUAGE</span>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required placeholder=" ">
-                            <label for="email">Your Email</label>
+                        <h3 class="card-name">C#</h3>
+                        <p class="card-desc">Modern C# (10/11/12/13), LINQ, Async/Await patterns, Generics, Pattern Matching, High-performance data pipelines.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 92%;"></span>
                         </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                            <label for="message">Your Message</label>
+                        <span class="card-badge">PROFICIENT</span>
+                    </div>
+
+                    <!-- Backend: .NET & ASP.NET Core -->
+                    <div class="arsenal-card" data-category="backend">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-dotnetcore-plain colored"></i>
+                            <span class="card-type">FRAMEWORK</span>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span>Send Message</span>
-                            <span class="btn-arrow">→</span>
-                        </button>
-                    </form>
+                        <h3 class="card-name">.NET 8 / 9 / 10 &amp; ASP.NET Core</h3>
+                        <p class="card-desc">RESTful Web APIs, Middleware pipelines, Dependency Injection, JWT RBAC security, Serilog logging.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 90%;"></span>
+                        </div>
+                        <span class="card-badge">SPECIALTY</span>
+                    </div>
+
+                    <!-- Backend: Entity Framework Core -->
+                    <div class="arsenal-card" data-category="backend">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <span class="custom-icon">⚡</span>
+                            <span class="card-type">ORM &amp; DATA</span>
+                        </div>
+                        <h3 class="card-name">Entity Framework Core</h3>
+                        <p class="card-desc">Code-first &amp; Database-first migrations, complex relationships, query performance, Unit of Work integration.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 88%;"></span>
+                        </div>
+                        <span class="card-badge">ADVANCED</span>
+                    </div>
+
+                    <!-- Backend: SignalR -->
+                    <div class="arsenal-card" data-category="backend">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <span class="custom-icon">🔁</span>
+                            <span class="card-type">REAL-TIME ENGINE</span>
+                        </div>
+                        <h3 class="card-name">SignalR WebSockets</h3>
+                        <p class="card-desc">Real-time bi-directional messaging, live EV station slot telemetry, real-time ERP inventory synchronization.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 86%;"></span>
+                        </div>
+                        <span class="card-badge">PRODUCTION</span>
+                    </div>
+
+                    <!-- Architecture: Clean Architecture & CQRS -->
+                    <div class="arsenal-card" data-category="devops">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <span class="custom-icon">🏛️</span>
+                            <span class="card-type">ARCHITECTURE</span>
+                        </div>
+                        <h3 class="card-name">Clean Architecture &amp; CQRS</h3>
+                        <p class="card-desc">MediatR dispatching, strict Domain/Application/Infrastructure isolation, SOLID design, FluentValidation pipelines.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 88%;"></span>
+                        </div>
+                        <span class="card-badge">ARCHITECT</span>
+                    </div>
+
+                    <!-- Database: SQL Server -->
+                    <div class="arsenal-card" data-category="database">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-microsoftsqlserver-plain colored"></i>
+                            <span class="card-type">RDBMS</span>
+                        </div>
+                        <h3 class="card-name">SQL Server (T-SQL)</h3>
+                        <p class="card-desc">Stored Procedures, multi-table transactions, execution plans, indexing optimization, data integrity checks.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 88%;"></span>
+                        </div>
+                        <span class="card-badge">TESTED</span>
+                    </div>
+
+                    <!-- Database: PostgreSQL & PostGIS -->
+                    <div class="arsenal-card" data-category="database">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-postgresql-plain colored"></i>
+                            <span class="card-type">GEOSPATIAL &amp; RDBMS</span>
+                        </div>
+                        <h3 class="card-name">PostgreSQL &amp; PostGIS</h3>
+                        <p class="card-desc">Geospatial queries with NetTopologySuite, property radius searching, spatial indexing, high-concurrency storage.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 84%;"></span>
+                        </div>
+                        <span class="card-badge">GEOSPATIAL</span>
+                    </div>
+
+                    <!-- Database: Firebase Firestore -->
+                    <div class="arsenal-card" data-category="database">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-firebase-plain colored"></i>
+                            <span class="card-type">NOSQL &amp; REALTIME</span>
+                        </div>
+                        <h3 class="card-name">Firebase Firestore</h3>
+                        <p class="card-desc">Document-based real-time collections, security rules, snapshot listeners, serverless web backend operations.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 85%;"></span>
+                        </div>
+                        <span class="card-badge">CLOUD</span>
+                    </div>
+
+                    <!-- Frontend: React & TypeScript -->
+                    <div class="arsenal-card" data-category="frontend">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-react-original colored"></i>
+                            <span class="card-type">UI FRAMEWORK</span>
+                        </div>
+                        <h3 class="card-name">React (18/19) &amp; TypeScript</h3>
+                        <p class="card-desc">Modern hooks, state management with Zustand, type safety, component-driven development, Tailwind CSS.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 85%;"></span>
+                        </div>
+                        <span class="card-badge">FULL-STACK</span>
+                    </div>
+
+                    <!-- Frontend: Three.js & R3F -->
+                    <div class="arsenal-card" data-category="frontend">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-threejs-original"></i>
+                            <span class="card-type">3D GRAPHICS</span>
+                        </div>
+                        <h3 class="card-name">Three.js / React Three Fiber</h3>
+                        <p class="card-desc">Interactive 3D virtual room inspection viewer in DORMI, WebGL rendering, lighting, camera controls, GLTF models.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 78%;"></span>
+                        </div>
+                        <span class="card-badge">IMMERSIVE</span>
+                    </div>
+
+                    <!-- DevOps: Azure DevOps & Git -->
+                    <div class="arsenal-card" data-category="devops">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-azuredevops-plain colored"></i>
+                            <span class="card-type">DEVOPS &amp; AGILE</span>
+                        </div>
+                        <h3 class="card-name">Azure DevOps &amp; Git</h3>
+                        <p class="card-desc">Defect tracking at FPT Software, Agile/Scrum sprint workflows, branching strategies, CI/CD pipelines.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 86%;"></span>
+                        </div>
+                        <span class="card-badge">ENTERPRISE</span>
+                    </div>
+
+                    <!-- Testing & Tools: xUnit & Postman -->
+                    <div class="arsenal-card" data-category="devops">
+                        <div class="card-glow"></div>
+                        <div class="card-top">
+                            <i class="devicon-postman-plain colored"></i>
+                            <span class="card-type">QA &amp; TESTING</span>
+                        </div>
+                        <h3 class="card-name">Postman, Swagger &amp; xUnit</h3>
+                        <p class="card-desc">Automated API contract testing, edge-case test suites, mock requests, Swagger/OpenAPI documentation.</p>
+                        <div class="card-meter">
+                            <span class="meter-fill" style="--val: 88%;"></span>
+                        </div>
+                        <span class="card-badge">QA VERIFIED</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 03: Featured Projects / Missions -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="retro-section-header">
+                    <div class="header-prefix">
+                        <span class="prefix-tag">[ 03 // MISSION ARCHIVES ]</span>
+                        <span class="prefix-kanji">プロジェクト</span>
+                    </div>
+                    <h2 class="section-title">FEATURED MISSIONS</h2>
+                    <p class="section-lead">Production-grade systems, real-time architectures, and full-stack applications.</p>
+                </div>
+
+                <!-- Mission Filter Pills -->
+                <div class="mission-filters" id="missionFilters">
+                    <button type="button" class="filter-chip active" data-mission-filter="all">ALL MISSIONS</button>
+                    <button type="button" class="filter-chip" data-mission-filter="backend">.NET &amp; BACKEND</button>
+                    <button type="button" class="filter-chip" data-mission-filter="realtime">REAL-TIME &amp; WEBSOCKET</button>
+                    <button type="button" class="filter-chip" data-mission-filter="fullstack">FULL-STACK &amp; 3D</button>
+                </div>
+
+                <!-- Missions List -->
+                <div class="missions-container" id="missionsContainer">
+                    <!-- Project 01: EV Charging Station Management System (SkaEV) -->
+                    <article class="mission-card retro-window" data-mission-cat="backend realtime">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">⚡</i> MISSION_01: EV_CHARGING_STATION_SYSTEM.NET9</span>
+                            <span class="win-status-badge">TEAM LEAD &amp; BACKEND DEV</span>
+                        </div>
+                        <div class="mission-body">
+                            <div class="mission-main-info">
+                                <div class="mission-meta-tags">
+                                    <span class="tag-accent">4-PERSON SQUAD LEAD</span>
+                                    <span class="tag-accent">CLEAN ARCHITECTURE</span>
+                                    <span class="tag-accent">NETTOPOLOGYSUITE</span>
+                                </div>
+                                <h3 class="mission-title">EV Charging Station Management System (SkaEV)</h3>
+                                <p class="mission-lead-text">
+                                    Spearheaded a 4-person engineering team to build a web-based electric vehicle (EV) charging station management system, developing robust RESTful API endpoints for station search, slot booking, dynamic invoicing, and payment workflows.
+                                </p>
+
+                                <ul class="mission-bullets">
+                                    <li><strong>Architecture:</strong> Built ASP.NET Core backend services with Clean Architecture, implementing JWT-based RBAC, structured logging with Serilog, and location-based station search using <code>NetTopologySuite</code>.</li>
+                                    <li><strong>Real-time Telemetry:</strong> Integrated SignalR WebSockets for real-time station slot availability and state-of-charge (SOC) updates across concurrent user sessions.</li>
+                                    <li><strong>Transaction Integrity:</strong> Designed SQL Server Stored Procedures for complex payment, slot booking, and refund transactions with zero race conditions.</li>
+                                </ul>
+
+                                <div class="tech-stack-pills">
+                                    <span>.NET 9</span>
+                                    <span>ASP.NET Core</span>
+                                    <span>React</span>
+                                    <span>SQL Server</span>
+                                    <span>EF Core 8</span>
+                                    <span>SignalR</span>
+                                    <span>JWT</span>
+                                    <span>Serilog</span>
+                                    <span>NetTopologySuite</span>
+                                </div>
+                            </div>
+
+                            <div class="mission-actions">
+                                <a href="https://github.com/lqkhanh295/FPTU_FA25_SWP391_G4_SkaEV" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                                    <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                                    <span class="btn-label">VIEW GITHUB REPO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 02: OmniStock – Enterprise ERP System -->
+                    <article class="mission-card retro-window" data-mission-cat="backend realtime">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">📦</i> MISSION_02: OMNISTOCK_ENTERPRISE_ERP.NET9</span>
+                            <span class="win-status-badge">BACKEND DEVELOPER</span>
+                        </div>
+                        <div class="mission-body">
+                            <div class="mission-main-info">
+                                <div class="mission-meta-tags">
+                                    <span class="tag-accent">CQRS (MEDIATR)</span>
+                                    <span class="tag-accent">POSTGRESQL</span>
+                                    <span class="tag-accent">SIGNALR SYNC</span>
+                                </div>
+                                <h3 class="mission-title">OmniStock – Enterprise ERP System</h3>
+                                <p class="mission-lead-text">
+                                    Engineered a highly decoupled, scalable enterprise ERP backend handling multi-warehouse inventory, high-velocity order pipelines, and distributed stock adjustments.
+                                </p>
+
+                                <ul class="mission-bullets">
+                                    <li><strong>CQRS Pattern:</strong> Built a decoupled backend using Clean Architecture and CQRS pattern via <code>MediatR</code> to isolate domain business logic from infrastructure data access layers.</li>
+                                    <li><strong>Live Stock Synchronization:</strong> Developed real-time inventory synchronization using SignalR, ensuring immediate stock level adjustments across connected clients during concurrent order placements.</li>
+                                    <li><strong>Transactional Unit of Work:</strong> Applied Unit of Work pattern with EF Core database transactions to guarantee data consistency during multi-step order cancellations, integrated with FluentValidation request pipelines.</li>
+                                </ul>
+
+                                <div class="tech-stack-pills">
+                                    <span>.NET 9</span>
+                                    <span>ASP.NET Core</span>
+                                    <span>React</span>
+                                    <span>TypeScript</span>
+                                    <span>EF Core</span>
+                                    <span>PostgreSQL</span>
+                                    <span>MediatR (CQRS)</span>
+                                    <span>SignalR</span>
+                                    <span>FluentValidation</span>
+                                </div>
+                            </div>
+
+                            <div class="mission-actions">
+                                <a href="https://github.com/lqkhanh295/OmniStock" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                                    <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                                    <span class="btn-label">VIEW GITHUB REPO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 03: DORMI – Smart Rental & Roommate Matching Platform -->
+                    <article class="mission-card retro-window" data-mission-cat="backend realtime fullstack">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">🏠</i> MISSION_03: DORMI_RENTAL_MATCHING.NET10</span>
+                            <span class="win-status-badge">FULL-STACK DEVELOPER</span>
+                        </div>
+                        <div class="mission-body">
+                            <div class="mission-main-info">
+                                <div class="mission-meta-tags">
+                                    <span class="tag-accent">.NET 10</span>
+                                    <span class="tag-accent">POSTGIS GEOSPATIAL</span>
+                                    <span class="tag-accent">THREE.JS 3D INSPECTION</span>
+                                </div>
+                                <h3 class="mission-title">DORMI – Smart Rental &amp; Roommate Matching Platform</h3>
+                                <p class="mission-lead-text">
+                                    Architected an end-to-end rental platform bridging tenants, landlords, and administrators with intelligent geospatial proximity queries, AI/lifestyle roommate compatibility scoring, and interactive 3D virtual room inspection.
+                                </p>
+
+                                <ul class="mission-bullets">
+                                    <li><strong>Clean Architecture &amp; RBAC:</strong> Architected backend using Clean Architecture with ASP.NET Core (.NET 10), implementing JWT-based RBAC for multi-role workflows and Cloudinary media pipelines.</li>
+                                    <li><strong>Geospatial Engine:</strong> Engineered spatial property searching using PostgreSQL with PostGIS (NetTopologySuite) and designed a roommate compatibility scoring algorithm based on lifestyle and living habits.</li>
+                                    <li><strong>Real-time &amp; 3D Web:</strong> Integrated SignalR WebSockets for real-time messaging and appointment updates, paired with an interactive 3D virtual room inspection viewer using React Three Fiber (Three.js).</li>
+                                </ul>
+
+                                <div class="tech-stack-pills">
+                                    <span>.NET 10</span>
+                                    <span>React 19</span>
+                                    <span>TypeScript</span>
+                                    <span>PostgreSQL (PostGIS)</span>
+                                    <span>EF Core</span>
+                                    <span>SignalR</span>
+                                    <span>Three.js (R3F)</span>
+                                    <span>Cloudinary</span>
+                                </div>
+                            </div>
+
+                            <div class="mission-actions">
+                                <a href="https://github.com/lqkhanh295/DORMI" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                                    <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                                    <span class="btn-label">VIEW GITHUB REPO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 04: Event Department Web (Coc Sai Gon) -->
+                    <article class="mission-card retro-window" data-mission-cat="fullstack">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">🎪</i> MISSION_04: EVENT_DEPARTMENT_WEB.SYS</span>
+                            <span class="win-status-badge">FRONTEND &amp; CLOUD DEV</span>
+                        </div>
+                        <div class="mission-body">
+                            <div class="mission-main-info">
+                                <div class="mission-meta-tags">
+                                    <span class="tag-accent">FIREBASE FIRESTORE</span>
+                                    <span class="tag-accent">LIVE PRODUCTION</span>
+                                    <span class="tag-accent">AUTOMATED CONTRACTS</span>
+                                </div>
+                                <h3 class="mission-title">Event Department Web (Cóc Sài Gòn)</h3>
+                                <p class="mission-lead-text">
+                                    Engineered a comprehensive event operations management platform for Cóc Sài Gòn club, integrating modules for vendor cataloging, automated digital contracts, and AI-assisted workflows on top of real-time Firebase Firestore collections.
+                                </p>
+
+                                <ul class="mission-bullets">
+                                    <li><strong>Real-time Cloud:</strong> Deployed real-time Firestore database synchronization for concurrent event staff scheduling and budget approvals.</li>
+                                    <li><strong>Interactive UI:</strong> Built with React, Material-UI, and Ant Design with modular components and responsive event dashboards.</li>
+                                </ul>
+
+                                <div class="tech-stack-pills">
+                                    <span>React</span>
+                                    <span>Firebase Firestore</span>
+                                    <span>Material-UI</span>
+                                    <span>Ant Design</span>
+                                    <span>Vercel</span>
+                                </div>
+                            </div>
+
+                            <div class="mission-actions">
+                                <a href="https://event-department-web.vercel.app/" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                                    <span class="btn-icon">🌐</span>
+                                    <span class="btn-label">LAUNCH LIVE APP</span>
+                                </a>
+                                <a href="https://github.com/lqkhanh295/EventDepartmentWeb" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-outline">
+                                    <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                                    <span class="btn-label">GITHUB REPO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 05: FlappyBird Game (Desktop WPF) -->
+                    <article class="mission-card retro-window" data-mission-cat="backend">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">🎮</i> MISSION_05: FLAPPYBIRD_WPF_ENGINE.NET9</span>
+                            <span class="win-status-badge">DESKTOP DEVELOPER</span>
+                        </div>
+                        <div class="mission-body">
+                            <div class="mission-main-info">
+                                <div class="mission-meta-tags">
+                                    <span class="tag-accent">C# .NET 9</span>
+                                    <span class="tag-accent">WPF &amp; XAML</span>
+                                    <span class="tag-accent">CUSTOM GAME LOOP</span>
+                                </div>
+                                <h3 class="mission-title">FlappyBird Game (Desktop .NET 9)</h3>
+                                <p class="mission-lead-text">
+                                    Desktop Flappy Bird game built natively with WPF on .NET 9, rigorously structured in clean decoupled layers: UI Canvas Presentation, Game Loop Business Services, and High-score Persistence Repository.
+                                </p>
+
+                                <ul class="mission-bullets">
+                                    <li><strong>Engine Design:</strong> Implemented 60 FPS game loop, collision detection, physics gravity simulation, dynamic skins, sound effects, and persistent high-score serialization.</li>
+                                </ul>
+
+                                <div class="tech-stack-pills">
+                                    <span>C#</span>
+                                    <span>.NET 9</span>
+                                    <span>WPF</span>
+                                    <span>XAML</span>
+                                    <span>Canvas Graphics</span>
+                                </div>
+                            </div>
+
+                            <div class="mission-actions">
+                                <a href="https://github.com/lqkhanh295/Flappy-Bird-Game" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                                    <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                                    <span class="btn-label">VIEW GITHUB REPO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- GitHub All Repos Banner -->
+                <div class="more-missions-banner retro-window">
+                    <div class="banner-content">
+                        <span class="banner-badge">30+ REPOSITORIES ON GITHUB</span>
+                        <h3>Want to inspect more code repositories &amp; open-source contributions?</h3>
+                        <p>Explore MudBlazor, Spectre.Console, FreeCAD Docs, and cloud microservices on my GitHub profile.</p>
+                    </div>
+                    <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-secondary">
+                        <span class="btn-icon"><i class="devicon-github-original"></i></span>
+                        <span class="btn-label">VISIT GITHUB // @lqkhanh295</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 04: Experience & Education Timeline -->
+        <section class="section experience-section" id="experience">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="retro-section-header">
+                    <div class="header-prefix">
+                        <span class="prefix-tag">[ 04 // LOGS &amp; CHRONICLE ]</span>
+                        <span class="prefix-kanji">経歴と学歴</span>
+                    </div>
+                    <h2 class="section-title">MISSION CHRONICLE</h2>
+                    <p class="section-lead">Industry work experience at enterprise companies and academic milestones.</p>
+                </div>
+
+                <div class="chronicle-timeline">
+                    <!-- Item 1: FPT Software Tester Intern -->
+                    <div class="chronicle-node">
+                        <div class="node-marker">
+                            <span class="marker-dot"></span>
+                            <span class="marker-line"></span>
+                        </div>
+                        <div class="node-content retro-window">
+                            <div class="window-topbar">
+                                <span class="win-title">🏢 FPT SOFTWARE // ENTERPRISE QA</span>
+                                <span class="win-status-badge current">JAN 2026 – MAY 2026</span>
+                            </div>
+                            <div class="window-body">
+                                <div class="node-heading">
+                                    <h3 class="role-title">Software Tester Intern</h3>
+                                    <span class="role-org">FPT Software · Ho Chi Minh City, Vietnam</span>
+                                </div>
+                                <p class="role-summary">
+                                    Stationed in an enterprise Agile/Scrum team, responsible for rigorous quality assurance, API contract validation, and database verification for enterprise web applications.
+                                </p>
+                                <ul class="chronicle-points">
+                                    <li>Conducted functional and edge-case testing for enterprise web applications in Agile/Scrum, logging and tracking technical defects via <strong>Azure DevOps</strong>.</li>
+                                    <li>Executed complex <strong>T-SQL queries</strong> to verify database data flows, validate API response payloads, and assist backend developers in root-cause defect analysis.</li>
+                                    <li>Participated in sprint planning, daily standups, and retrospectives, ensuring business logic requirements aligned with technical feature implementations.</li>
+                                </ul>
+                                <div class="node-tags">
+                                    <span class="tech-tag">Azure DevOps</span>
+                                    <span class="tech-tag">T-SQL</span>
+                                    <span class="tech-tag">API Validation</span>
+                                    <span class="tech-tag">Edge-case Testing</span>
+                                    <span class="tech-tag">Scrum / Agile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: FPT University -->
+                    <div class="chronicle-node">
+                        <div class="node-marker">
+                            <span class="marker-dot"></span>
+                            <span class="marker-line"></span>
+                        </div>
+                        <div class="node-content retro-window">
+                            <div class="window-topbar">
+                                <span class="win-title">🎓 FPT UNIVERSITY // ACADEMICS</span>
+                                <span class="win-status-badge">SEP 2023 – JUNE 2027 (EXPECTED)</span>
+                            </div>
+                            <div class="window-body">
+                                <div class="node-heading">
+                                    <h3 class="role-title">Bachelor of Software Engineering</h3>
+                                    <span class="role-org">FPT University · Ho Chi Minh City, Vietnam</span>
+                                </div>
+                                <p class="role-summary">
+                                    Pursuing a specialized degree in Software Engineering. Full-time employment permitted alongside study.
+                                </p>
+                                <ul class="chronicle-points">
+                                    <li><strong>Relevant Coursework:</strong> Software Architecture, Database Systems, Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Web Development, Clean Code.</li>
+                                    <li>Active developer building distributed systems, real-time WebSocket applications, and geospatial search backends.</li>
+                                </ul>
+                                <div class="node-tags">
+                                    <span class="tech-tag">Software Architecture</span>
+                                    <span class="tech-tag">Data Structures &amp; Algorithms</span>
+                                    <span class="tech-tag">Database Management</span>
+                                    <span class="tech-tag">Full-time Eligible</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 05: GitHub Radar & Live Feed -->
+        <section class="section stats-section" id="stats">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="retro-section-header">
+                    <div class="header-prefix">
+                        <span class="prefix-tag">[ 05 // SATELLITE RADAR ]</span>
+                        <span class="prefix-kanji">GitHub 統計</span>
+                    </div>
+                    <h2 class="section-title">NEO-TOKYO SATELLITE FEED</h2>
+                    <p class="section-lead">Live telemetry, commit activity, and language distribution from GitHub.</p>
+                </div>
+
+                <div class="github-stats-grid">
+                    <!-- General Stats Card -->
+                    <div class="stats-card retro-window">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">📊</i> GITHUB_OVERVIEW.SVG</span>
+                            <span class="win-controls">_ □ ×</span>
+                        </div>
+                        <div class="window-body stats-embed">
+                            <img src="https://github-readme-stats.vercel.app/api?username=lqkhanh295&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&rank_icon=github"
+                                 alt="Lê Quốc Khánh GitHub Stats" loading="lazy" class="feed-img">
+                        </div>
+                    </div>
+
+                    <!-- Top Languages Card -->
+                    <div class="stats-card retro-window">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">💻</i> TOP_LANGUAGES.SVG</span>
+                            <span class="win-controls">_ □ ×</span>
+                        </div>
+                        <div class="window-body stats-embed">
+                            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=lqkhanh295&layout=compact&theme=tokyonight&hide_border=true&langs_count=6"
+                                 alt="Top Languages" loading="lazy" class="feed-img">
+                        </div>
+                    </div>
+
+                    <!-- Streak Stats Card -->
+                    <div class="stats-card retro-window full-col">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">🔥</i> STREAK_TRACKER.SVG</span>
+                            <span class="win-controls">_ □ ×</span>
+                        </div>
+                        <div class="window-body stats-embed center">
+                            <img src="https://github-readme-streak-stats.herokuapp.com/?user=lqkhanh295&theme=tokyonight&hide_border=true"
+                                 alt="GitHub Streak" loading="lazy" class="feed-img streak-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 06: Transmission / Contact -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="retro-section-header">
+                    <div class="header-prefix">
+                        <span class="prefix-tag">[ 06 // TRANSMISSION STATION ]</span>
+                        <span class="prefix-kanji">交信ステーション</span>
+                    </div>
+                    <h2 class="section-title">INITIALIZE TRANSMISSION</h2>
+                    <p class="section-lead">Seeking a .NET / Backend Developer Intern position. Open to opportunities, collaborations, and discussions.</p>
+                </div>
+
+                <div class="transmission-layout">
+                    <!-- Left: Direct Channels -->
+                    <div class="transmission-channels retro-window">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">📡</i> direct_channels.conf</span>
+                            <span class="win-controls">_ □ ×</span>
+                        </div>
+                        <div class="window-body">
+                            <h3 class="channels-title">DIRECT COMMS FREQUENCIES</h3>
+                            <p class="channels-desc">
+                                Feel free to reach out via email, phone, Zalo, or LinkedIn. I typically respond within 24 hours.
+                            </p>
+
+                            <div class="channels-list">
+                                <!-- Email -->
+                                <a href="mailto:lqkhanh292005@gmail.com" class="channel-card">
+                                    <span class="chan-icon">📧</span>
+                                    <div class="chan-info">
+                                        <span class="chan-type">EMAIL TRANSMISSION</span>
+                                        <strong class="chan-val">lqkhanh292005@gmail.com</strong>
+                                    </div>
+                                    <span class="chan-arrow">→</span>
+                                </a>
+
+                                <!-- Phone / Zalo -->
+                                <a href="https://zalo.me/0911887141" target="_blank" rel="noopener noreferrer" class="channel-card">
+                                    <span class="chan-icon">📱</span>
+                                    <div class="chan-info">
+                                        <span class="chan-type">PHONE / ZALO HOTLINE</span>
+                                        <strong class="chan-val">0911 887 141</strong>
+                                    </div>
+                                    <span class="chan-arrow">→</span>
+                                </a>
+
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/in/lqkhanh295" target="_blank" rel="noopener noreferrer" class="channel-card">
+                                    <span class="chan-icon"><i class="devicon-linkedin-plain"></i></span>
+                                    <div class="chan-info">
+                                        <span class="chan-type">PROFESSIONAL NETWORK</span>
+                                        <strong class="chan-val">linkedin.com/in/lqkhanh295</strong>
+                                    </div>
+                                    <span class="chan-arrow">→</span>
+                                </a>
+
+                                <!-- GitHub -->
+                                <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer" class="channel-card">
+                                    <span class="chan-icon"><i class="devicon-github-original"></i></span>
+                                    <div class="chan-info">
+                                        <span class="chan-type">SOURCE REPOSITORIES</span>
+                                        <strong class="chan-val">github.com/lqkhanh295</strong>
+                                    </div>
+                                    <span class="chan-arrow">→</span>
+                                </a>
+                            </div>
+
+                            <!-- Coordinates Info Box -->
+                            <div class="coords-box">
+                                <div class="coords-title"><span class="pulse-dot"></span>BASE STATION: HO CHI MINH CITY</div>
+                                <div class="coords-line">COORDINATES: 10.8231° N, 106.6297° E (UTC+07:00)</div>
+                                <div class="coords-time" id="localTimeDisplay">LOCAL TIME: LOADING...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Terminal Transmission Form -->
+                    <div class="transmission-form-box retro-window">
+                        <div class="window-topbar">
+                            <span class="win-title"><i class="win-icon">✉️</i> send_packet.exe</span>
+                            <span class="win-status-badge">ENCRYPTION: 256-BIT</span>
+                        </div>
+                        <div class="window-body">
+                            <form class="retro-form" id="contactForm">
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="senderName" class="form-label">&gt; SENDER_NAME *</label>
+                                        <input type="text" id="senderName" name="name" required class="cyber-input" placeholder="e.g. Makoto Shinkai / Tech Lead">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="senderEmail" class="form-label">&gt; RETURN_ADDRESS (EMAIL) *</label>
+                                        <input type="email" id="senderEmail" name="email" required class="cyber-input" placeholder="e.g. recruiter@company.com">
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="senderSubject" class="form-label">&gt; MISSION_SUBJECT</label>
+                                    <input type="text" id="senderSubject" name="subject" class="cyber-input" placeholder=".NET Backend Developer Opportunity / Collaboration">
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="senderMsg" class="form-label">&gt; ENCRYPTED_PAYLOAD (MESSAGE) *</label>
+                                    <textarea id="senderMsg" name="message" rows="5" required class="cyber-input" placeholder="Enter transmission packet details..."></textarea>
+                                </div>
+
+                                <div class="form-submit-row">
+                                    <button type="submit" class="cyber-btn cyber-btn-primary btn-full" id="transmitBtn">
+                                        <span class="btn-icon">⚡</span>
+                                        <span class="btn-label">TRANSMIT PACKET // 送信</span>
+                                    </button>
+                                </div>
+
+                                <!-- Live Terminal Response Box -->
+                                <div class="form-response-console" id="formResponseConsole" style="display: none;">
+                                    <div class="resp-line"><span class="prompt">&gt;</span> <span id="respText">TRANSMITTING...</span></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Retro Anime Lo-Fi Audio Player Widget (Synthesized Client-side Web Audio API) -->
+    <div class="lofi-player-widget" id="lofiPlayer">
+        <div class="player-toggle-tab" id="lofiTabToggle" title="Click to toggle Lo-Fi Synthesizer Player">
+            <span class="tab-icon">📻</span>
+            <span class="tab-label">LO-FI SYNTH</span>
+        </div>
+        <div class="player-chassis">
+            <div class="player-top">
+                <span class="cassette-label">WALKMAN LQK-80s</span>
+                <span class="track-indicator" id="trackNameDisplay">NEO TOKYO SUNSET</span>
+            </div>
+            
+            <!-- Animated Cassette Graphic -->
+            <div class="cassette-tape">
+                <div class="tape-reel left-reel" id="leftReel"></div>
+                <div class="tape-window">
+                    <div class="equalizer-bars" id="eqBars">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="tape-reel right-reel" id="rightReel"></div>
+            </div>
+
+            <!-- Player Controls -->
+            <div class="player-controls">
+                <button type="button" class="ctrl-btn" id="lofiPrevBtn" title="Previous Track">⏮</button>
+                <button type="button" class="ctrl-btn play-btn" id="lofiPlayBtn" title="Play / Pause Ambient Chiptune Synth">▶</button>
+                <button type="button" class="ctrl-btn" id="lofiNextBtn" title="Next Track">⏭</button>
+                <button type="button" class="ctrl-btn" id="lofiMuteBtn" title="Mute Ambient Synth">🔊</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Retro Anime Cyber Terminal Modal -->
+    <div class="cyber-terminal-modal" id="terminalModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="terminal-backdrop" id="terminalBackdrop"></div>
+        <div class="terminal-window retro-window">
+            <div class="window-topbar">
+                <span class="win-title"><i class="win-icon">💻</i> khanh@neotokyo-station: ~ (zsh)</span>
+                <button type="button" class="win-close-btn" id="closeTermBtn" aria-label="Close Terminal">×</button>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="term-line banner">
+========================================================================
+   __    ____  _  _  _  _    ____  __  ____  ____  ____  __  __   ____ 
+  (  )  / ___)( \/ )( \/ )  (  __)/  \(  _ \(_  _)(  __)/  \(  ) (_  _)
+   )(__ \___ \ )  (  )  (    ) _)(  O ))   /  )(   ) _)(  O )(__   )(  
+  (____)(____/(_/\_)(_/\_)  (__)  \__/(__\_) (__) (__)  \__/(__) (__)  
+========================================================================
+   * SYSTEM: NEO-TOKYO KERNEL 6.2.0-LQK
+   * DEVELOPER: LÊ QUỐC KHÁNH (.NET BACKEND ARCHITECT)
+   * TYPE 'help' FOR AVAILABLE DIRECTIVES, OR 'cv' TO DOWNLOAD DOSSIER.
+========================================================================
+                </div>
+                <div id="terminalHistory"></div>
+                <div class="term-input-line">
+                    <span class="term-user-prompt">[khanh@neotokyo:~]$</span>
+                    <input type="text" id="termInput" class="term-input" autofocus autocomplete="off" spellcheck="false">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Toast Notification Box -->
+    <div class="cyber-toast" id="cyberToast" aria-live="polite"></div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+    <footer class="cyber-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
                 <div class="footer-brand">
-                    <span class="footer-logo">LQK<span class="accent">.</span></span>
-                    <p class="footer-text">Crafting digital experiences with passion.</p>
+                    <span class="brand-sym">⚡</span>
+                    <span class="brand-title">LÊ QUỐC KHÁNH</span>
+                    <span class="brand-kanji">「レ・クォック・カイン」</span>
                 </div>
-                <div class="footer-links">
-                    <a href="mailto:lqkhanh292005@gmail.com">Email</a>
-                    <a href="https://www.linkedin.com/in/khanh-le-87a017286/" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/lqkhanh295" target="_blank">GitHub</a>
+                <p class="footer-tagline">
+                    Engineered with passion, clean code, and 90s retro anime cyberpunk aesthetics.
+                </p>
+                <div class="footer-meta-pill">
+                    <span>HOSTED WITH ZERO DOWNTIME</span>
+                    <span>·</span>
+                    <span>CLASS OF 2027</span>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Le Quoc Khanh. All rights reserved.</p>
-                <p class="footer-credit">Designed & Built with ♥</p>
+
+            <div class="footer-center">
+                <div class="footer-nav-title">// DIRECT ACCESS</div>
+                <ul class="footer-links">
+                    <li><a href="#about">Dossier</a></li>
+                    <li><a href="#skills">Tech Arsenal</a></li>
+                    <li><a href="#projects">Missions</a></li>
+                    <li><a href="#experience">Chronicle</a></li>
+                    <li><a href="#stats">Satellite Radar</a></li>
+                    <li><a href="#contact">Transmission</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-nav-title">// NETWORK NODES</div>
+                <div class="footer-socials">
+                    <a href="https://github.com/lqkhanh295" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="devicon-github-original"></i></a>
+                    <a href="https://www.linkedin.com/in/lqkhanh295" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="devicon-linkedin-plain"></i></a>
+                    <a href="mailto:lqkhanh292005@gmail.com" title="Email"><span class="soc-ico">📧</span></a>
+                    <a href="https://zalo.me/0911887141" target="_blank" rel="noopener noreferrer" title="Zalo"><span class="soc-ico">💬</span></a>
+                </div>
+                <div class="easter-hint">
+                    <small>TIP: Try pressing the Konami Code <strong>↑ ↑ ↓ ↓ ← → ← → B A</strong> or click <strong>CLI</strong> above!</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <div class="container bottom-bar-inner">
+                <p>&copy; 2026 Lê Quốc Khánh. All rights reserved.</p>
+                <a href="#hero" class="back-to-top-btn" id="backToTopBtn">
+                    <span>RETURN TO ORBIT</span>
+                    <span class="top-icon">🚀</span>
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- Main JavaScript Logic -->
     <script src="script.js"></script>
 </body>
 
