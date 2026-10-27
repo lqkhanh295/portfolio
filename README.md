@@ -20,7 +20,7 @@ An illustrated developer journal and personal portfolio designed with an **edito
 - **Backend**: C# (.NET 8 / 9), ASP.NET Core Web API, Entity Framework Core, SignalR (WebSockets), RESTful APIs, Dependency Injection, Repository & Unit of Work, FluentValidation, Serilog.
 - **Databases & ORM**: SQL Server (T-SQL, Stored Procedures, Transactions), PostgreSQL, PostGIS & NetTopologySuite (Geospatial), Firebase Firestore.
 - **Software Design**: Clean Architecture (Layered), SOLID Principles, OOP Fundamentals, CQRS (MediatR basics), Common Design Patterns.
-- **Frontend & UI**: React.js, TypeScript / JavaScript, HTML5 & CSS3, Tailwind CSS, Zustand, Three.js / R3F (Basic 3D).
+- **Frontend & UI**: React.js, TypeScript / JavaScript, HTML5 & CSS3, Tailwind CSS, Zustand, Leaflet Maps.
 - **Tools, Testing & QA**: Git & GitHub, Postman, Swagger / OpenAPI, xUnit (Unit Testing), Azure DevOps (Defect & Task Tracking), Docker (Fundamentals), Agile / Scrum.
 
 ---
@@ -37,8 +37,8 @@ An illustrated developer journal and personal portfolio designed with an **edito
    - *Focus*: CQRS pattern via MediatR, real-time inventory synchronization, transactional Unit of Work order cancellation workflows.
 3. **DORMI — Smart Rental & Roommate Matching Platform**
    - *Role*: Full-Stack Developer
-   - *Stack*: .NET 9 · React · TypeScript · PostgreSQL (PostGIS) · Three.js (R3F) · SignalR · Cloudinary
-   - *Focus*: PostGIS geospatial queries, lifestyle compatibility scoring, interactive 3D virtual room inspection viewer.
+   - *Stack*: .NET 9 / 10 · React · TypeScript · PostgreSQL (PostGIS) · SignalR · Leaflet · VNPay · Cloudinary
+   - *Focus*: PostGIS geospatial queries, lifestyle compatibility scoring, SignalR tenant-landlord real-time chat, tour appointment scheduling, and VNPay billing.
 4. **Đại Hội 2026 — Real-Time Awards Voting Platform (DH Vote)**
    - *Role*: Full-Stack & Cloud Developer
    - *Stack*: React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth · Cloud Firestore · Firebase Storage

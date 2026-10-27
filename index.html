@@ -61,7 +61,8 @@
                     <p class="hero-narrative">
                         I am <strong>Lê Quốc Khánh</strong>, a final-year Software Engineering student at <strong>FPT
                             University</strong>. My focus centers on <strong>C#, .NET, Clean Architecture</strong>, and
-                        building dependable backend APIs. Previously, I worked at <strong>FPT Software</strong> as a QA Tester
+                        building dependable backend APIs. Previously, I worked at <strong>FPT Software</strong> as a QA
+                        Tester
                         Intern, learning how enterprise software behaves—and how it breaks—under real-world pressure.
                     </p>
 
@@ -218,14 +219,14 @@
                             <div class="work-meta-chips">
                                 <span class="meta-chip">Full-Stack Developer</span>
                                 <span class="meta-chip">PostGIS Geospatial</span>
-                                <span class="meta-chip">Three.js 3D</span>
+                                <span class="meta-chip">SignalR Real-Time</span>
                             </div>
                         </div>
 
                         <div class="work-body">
                             <div class="work-summary-col">
                                 <h3 class="work-title">DORMI — Smart Rental &amp; Roommate Platform</h3>
-                                <div class="work-subtitle">Geospatial Housing Discovery &amp; 3D Virtual Room Inspection
+                                <div class="work-subtitle">Geospatial Housing Discovery, Roommate Matching &amp; Real-Time Tour Scheduling
                                 </div>
                                 <p class="work-description">
                                     Developed a full-stack platform designed to connect university students and young
@@ -239,16 +240,18 @@
                                             and multi-role RBAC for Tenants, Landlords, and Platform Admins.</li>
                                         <li>Engineered geospatial proximity queries with PostgreSQL and PostGIS,
                                             complemented by a lifestyle compatibility scoring algorithm.</li>
-                                        <li>Built an interactive 3D virtual room inspection viewer using React Three
-                                            Fiber (Three.js), alongside SignalR for real-time messaging and appointment
-                                            scheduling.</li>
+                                        <li>Integrated ASP.NET Core SignalR hubs for real-time bidirectional
+                                            messaging between tenants and landlords, viewing tour appointment
+                                            scheduling, and live listing moderation events.</li>
+                                        <li>Implemented landlord subscription billing pipelines integrated with VNPay
+                                            Sandbox using HMAC-SHA512 checksum security for VIP listing upgrades.</li>
                                     </ul>
                                 </div>
 
                                 <div class="work-stack-line">
                                     <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">.NET 9 · React · TypeScript · PostgreSQL (PostGIS) ·
-                                        Three.js (R3F) · SignalR · Cloudinary</span>
+                                    <span class="stack-items">.NET 9 / 10 · React · TypeScript · PostgreSQL (PostGIS) ·
+                                        SignalR · Leaflet · VNPay · Cloudinary</span>
                                 </div>
 
                                 <div class="work-links">
@@ -265,7 +268,7 @@
                         </div>
                     </article>
 
-                                        <!-- Project 04: Daihoi2026-Vote -->
+                    <!-- Project 04: Daihoi2026-Vote -->
                     <article class="work-article">
                         <div class="work-header">
                             <div class="work-index">04 / 06</div>
@@ -279,27 +282,44 @@
                         <div class="work-body">
                             <div class="work-summary-col">
                                 <h3 class="work-title">Đại Hội 2026 — Real-Time Voting Platform</h3>
-                                <div class="work-subtitle">DH Vote · Whitelisted Polling, Anti-Spam Cooldown &amp; Live Tallying</div>
+                                <div class="work-subtitle">DH Vote · Whitelisted Polling, Anti-Spam Cooldown &amp; Live
+                                    Tallying</div>
                                 <p class="work-description">
-                                    Developed a real-time voting web application for the annual Cóc Sài Gòn (CSG) General Assembly &amp; Awards Gala. The platform empowers verified members to cast ballots across multiple award categories with integrity checks and live result broadcasting.
+                                    Developed a real-time voting web application for the annual Cóc Sài Gòn (CSG)
+                                    General Assembly &amp; Awards Gala. The platform empowers verified members to cast
+                                    ballots across multiple award categories with integrity checks and live result
+                                    broadcasting.
                                 </p>
 
                                 <div class="work-technical-note">
                                     <div class="note-label">Architecture &amp; Key Challenges:</div>
                                     <ul class="note-points">
-                                        <li>Implemented email whitelist verification in Cloud Firestore, restricting voting access exclusively to authorized attendees alongside role-based admin controls.</li>
-                                        <li>Implemented a 24-hour voting cooldown rule using Firestore composite queries (<code>userId</code>, <code>candidateId</code>, <code>categoryId</code>, <code>timestamp</code>) to prevent duplicate votes.</li>
-                                        <li>Leveraged Firestore real-time snapshot listeners and Zustand state management for live tallying, candidate percentage visualization, and interactive leaderboards.</li>
-                                        <li>Built an administrative dashboard enabling dynamic CRUD operations for categories, candidate rosters, custom category color themes, and asset uploads via Firebase Storage.</li>
+                                        <li>Implemented email whitelist verification in Cloud Firestore, restricting
+                                            voting access exclusively to authorized attendees alongside role-based admin
+                                            controls.</li>
+                                        <li>Implemented a 24-hour voting cooldown rule using Firestore composite queries
+                                            (<code>userId</code>, <code>candidateId</code>, <code>categoryId</code>,
+                                            <code>timestamp</code>) to prevent duplicate votes.</li>
+                                        <li>Leveraged Firestore real-time snapshot listeners and Zustand state
+                                            management for live tallying, candidate percentage visualization, and
+                                            interactive leaderboards.</li>
+                                        <li>Built an administrative dashboard enabling dynamic CRUD operations for
+                                            categories, candidate rosters, custom category color themes, and asset
+                                            uploads via Firebase Storage.</li>
                                     </ul>
                                 </div>
 
                                 <div class="work-stack-line">
                                     <span class="stack-label">Stack:</span>
-                                    <span class="stack-items">React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth · Cloud Firestore · Firebase Storage · React Router v6</span>
+                                    <span class="stack-items">React 18 · Vite · Tailwind CSS · Zustand · Firebase Auth ·
+                                        Cloud Firestore · Firebase Storage · React Router v6</span>
                                 </div>
 
                                 <div class="work-links">
+                                    <a href="https://vote.cocsaigon.club/" target="_blank" rel="noopener noreferrer"
+                                        class="text-link">
+                                        Visit Live Platform ↗
+                                    </a>
                                     <a href="https://github.com/lqkhanh295/Daihoi2026-Vote" target="_blank"
                                         rel="noopener noreferrer" class="text-link">
                                         Inspect Source Repository →
@@ -426,7 +446,8 @@
                     <span class="section-kicker">Entry 03 · Engineering Philosophy</span>
                     <h2 class="section-heading">How I Think &amp; Build</h2>
                     <p class="section-subtext">
-                        A perspective shaped by testing enterprise applications in QA, writing disciplined database queries, and respecting clear layer boundaries.
+                        A perspective shaped by testing enterprise applications in QA, writing disciplined database
+                        queries, and respecting clear layer boundaries.
                     </p>
                 </div>
 
@@ -450,7 +471,9 @@
                         <div class="node-content">
                             <h3 class="node-title">Structure with Clean Boundaries</h3>
                             <p class="node-text">
-                                I favor Clean Architecture principles because they keep business logic organized and decoupled from database drivers or external libraries. This makes code easier to test, refactor, and maintain.
+                                I favor Clean Architecture principles because they keep business logic organized and
+                                decoupled from database drivers or external libraries. This makes code easier to test,
+                                refactor, and maintain.
                             </p>
                         </div>
                     </div>
@@ -476,7 +499,8 @@
                             <p class="node-text">
                                 My internship as a Software Tester at FPT Software taught me that green unit tests can
                                 still harbor unexpected edge-case defects and payload mismatches. I verify by inspecting
-                                direct database states with T-SQL, testing edge cases with Postman, and thinking like a skeptical user.
+                                direct database states with T-SQL, testing edge cases with Postman, and thinking like a
+                                skeptical user.
                             </p>
                         </div>
                     </div>
@@ -495,8 +519,7 @@
                             reliable transactions that makes user experiences feel seamless.
                         </p>
                         <p>
-                            Outside of coding, I study software architecture patterns, tinker with 3D web rendering in
-                            Three.js, and learn Japanese (currently basic proficiency). I value clear communication,
+                            Outside of coding, I study software architecture patterns, explore spatial indexing and real-time distributed patterns, and learn Japanese (currently basic proficiency). I value clear communication,
                             quiet focus, and teams that take pride in craft.
                         </p>
                     </div>
@@ -536,7 +559,8 @@
                             <span class="rep-item">JWT Authentication</span>
                         </div>
                         <p class="repertoire-note">
-                            Applied in university capstone and personal projects with clear layered structure, async/await pipelines, and secure authentication.
+                            Applied in university capstone and personal projects with clear layered structure,
+                            async/await pipelines, and secure authentication.
                         </p>
                     </div>
 
@@ -556,7 +580,8 @@
                             <span class="rep-item">Firebase Firestore</span>
                         </div>
                         <p class="repertoire-note">
-                            Experience designing normalized relational tables, writing multi-table joins, managing ACID transactions, and spatial radius queries.
+                            Experience designing normalized relational tables, writing multi-table joins, managing ACID
+                            transactions, and spatial radius queries.
                         </p>
                     </div>
 
@@ -575,11 +600,12 @@
                             <span class="rep-item">API Error &amp; Exception Handling</span>
                         </div>
                         <p class="repertoire-note">
-                            Emphasis on writing maintainable, readable code by separating domain logic from external libraries, database drivers, and UI layers.
+                            Emphasis on writing maintainable, readable code by separating domain logic from external
+                            libraries, database drivers, and UI layers.
                         </p>
                     </div>
 
-                    <!-- Group 4: Frontend & 3D -->
+                    <!-- Group 4: Frontend & Web UI -->
                     <div class="repertoire-card">
                         <div class="repertoire-header">
                             <span class="repertoire-domain">User Interface</span>
@@ -591,10 +617,10 @@
                             <span class="rep-item">HTML5 &amp; CSS3</span>
                             <span class="rep-item">Tailwind CSS</span>
                             <span class="rep-item">Zustand (State Management)</span>
-                            <span class="rep-item">Three.js / R3F (Basic 3D)</span>
+                            <span class="rep-item">Leaflet Maps (GIS Integration)</span>
                         </div>
                         <p class="repertoire-note">
-                            Capable of building responsive web interfaces, consuming RESTful APIs, and integrating interactive UI components including basic 3D room viewers.
+                            Capable of building responsive, accessible web interfaces, consuming RESTful APIs, and integrating interactive geospatial maps and state stores.
                         </p>
                     </div>
 
@@ -613,7 +639,8 @@
                             <span class="rep-item">Agile / Scrum Sprints</span>
                         </div>
                         <p class="repertoire-note">
-                            Practical experience from software QA internship: verifying API payloads, writing clear bug reports, and collaborating across sprint ceremonies.
+                            Practical experience from software QA internship: verifying API payloads, writing clear bug
+                            reports, and collaborating across sprint ceremonies.
                         </p>
                     </div>
 
@@ -629,7 +656,8 @@
                             <span class="rep-item">Japanese (Basic / Elementary)</span>
                         </div>
                         <p class="repertoire-note">
-                            Comfortable reading technical documentation, writing clear commit/PR messages, and collaborating in professional environments.
+                            Comfortable reading technical documentation, writing clear commit/PR messages, and
+                            collaborating in professional environments.
                         </p>
                     </div>
                 </div>
