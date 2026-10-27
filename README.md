@@ -1,54 +1,67 @@
-# ⚡ Lê Quốc Khánh - Anime & Retro Cyberpunk Portfolio
+# Lê Quốc Khánh — Software Engineer
 
-> **.NET Backend Developer & Software Engineer**
-> *"First, make it work. Then, make it right. Then, make it fast."*
+> *“First, make it work. Then, make it right. Then, make it fast.”*
 
-A high-performance, responsive personal developer portfolio engineered with **90s Retro Anime**, **Neo-Tokyo Cyberpunk**, and **Retro Gaming HUD** aesthetics.
-
----
-
-## 🎮 Key Features
-
-- **📺 Retro CRT Scanline Filter**: One-click toggle in the header to activate/deactivate vintage CRT scanlines, screen vignette curvature, and phosphor pulse.
-- **🌸 Dynamic Sakura & Cyber Dust Canvas**: Floating cherry blossom petals and interactive neon stars powered by a lightweight 60fps canvas engine.
-- **🔊 Web Audio API Retro Sound Effects (SFX)**: 8-bit synthesizer bleeps, clicks, and chimes for user interactions without external audio assets.
-- **📻 Retro Walkman Lo-Fi / Synthwave Player**: Built-in client-side ambient synthesizer playing 3 relaxing chiptune/lo-fi tracks (*Neo Tokyo Sunset*, *Akihabara Nights*, *Cyberpunk Rain*) with spinning cassette reels.
-- **💻 Interactive Cyber Terminal (CLI)**: Full terminal window (`>_ CLI` or press `>`) supporting commands like `help`, `whoami`, `skills`, `projects`, `cv`, `contact`, `github`, `anime`, `matrix`, `clear`, etc.
-- **🕹️ Konami Code Easter Egg**: Press `↑ ↑ ↓ ↓ ← → ← → B A` to unlock secret root developer access!
-- **⚡ Filterable Tech Arsenal & Missions**: Instant filtering of technical weapons and enterprise project archives.
-- **📊 Real-time GitHub Telemetry**: Live TokyoNight stats, top language breakdown, and streak metrics directly from GitHub.
-- **📱 Fully Responsive**: Flawless experience across 4K displays, laptops, tablets, and smartphones.
+An illustrated developer journal and personal portfolio designed with an **editorial, nostalgic Japanese storybook aesthetic**—warm cream paper, charcoal ink typography, muted watercolor accents, and quiet craft.
 
 ---
 
-## 🛠️ Tech Stack & Weapons
+## 📖 Visual Philosophy
 
-- **Backend**: C# 12, .NET 8 / 9 / 10, ASP.NET Core, Entity Framework Core, SignalR WebSockets, RESTful APIs, MediatR (CQRS).
-- **Databases**: SQL Server (T-SQL, Stored Procedures, Indexing), PostgreSQL (PostGIS geospatial), Firebase Firestore.
-- **Architecture**: Clean Architecture, SOLID Principles, CQRS, Unit of Work, Serilog, FluentValidation.
-- **Frontend**: HTML5, Modern CSS3, JavaScript (ES6+), React 18/19, TypeScript, Zustand, Tailwind CSS, Three.js (React Three Fiber).
-- **DevOps & QA**: Azure DevOps, Git & GitHub, Docker, xUnit, Postman, Swagger/OpenAPI.
-
----
-
-## 🚀 Live Preview & Running Locally
-
-Simply open `index.html` in any modern web browser or serve via any static server:
-
-```bash
-# Using Node.js
-npx serve .
-
-# Or using Python
-python -m http.server 8080
-```
+- **Editorial Storybook Aesthetic**: Inspired by the warmth and human touch of 1980s–1990s Japanese animation aesthetics and illustrated engineering field notes.
+- **Warm Paper Palette**: Natural cream background (`#FAF7F2`), warm charcoal ink (`#262422`), muted graphite (`#5A554E`), forest moss (`#3D5A45`), and dusty terracotta (`#B65742`).
+- **Restrained Typography**: Headings in **Fraunces** (soft, organic, editorial serif) and body/UI in **DM Sans** (clean, crisp humanist sans-serif).
+- **Anti-AI-Slop & Craft**: Zero neon glows, zero glassmorphism, zero emoji spam, and zero icon walls. Content communicates through layout, whitespace, typography, and genuine engineering substance.
 
 ---
 
-## 📬 Contact & Comms
+## 🛠️ Technical Repertoire
+
+- **Backend**: C# (Modern 10–13), .NET 8 / 9 / 10, ASP.NET Core, Entity Framework Core, SignalR WebSockets, RESTful APIs, MediatR (CQRS), Unit of Work, Serilog, FluentValidation.
+- **Databases & Spatial**: SQL Server (T-SQL, Stored Procedures, Indexing), PostgreSQL, PostGIS (Geospatial via NetTopologySuite), Firebase Firestore.
+- **Architecture**: Clean Architecture, SOLID Principles, CQRS, Concurrency & Race Condition Control.
+- **Frontend & 3D**: React 18 / 19, TypeScript, Three.js (React Three Fiber), Tailwind CSS, Zustand.
+- **DevOps & QA**: Azure DevOps, Git & GitHub, xUnit, Postman, Swagger / OpenAPI, Agile / Scrum.
+
+---
+
+## 📂 Featured Case Studies
+
+1. **EV Charging Station Management System (SkaEV)**
+   - *Role*: Team Lead & Backend Developer (4-person team)
+   - *Stack*: C# · .NET 9 · ASP.NET Core · React · SQL Server · SignalR · NetTopologySuite · Serilog
+   - *Focus*: Clean Architecture, geospatial station search, real-time battery SOC WebSocket telemetry, race-condition-free Stored Procedures.
+2. **OmniStock — Enterprise ERP System**
+   - *Role*: Backend Developer
+   - *Stack*: .NET 9 · ASP.NET Core · React · TypeScript · EF Core · PostgreSQL · MediatR · SignalR
+   - *Focus*: CQRS pattern via MediatR, real-time inventory synchronization, transactional Unit of Work order cancellation pipelines.
+3. **DORMI — Smart Rental & Roommate Matching Platform**
+   - *Role*: Full-Stack Developer
+   - *Stack*: .NET 10 · React 19 · TypeScript · PostgreSQL (PostGIS) · Three.js (R3F) · SignalR · Cloudinary
+   - *Focus*: PostGIS geospatial queries, lifestyle compatibility scoring, interactive 3D virtual room inspection viewer.
+4. **Event Operations Platform — Cóc Sài Gòn**
+   - *Role*: Developer
+   - *Stack*: React · Firebase Firestore · Ant Design · Material-UI · Vercel
+   - *Focus*: Live Firestore document synchronization for vendor management, budget approvals, and automated contracts.
+5. **Desktop Game Engine — FlappyBird**
+   - *Role*: Desktop Developer
+   - *Stack*: C# · .NET 9 · WPF · XAML
+   - *Focus*: Decoupled 3-tier desktop architecture, custom 60 FPS physics tick loop, collision detection, and high-score serialization.
+
+---
+
+## 🎓 Education & Experience
+
+- **FPT University** (Sep 2023 – Expected June 2027): Bachelor of Software Engineering (Full-time employment permitted alongside study).
+- **FPT Software** (Jan 2026 – May 2026): Software Tester Intern (Agile/Scrum enterprise web QA, T-SQL database verification, root-cause defect analysis via Azure DevOps).
+
+---
+
+## 📬 Contact & Correspondence
 
 - **Email**: [lqkhanh292005@gmail.com](mailto:lqkhanh292005@gmail.com)
 - **Phone / Zalo**: 0911 887 141
 - **LinkedIn**: [linkedin.com/in/lqkhanh295](https://www.linkedin.com/in/lqkhanh295)
 - **GitHub**: [github.com/lqkhanh295](https://github.com/lqkhanh295)
-- **Education**: FPT University (Software Engineering, Class of 2027)
+- **Location**: Ho Chi Minh City, Vietnam (UTC+07:00)
+- **Resume**: [Lê Quốc Khánh.pdf](./Lê%20Quốc%20Khánh.pdf)
