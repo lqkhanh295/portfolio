@@ -8,10 +8,8 @@
  * 3. Three.js Living Atmosphere & Firefly System (Day / Sunset / Night)
  * 4. Atmosphere Mood Controller (☀️ Day / 🌇 Sunset / 🌙 Night)
  * 5. Procedural Studio Ghibli Countryside Soundscape (Web Audio API)
- * 6. Retro CRT Field Diagnostics Terminal (Modal & Interactive Commands)
- * 7. SkaEV Interactive Workbench (Live Telemetry, Geospatial Radar, Clean Arch)
- * 8. GSAP & ScrollTrigger Scene Choreography
- * 9. Navigation, Active ScrollSpy & Stationery Mail
+ * 6. GSAP & ScrollTrigger Scene Choreography
+ * 7. Navigation, Active ScrollSpy & Stationery Mail
  * ==========================================================================
  */
 
@@ -423,93 +421,7 @@
         });
     }
 
-    // ===== 6. RETRO CRT FIELD DIAGNOSTICS TERMINAL =====
-    function initRetroCrtTerminal() {
-        const hotspot = document.getElementById('crtHotspot');
-        const modal = document.getElementById('crtTerminalModal');
-        const closeBtn = document.getElementById('crtCloseBtn');
-        const backdrop = document.getElementById('crtModalBackdrop');
-        const outputLog = document.getElementById('crtOutputLog');
-
-        if (!modal) return;
-
-        function openTerminal() {
-            modal.removeAttribute('hidden');
-            if (closeBtn) closeBtn.focus();
-        }
-
-        function closeTerminal() {
-            modal.setAttribute('hidden', '');
-            if (hotspot) hotspot.focus();
-        }
-
-        if (hotspot) {
-            hotspot.addEventListener('click', openTerminal);
-            hotspot.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openTerminal();
-                }
-            });
-        }
-
-        if (closeBtn) closeBtn.addEventListener('click', closeTerminal);
-        if (backdrop) backdrop.addEventListener('click', closeTerminal);
-
-        window.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
-                closeTerminal();
-            }
-        });
-
-        // Command buttons
-        const cmdButtons = modal.querySelectorAll('.crt-tool-btn');
-        cmdButtons.forEach((btn) => {
-            btn.addEventListener('click', function () {
-                const cmd = this.getAttribute('data-cmd');
-                handleCommand(cmd);
-            });
-        });
-
-        function handleCommand(cmd) {
-            if (!outputLog) return;
-
-            if (cmd === 'clear') {
-                outputLog.textContent = 'khanh@field-station:~$ _';
-                return;
-            }
-
-            if (cmd === 'diagnostics') {
-                outputLog.textContent += `\n\nkhanh@field-station:~$ ./diagnostics.sh --run-unit-tests
-[TEST EXECUTION: Solution SkaEV.sln]
-  -> Domain.UnitTests: 18/18 PASSED (24ms)
-  -> Application.Commands.UnitTests: 32/32 PASSED (48ms)
-  -> Infrastructure.IntegrationTests: 14/14 PASSED (112ms)
-  -> MediatR Handlers: Clean validation pipeline confirmed
-  -> EF Core: Spatial Index ST_DWithin query verified
-[OVERALL RESULT] All 64 tests PASSED. Zero memory leaks detected.
-khanh@field-station:~$ _`;
-            } else if (cmd === 'benchmark') {
-                outputLog.textContent += `\n\nkhanh@field-station:~$ ./benchmark_spatial.sh --radius 10km
-[BENCHMARK: NetTopologySuite vs Linear Lat/Lng Table Scan]
-  -> In-Memory Linear Scan (10,000 nodes): 42.8 ms
-  -> SQL Server Spatial Point (SRID 4326): 3.1 ms
-  -> Performance Acceleration: 13.8x faster with PostGIS/SQL Spatial indexes!
-khanh@field-station:~$ _`;
-            } else if (cmd === 'notes') {
-                outputLog.textContent += `\n\nkhanh@field-station:~$ cat ~/field_notes/why_backend.txt
-"I chose Backend .NET because I love the quiet, rigorous certainty of data pipelines.
-A user interface might delight for seconds, but a rock-solid transactional boundary,
-zero concurrency conflicts, and 12ms WebSocket telemetry guarantees trust forever."
-— Lê Quốc Khánh // Saigon, 2026
-khanh@field-station:~$ _`;
-            }
-
-            outputLog.scrollTop = outputLog.scrollHeight;
-        }
-    }
-
-    // ===== 7. GSAP & SCROLLTRIGGER SCENE CHOREOGRAPHY =====
+    // ===== 6. GSAP & SCROLLTRIGGER SCENE CHOREOGRAPHY =====
     function initGsapChoreography() {
         if (typeof window.gsap === 'undefined') return;
 
@@ -758,7 +670,6 @@ khanh@field-station:~$ _`;
         initAtmosphericScene();
         initAtmosphereMoodController();
         initProceduralSoundscape();
-        initRetroCrtTerminal();
         initGsapChoreography();
     }
 
