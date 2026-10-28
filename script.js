@@ -163,6 +163,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         setupNavigation();
         setupContactForm();
-        setupAmbientAtmosphere();
+        // Hero motion is owned by visuals.js (GSAP) to avoid competing transforms.
     });
 })();
