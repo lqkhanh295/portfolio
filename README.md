@@ -67,7 +67,7 @@ An illustrated Japanese animated-film portfolio world, reminiscent of **1980s–
 
 - **Email**: [lqkhanh292005@gmail.com](mailto:lqkhanh292005@gmail.com)
 - **Phone / Zalo**: 0911 887 141
-- **LinkedIn**: [linkedin.com/in/lqkhanh295](https://www.linkedin.com/in/lqkhanh295)
+- **LinkedIn**: [linkedin.com/in/khanh-le-87a017286](https://www.linkedin.com/in/khanh-le-87a017286/)
 - **GitHub**: [github.com/lqkhanh295](https://github.com/lqkhanh295)
 - **Location**: Ho Chi Minh City, Vietnam (UTC+07:00)
 - **Resume**: [Lê Quốc Khánh.pdf](./Lê%20Quốc%20Khánh.pdf)
