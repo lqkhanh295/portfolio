@@ -192,269 +192,46 @@
                     </p>
                 </div>
 
-                <!-- Featured Project: SkaEV -->
-                <article class="featured-project-plate" id="featuredProjectPlate">
-                    <div class="featured-photo-frame">
-                        <img src="skaev-preview.jpg"
-                            alt="SkaEV EV Charging Station Operations Command Center UI showing live geospatial station map and battery telemetry"
-                            class="featured-photo-img" loading="lazy">
-                        <div class="photo-caption-strip">
-                            <span>Fig 01. SkaEV Operations Dashboard</span>
-                            <span>.NET 9 · React · SignalR</span>
-                        </div>
-                    </div>
-
-                    <div class="featured-project-info">
-                        <div class="featured-meta-chips">
-                            <span class="project-chip chip-primary">Featured Case Study</span>
-                            <span class="project-chip">Team Lead &amp; Backend</span>
-                            <span class="project-chip chip-warm">.NET 9</span>
-                        </div>
-
-                        <h3 class="featured-project-title">EV Charging Station Management System</h3>
-                        <div class="featured-project-subtitle">SkaEV Platform · Web-based Station Operations &amp; Live
-                            Telemetry</div>
-
-                        <p class="featured-project-desc">
-                            Led a four-person engineering team to design and build an EV charging platform handling driver
-                            reservations, geospatial station discovery, automated invoicing, and live battery telemetry.
-                        </p>
-
-                        <div class="technical-field-notes">
-                            <div class="notes-label">Architecture &amp; Key Challenges:</div>
-                            <ul class="notes-list">
-                                <li>Structured backend services following Clean Architecture principles with JWT
-                                    role-based access control and Serilog structured logging.</li>
-                                <li>Integrated <code>NetTopologySuite</code> with SQL Server for geospatial radius
-                                    station search and slot allocation.</li>
-                                <li>Implemented SignalR WebSockets broadcasting live charging slot availability and
-                                    State-of-Charge (SOC) metrics across concurrent driver sessions.</li>
-                                <li>Implemented SQL Server Stored Procedures and transactions for reservation payments,
-                                    preventing duplicate booking conflicts.</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-stack-strip">
-                            <span class="stack-label">Stack:</span>
-                            <span>C# · .NET 9 · ASP.NET Core · React · SQL Server · EF Core · SignalR ·
-                                NetTopologySuite</span>
-                        </div>
-
-                        <div class="project-actions-row">
-                            <a href="https://github.com/lqkhanh295/FPTU_FA25_SWP391_G4_SkaEV" target="_blank"
-                                rel="noopener noreferrer" class="text-action-link">
-                                Inspect Source Repository →
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Bespoke Signature Move: Interactive Architecture & Live Telemetry Workbench -->
-                    <div class="case-study-interactive-workbench" id="skaevInteractiveWorkbench">
-                        <div class="workbench-bar-header">
-                            <div class="workbench-title-group">
-                                <span class="live-dot-pulse" aria-hidden="true"></span>
-                                <span class="workbench-tag">Signature Move · Live Engineering Sandbox</span>
-                            </div>
-                            <span class="workbench-subtag">Simulated In-Browser Client // C# 13 + SignalR</span>
-                        </div>
-
-                        <!-- Tab Selection -->
-                        <div class="skaev-tab-bar" role="tablist" aria-label="SkaEV System Simulation Modes">
-                            <button class="skaev-tab active" role="tab" aria-selected="true" data-tab="telemetry" id="tab-telemetry">
-                                ⚡ Live SignalR Telemetry
-                            </button>
-                            <button class="skaev-tab" role="tab" aria-selected="false" data-tab="geospatial" id="tab-geospatial">
-                                📍 NetTopologySuite Radar
-                            </button>
-                            <button class="skaev-tab" role="tab" aria-selected="false" data-tab="pipeline" id="tab-pipeline">
-                                🏛️ Clean Architecture Pipeline
-                            </button>
-                        </div>
-
-                        <!-- Panel 1: Live SignalR Telemetry Simulation -->
-                        <div class="skaev-panel active" id="skaevPanelTelemetry" role="tabpanel">
-                            <div class="telemetry-sim-layout">
-                                <div class="telemetry-gauge-card">
-                                    <div class="gauge-card-header">
-                                        <span class="gauge-title">Battery State-of-Charge (SoC)</span>
-                                        <span class="gauge-port-badge">Bay #03 · DC Fast</span>
-                                    </div>
-                                    <div class="gauge-center-visual">
-                                        <div class="gauge-ring-box">
-                                            <svg class="gauge-svg" viewBox="0 0 120 120">
-                                                <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
-                                                <circle class="gauge-fill" id="socGaugeFill" cx="60" cy="60" r="50"></circle>
-                                            </svg>
-                                            <div class="gauge-readout">
-                                                <span class="gauge-percent" id="socPercentText">68%</span>
-                                                <span class="gauge-state-label" id="socStateText">Charging</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="gauge-telemetry-metrics">
-                                        <div class="telemetry-metric">
-                                            <span class="m-val" id="telemetryPowerVal">48.4 kW</span>
-                                            <span class="m-lbl">Current Power</span>
-                                        </div>
-                                        <div class="telemetry-metric">
-                                            <span class="m-val" id="telemetryVoltageVal">399.1 V</span>
-                                            <span class="m-lbl">Bus Voltage</span>
-                                        </div>
-                                        <div class="telemetry-metric">
-                                            <span class="m-val" id="telemetryTempVal">33.2°C</span>
-                                            <span class="m-lbl">Cell Temp</span>
-                                        </div>
-                                    </div>
-                                    <div class="gauge-action-strip">
-                                        <button class="btn-gauge-cmd active" id="toggleChargeSimBtn">⚡ Pause Feed</button>
-                                        <button class="btn-gauge-cmd" id="resetChargeSimBtn">↺ Reset Session</button>
-                                    </div>
-                                </div>
-
-                                <div class="telemetry-terminal-card">
-                                    <div class="terminal-card-header">
-                                        <div class="terminal-title">WebSocket Stream · <code>/hubs/chargingSession</code></div>
-                                        <span class="terminal-badge-live">● CONNECTED (12ms)</span>
-                                    </div>
-                                    <div class="terminal-log-scroller" id="telemetryLogFeed">
-                                        <!-- Dynamic real-time socket events stream here -->
-                                    </div>
-                                    <div class="terminal-footer-hint">
-                                        Broadcasting live updates via ASP.NET Core SignalR <code>Hub&lt;IChargingClient&gt;</code> to connected driver browsers.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Panel 2: NetTopologySuite Radar Spatial Search -->
-                        <div class="skaev-panel" id="skaevPanelGeospatial" role="tabpanel" hidden>
-                            <div class="geospatial-sim-layout">
-                                <div class="radar-visual-column">
-                                    <div class="radar-chassis">
-                                        <div class="radar-screen-canvas" id="radarScreenCanvas">
-                                            <div class="radar-cross-h"></div>
-                                            <div class="radar-cross-v"></div>
-                                            <div class="radar-sweep-beam"></div>
-                                            <div class="radar-boundary-ring" id="radarBoundaryRing"></div>
-
-                                            <!-- User Core Pin -->
-                                            <div class="radar-poi user-poi" style="top: 50%; left: 50%;" title="Driver Location (District 1)">
-                                                <span class="user-pulse"></span>
-                                                <span class="poi-label user">Driver (0km)</span>
-                                            </div>
-
-                                            <!-- Saigon Charging Stations -->
-                                            <div class="radar-poi station-poi inside" id="stationD1" style="top: 42%; left: 58%;" data-dist="3.2">
-                                                <span class="poi-dot"></span>
-                                                <span class="poi-label">D1 Hub (3.2km)</span>
-                                            </div>
-                                            <div class="radar-poi station-poi inside" id="stationTD" style="top: 32%; left: 70%;" data-dist="8.4">
-                                                <span class="poi-dot"></span>
-                                                <span class="poi-label">Thu Duc (8.4km)</span>
-                                            </div>
-                                            <div class="radar-poi station-poi outside" id="stationD7" style="top: 72%; left: 42%;" data-dist="11.5">
-                                                <span class="poi-dot"></span>
-                                                <span class="poi-label">D7 Crescent (11.5km)</span>
-                                            </div>
-                                            <div class="radar-poi station-poi outside" id="stationTB" style="top: 34%; left: 26%;" data-dist="14.2">
-                                                <span class="poi-dot"></span>
-                                                <span class="poi-label">Tan Binh (14.2km)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="radar-info-column">
-                                    <div class="radius-controller-card">
-                                        <div class="controller-head">
-                                            <span>Spatial Search Buffer</span>
-                                            <strong class="controller-val" id="radiusValDisplay">10 km</strong>
-                                        </div>
-                                        <input type="range" class="radar-slider" id="radarRadiusSlider" min="4" max="18" value="10" step="1" aria-label="Distance Radius in Kilometers">
-                                        <div class="slider-ticks">
-                                            <span>4km</span>
-                                            <span>10km</span>
-                                            <span>18km</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="radar-stats-box">
-                                        <div class="stats-badge" id="radarStationCountBadge">2 Stations Found in Buffer</div>
-                                        <ul class="radar-station-details-list" id="radarStationList">
-                                            <!-- Dynamically filled -->
-                                        </ul>
-                                    </div>
-
-                                    <div class="spatial-code-snippet">
-                                        <span class="snippet-tag">C# / NetTopologySuite Query</span>
-                                        <pre><code>var userLoc = new Point(lng, lat) { SRID = 4326 };
-var nearby = await _db.Stations
-    .Where(s => s.Location.IsWithinDistance(userLoc, radiusMeters))
-    .OrderBy(s => s.Location.Distance(userLoc))
-    .ToListAsync();</code></pre>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Panel 3: Clean Architecture Pipeline Flow -->
-                        <div class="skaev-panel" id="skaevPanelPipeline" role="tabpanel" hidden>
-                            <div class="pipeline-sim-layout">
-                                <div class="pipeline-steps-track">
-                                    <button class="step-card active" data-step="1">
-                                        <span class="step-num">01</span>
-                                        <span class="step-title">WebApi Controller</span>
-                                        <span class="step-sub">REST / JWT Guard</span>
-                                    </button>
-                                    <div class="step-arrow">→</div>
-                                    <button class="step-card" data-step="2">
-                                        <span class="step-num">02</span>
-                                        <span class="step-title">FluentValidation</span>
-                                        <span class="step-sub">Command Pre-Check</span>
-                                    </button>
-                                    <div class="step-arrow">→</div>
-                                    <button class="step-card" data-step="3">
-                                        <span class="step-num">03</span>
-                                        <span class="step-title">MediatR Handler</span>
-                                        <span class="step-sub">Application Logic</span>
-                                    </button>
-                                    <div class="step-arrow">→</div>
-                                    <button class="step-card" data-step="4">
-                                        <span class="step-num">04</span>
-                                        <span class="step-title">Domain Entity</span>
-                                        <span class="step-sub">Business Invariants</span>
-                                    </button>
-                                    <div class="step-arrow">→</div>
-                                    <button class="step-card" data-step="5">
-                                        <span class="step-num">05</span>
-                                        <span class="step-title">EF Core / SQL</span>
-                                        <span class="step-sub">ACID Transactions</span>
-                                    </button>
-                                    <div class="step-arrow">→</div>
-                                    <button class="step-card" data-step="6">
-                                        <span class="step-num">06</span>
-                                        <span class="step-title">SignalR Hub</span>
-                                        <span class="step-sub">Live Socket Push</span>
-                                    </button>
-                                </div>
-
-                                <div class="pipeline-stage-inspect-card" id="pipelineInspectCard">
-                                    <div class="stage-tag" id="stageTag">Layer 01 · Presentation / API</div>
-                                    <h4 class="stage-name" id="stageName">ReservationsController.cs</h4>
-                                    <p class="stage-desc" id="stageDesc">
-                                        Receives incoming HTTP requests. Enforces JWT Bearer authentication, extracts user claims, and delegates work to the Application layer using <code>IMediator.Send(command)</code>. Keeps controllers thin with zero business logic.
-                                    </p>
-                                    <div class="stage-testing-callout" id="stageTesting">
-                                        <strong>Testing Focus:</strong> Tested using <code>WebApplicationFactory&lt;Program&gt;</code> to verify HTTP status codes (200, 400, 401) and model binding.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Secondary Projects Grid (5 Projects) -->
+                <!-- Projects Notebook Grid (All 6 Projects) -->
                 <div class="projects-notebook-grid" id="projectsNotebookGrid">
+                    <!-- Project 01: SkaEV -->
+                    <article class="notebook-project-card">
+                        <div>
+                            <div class="card-top-marker">
+                                <span class="card-index">01 / 06</span>
+                                <span class="project-chip chip-primary">Team Lead &amp; Backend</span>
+                            </div>
+
+                            <h3 class="card-project-title">SkaEV — EV Charging Station Operations</h3>
+                            <div class="card-project-sub">Web-based Station Operations &amp; Live Telemetry</div>
+
+                            <p class="card-project-desc">
+                                Led a four-person engineering team to design and build an EV charging platform handling
+                                driver reservations, geospatial station discovery, automated invoicing, and live battery
+                                telemetry.
+                            </p>
+
+                            <div class="card-tech-points">
+                                Structured backend services following Clean Architecture principles (.NET 9). Integrated
+                                <code>NetTopologySuite</code> with SQL Server for spatial radius station search, and
+                                implemented SignalR WebSockets broadcasting live charging slot availability and
+                                State-of-Charge (SoC) telemetry.
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="card-stack-row">
+                                C# · .NET 9 · ASP.NET Core · React · SQL Server · EF Core · SignalR · NetTopologySuite
+                            </div>
+                            <div class="card-footer-links">
+                                <a href="https://github.com/lqkhanh295/FPTU_FA25_SWP391_G4_SkaEV" target="_blank"
+                                    rel="noopener noreferrer" class="text-action-link">
+                                    Source Repository →
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
                     <!-- Project 02: OmniStock -->
                     <article class="notebook-project-card">
                         <div>
