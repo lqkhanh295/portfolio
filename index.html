@@ -42,6 +42,12 @@
                     <li class="nav-item"><a href="#about" class="nav-anchor">About</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-anchor">Contact</a></li>
                     <li class="nav-item">
+                        <button class="nav-ambience-btn" id="audioToggleBtn" aria-label="Toggle countryside breeze ambience" title="Play quiet countryside breeze &amp; windchime">
+                            <span class="ambience-icon" aria-hidden="true">♫</span>
+                            <span class="ambience-text">Ambience: Off</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="nav-cv-btn">
                             Resume ↓
                         </a>
@@ -97,6 +103,29 @@
                             </div>
                         </div>
 
+                        <!-- Interactive CRT Hotspot over the desk retro monitor -->
+                        <div class="hero-crt-hotspot" id="crtHotspot" role="button" tabindex="0"
+                            aria-label="Open Retro Field Terminal on CRT Monitor"
+                            title="Click to boot Retro Field Diagnostics Terminal">
+                            <div class="crt-hotspot-badge">
+                                <span class="badge-dot"></span>
+                                <span>CRT · Terminal</span>
+                            </div>
+                        </div>
+
+                        <!-- Atmospheric Time-of-Day Mood Controller -->
+                        <div class="hero-atmosphere-controls" role="group" aria-label="Atmospheric Time of Day">
+                            <button class="atmosphere-btn active" data-mood="day" title="Afternoon Sunlight">
+                                <span class="atm-icon">☀️</span> <span class="atm-label">Day</span>
+                            </button>
+                            <button class="atmosphere-btn" data-mood="dusk" title="Golden Hour Dusk">
+                                <span class="atm-icon">🌇</span> <span class="atm-label">Sunset</span>
+                            </button>
+                            <button class="atmosphere-btn" data-mood="night" title="Firefly Night">
+                                <span class="atm-icon">🌙</span> <span class="atm-label">Night</span>
+                            </button>
+                        </div>
+
                         <!-- Vignette Stamp -->
                         <div class="hero-vignette-stamp" aria-hidden="true">
                             SAIGON · 2026 // FIELD LOG
@@ -105,6 +134,12 @@
 
                     <!-- Plane 5: Dedicated Developer Identity Card (Desktop: Overlaid / Mobile: Stacked) -->
                     <div class="hero-identity-overlay" id="heroIdentityOverlay">
+                        <!-- Personalized Red Hanko Seal (印鑑) -->
+                        <div class="hanko-seal" title="Lê Quốc Khánh Official Stamp (印鑑)" aria-hidden="true">
+                            <span class="hanko-kanji">慶</span>
+                            <span class="hanko-caption">KHANH</span>
+                        </div>
+
                         <div class="hero-chapter-pill">
                             <span class="pill-leaf" aria-hidden="true"></span>
                             Scene 01 · The Workspace
@@ -210,6 +245,210 @@
                                 rel="noopener noreferrer" class="text-action-link">
                                 Inspect Source Repository →
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke Signature Move: Interactive Architecture & Live Telemetry Workbench -->
+                    <div class="case-study-interactive-workbench" id="skaevInteractiveWorkbench">
+                        <div class="workbench-bar-header">
+                            <div class="workbench-title-group">
+                                <span class="live-dot-pulse" aria-hidden="true"></span>
+                                <span class="workbench-tag">Signature Move · Live Engineering Sandbox</span>
+                            </div>
+                            <span class="workbench-subtag">Simulated In-Browser Client // C# 13 + SignalR</span>
+                        </div>
+
+                        <!-- Tab Selection -->
+                        <div class="skaev-tab-bar" role="tablist" aria-label="SkaEV System Simulation Modes">
+                            <button class="skaev-tab active" role="tab" aria-selected="true" data-tab="telemetry" id="tab-telemetry">
+                                ⚡ Live SignalR Telemetry
+                            </button>
+                            <button class="skaev-tab" role="tab" aria-selected="false" data-tab="geospatial" id="tab-geospatial">
+                                📍 NetTopologySuite Radar
+                            </button>
+                            <button class="skaev-tab" role="tab" aria-selected="false" data-tab="pipeline" id="tab-pipeline">
+                                🏛️ Clean Architecture Pipeline
+                            </button>
+                        </div>
+
+                        <!-- Panel 1: Live SignalR Telemetry Simulation -->
+                        <div class="skaev-panel active" id="skaevPanelTelemetry" role="tabpanel">
+                            <div class="telemetry-sim-layout">
+                                <div class="telemetry-gauge-card">
+                                    <div class="gauge-card-header">
+                                        <span class="gauge-title">Battery State-of-Charge (SoC)</span>
+                                        <span class="gauge-port-badge">Bay #03 · DC Fast</span>
+                                    </div>
+                                    <div class="gauge-center-visual">
+                                        <div class="gauge-ring-box">
+                                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                                <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
+                                                <circle class="gauge-fill" id="socGaugeFill" cx="60" cy="60" r="50"></circle>
+                                            </svg>
+                                            <div class="gauge-readout">
+                                                <span class="gauge-percent" id="socPercentText">68%</span>
+                                                <span class="gauge-state-label" id="socStateText">Charging</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gauge-telemetry-metrics">
+                                        <div class="telemetry-metric">
+                                            <span class="m-val" id="telemetryPowerVal">48.4 kW</span>
+                                            <span class="m-lbl">Current Power</span>
+                                        </div>
+                                        <div class="telemetry-metric">
+                                            <span class="m-val" id="telemetryVoltageVal">399.1 V</span>
+                                            <span class="m-lbl">Bus Voltage</span>
+                                        </div>
+                                        <div class="telemetry-metric">
+                                            <span class="m-val" id="telemetryTempVal">33.2°C</span>
+                                            <span class="m-lbl">Cell Temp</span>
+                                        </div>
+                                    </div>
+                                    <div class="gauge-action-strip">
+                                        <button class="btn-gauge-cmd active" id="toggleChargeSimBtn">⚡ Pause Feed</button>
+                                        <button class="btn-gauge-cmd" id="resetChargeSimBtn">↺ Reset Session</button>
+                                    </div>
+                                </div>
+
+                                <div class="telemetry-terminal-card">
+                                    <div class="terminal-card-header">
+                                        <div class="terminal-title">WebSocket Stream · <code>/hubs/chargingSession</code></div>
+                                        <span class="terminal-badge-live">● CONNECTED (12ms)</span>
+                                    </div>
+                                    <div class="terminal-log-scroller" id="telemetryLogFeed">
+                                        <!-- Dynamic real-time socket events stream here -->
+                                    </div>
+                                    <div class="terminal-footer-hint">
+                                        Broadcasting live updates via ASP.NET Core SignalR <code>Hub&lt;IChargingClient&gt;</code> to connected driver browsers.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: NetTopologySuite Radar Spatial Search -->
+                        <div class="skaev-panel" id="skaevPanelGeospatial" role="tabpanel" hidden>
+                            <div class="geospatial-sim-layout">
+                                <div class="radar-visual-column">
+                                    <div class="radar-chassis">
+                                        <div class="radar-screen-canvas" id="radarScreenCanvas">
+                                            <div class="radar-cross-h"></div>
+                                            <div class="radar-cross-v"></div>
+                                            <div class="radar-sweep-beam"></div>
+                                            <div class="radar-boundary-ring" id="radarBoundaryRing"></div>
+
+                                            <!-- User Core Pin -->
+                                            <div class="radar-poi user-poi" style="top: 50%; left: 50%;" title="Driver Location (District 1)">
+                                                <span class="user-pulse"></span>
+                                                <span class="poi-label user">Driver (0km)</span>
+                                            </div>
+
+                                            <!-- Saigon Charging Stations -->
+                                            <div class="radar-poi station-poi inside" id="stationD1" style="top: 42%; left: 58%;" data-dist="3.2">
+                                                <span class="poi-dot"></span>
+                                                <span class="poi-label">D1 Hub (3.2km)</span>
+                                            </div>
+                                            <div class="radar-poi station-poi inside" id="stationTD" style="top: 32%; left: 70%;" data-dist="8.4">
+                                                <span class="poi-dot"></span>
+                                                <span class="poi-label">Thu Duc (8.4km)</span>
+                                            </div>
+                                            <div class="radar-poi station-poi outside" id="stationD7" style="top: 72%; left: 42%;" data-dist="11.5">
+                                                <span class="poi-dot"></span>
+                                                <span class="poi-label">D7 Crescent (11.5km)</span>
+                                            </div>
+                                            <div class="radar-poi station-poi outside" id="stationTB" style="top: 34%; left: 26%;" data-dist="14.2">
+                                                <span class="poi-dot"></span>
+                                                <span class="poi-label">Tan Binh (14.2km)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="radar-info-column">
+                                    <div class="radius-controller-card">
+                                        <div class="controller-head">
+                                            <span>Spatial Search Buffer</span>
+                                            <strong class="controller-val" id="radiusValDisplay">10 km</strong>
+                                        </div>
+                                        <input type="range" class="radar-slider" id="radarRadiusSlider" min="4" max="18" value="10" step="1" aria-label="Distance Radius in Kilometers">
+                                        <div class="slider-ticks">
+                                            <span>4km</span>
+                                            <span>10km</span>
+                                            <span>18km</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="radar-stats-box">
+                                        <div class="stats-badge" id="radarStationCountBadge">2 Stations Found in Buffer</div>
+                                        <ul class="radar-station-details-list" id="radarStationList">
+                                            <!-- Dynamically filled -->
+                                        </ul>
+                                    </div>
+
+                                    <div class="spatial-code-snippet">
+                                        <span class="snippet-tag">C# / NetTopologySuite Query</span>
+                                        <pre><code>var userLoc = new Point(lng, lat) { SRID = 4326 };
+var nearby = await _db.Stations
+    .Where(s => s.Location.IsWithinDistance(userLoc, radiusMeters))
+    .OrderBy(s => s.Location.Distance(userLoc))
+    .ToListAsync();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Clean Architecture Pipeline Flow -->
+                        <div class="skaev-panel" id="skaevPanelPipeline" role="tabpanel" hidden>
+                            <div class="pipeline-sim-layout">
+                                <div class="pipeline-steps-track">
+                                    <button class="step-card active" data-step="1">
+                                        <span class="step-num">01</span>
+                                        <span class="step-title">WebApi Controller</span>
+                                        <span class="step-sub">REST / JWT Guard</span>
+                                    </button>
+                                    <div class="step-arrow">→</div>
+                                    <button class="step-card" data-step="2">
+                                        <span class="step-num">02</span>
+                                        <span class="step-title">FluentValidation</span>
+                                        <span class="step-sub">Command Pre-Check</span>
+                                    </button>
+                                    <div class="step-arrow">→</div>
+                                    <button class="step-card" data-step="3">
+                                        <span class="step-num">03</span>
+                                        <span class="step-title">MediatR Handler</span>
+                                        <span class="step-sub">Application Logic</span>
+                                    </button>
+                                    <div class="step-arrow">→</div>
+                                    <button class="step-card" data-step="4">
+                                        <span class="step-num">04</span>
+                                        <span class="step-title">Domain Entity</span>
+                                        <span class="step-sub">Business Invariants</span>
+                                    </button>
+                                    <div class="step-arrow">→</div>
+                                    <button class="step-card" data-step="5">
+                                        <span class="step-num">05</span>
+                                        <span class="step-title">EF Core / SQL</span>
+                                        <span class="step-sub">ACID Transactions</span>
+                                    </button>
+                                    <div class="step-arrow">→</div>
+                                    <button class="step-card" data-step="6">
+                                        <span class="step-num">06</span>
+                                        <span class="step-title">SignalR Hub</span>
+                                        <span class="step-sub">Live Socket Push</span>
+                                    </button>
+                                </div>
+
+                                <div class="pipeline-stage-inspect-card" id="pipelineInspectCard">
+                                    <div class="stage-tag" id="stageTag">Layer 01 · Presentation / API</div>
+                                    <h4 class="stage-name" id="stageName">ReservationsController.cs</h4>
+                                    <p class="stage-desc" id="stageDesc">
+                                        Receives incoming HTTP requests. Enforces JWT Bearer authentication, extracts user claims, and delegates work to the Application layer using <code>IMediator.Send(command)</code>. Keeps controllers thin with zero business logic.
+                                    </p>
+                                    <div class="stage-testing-callout" id="stageTesting">
+                                        <strong>Testing Focus:</strong> Tested using <code>WebApplicationFactory&lt;Program&gt;</code> to verify HTTP status codes (200, 400, 401) and model binding.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -793,6 +1032,61 @@
                 </div>
             </div>
         </section>
+
+        <!-- ==========================================================================
+             RETRO CRT FIELD DIAGNOSTICS TERMINAL (MODAL)
+             Booted by clicking the CRT monitor in the hero workspace.
+             ========================================================================== -->
+        <div class="crt-terminal-modal" id="crtTerminalModal" role="dialog" aria-modal="true"
+            aria-label="Field Diagnostics Terminal" hidden>
+            <div class="crt-modal-backdrop" id="crtModalBackdrop"></div>
+            <div class="crt-terminal-chassis">
+                <div class="crt-chassis-topbar">
+                    <div class="crt-brand-badge">
+                        <span class="crt-indicator-dot"></span>
+                        RETRO-STATION 1994 // FIELD MONITOR
+                    </div>
+                    <div class="crt-actions">
+                        <button class="crt-close-btn" id="crtCloseBtn" aria-label="Close Terminal">✕ Esc</button>
+                    </div>
+                </div>
+                <div class="crt-screen-bezel">
+                    <div class="crt-screen-glass">
+                        <div class="crt-scanlines" aria-hidden="true"></div>
+                        <div class="crt-screen-content">
+                            <div class="crt-header-line">
+                                [FIELD LOGOS 9.0] — STATION: SAIGON COUNTRY WORKSPACE
+                            </div>
+                            <div class="crt-header-sub">
+                                C# 13 / .NET 9.0.100 · Clean Architecture Kernel Initialized
+                            </div>
+                            <hr class="crt-divider">
+                            <pre class="crt-output-log" id="crtOutputLog">khanh@field-station:~$ ./diagnostics.sh --inspect-all
+[INIT] Verifying runtime environment...
+  -> Node: Saigon Countryside Workspace (10.8231° N, 106.6297° E)
+  -> Runtime: .NET 9.0.100 (C# 13, ASP.NET Core Web API, EF Core 9)
+  -> Profile: Lê Quốc Khánh // Software Engineer Intern &amp; Fresher (.NET Backend)
+  -> Philosophy: "I like understanding how things work, then building something useful."
+
+[CORE CAPSTONE STATUS: SkaEV PLATFORM]
+  -> Architecture: Clean Architecture (Domain -> Application -> Infrastructure -> WebApi)
+  -> Spatial Engine: NetTopologySuite (SRID 4326) + SQL Server Spatial Indexing
+  -> Real-Time Engine: SignalR WebSocket Hub (Latency: 12ms)
+  -> Booking Integrity: ACID Stored Procedures (0 concurrency race conditions)
+  -> Status: 100% HEALTHY / INTERVIEW-READY
+
+khanh@field-station:~$ _</pre>
+                            <div class="crt-interactive-toolbar">
+                                <button class="crt-tool-btn" data-cmd="diagnostics">▶ Run Diagnostics</button>
+                                <button class="crt-tool-btn" data-cmd="benchmark">⚡ Spatial Benchmark</button>
+                                <button class="crt-tool-btn" data-cmd="notes">📝 Read Field Notes</button>
+                                <button class="crt-tool-btn" data-cmd="clear">↺ Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->

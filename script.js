@@ -5,10 +5,13 @@
  * Architecture:
  * 1. Motion Preference & Accessibility Guard
  * 2. Reading Progress Bar (GSAP ScrollTrigger scaleX)
- * 3. Three.js Atmospheric Sunlit Dust & Pollen System (16:9 Window Depth)
- * 4. GSAP & ScrollTrigger Cinematic Scene Choreography
- * 5. Navigation & Mobile Drawer with Active ScrollSpy
- * 6. Interactive Stationery Mail & Direct Actions
+ * 3. Three.js Living Atmosphere & Firefly System (Day / Sunset / Night)
+ * 4. Atmosphere Mood Controller (☀️ Day / 🌇 Sunset / 🌙 Night)
+ * 5. Procedural Studio Ghibli Countryside Soundscape (Web Audio API)
+ * 6. Retro CRT Field Diagnostics Terminal (Modal & Interactive Commands)
+ * 7. SkaEV Interactive Workbench (Live Telemetry, Geospatial Radar, Clean Arch)
+ * 8. GSAP & ScrollTrigger Scene Choreography
+ * 9. Navigation, Active ScrollSpy & Stationery Mail
  * ==========================================================================
  */
 
@@ -17,6 +20,9 @@
 
     // ===== 1. PREFERENCES & ACCESSIBILITY GUARD =====
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Global hook to update Three.js atmospheric mood from UI
+    let updateAtmosphereMood = null;
 
     // ===== 2. READING PROGRESS BAR =====
     function initReadingProgressBar() {
@@ -35,7 +41,6 @@
                 }
             });
         } else {
-            // High-performance vanilla scroll fallback
             function updateProgress() {
                 const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
                 const progress = totalScroll > 0 ? (window.scrollY / totalScroll) : 0;
@@ -46,7 +51,7 @@
         }
     }
 
-    // ===== 3. THREE.JS ATMOSPHERIC DUST & POLLEN SYSTEM =====
+    // ===== 3. THREE.JS LIVING ATMOSPHERE & FIREFLY SYSTEM =====
     function initAtmosphericScene() {
         const canvas = document.getElementById('heroAtmosphereCanvas');
         const container = document.getElementById('heroScenicWindow');
@@ -55,7 +60,6 @@
             return;
         }
 
-        // WebGL capability check
         let renderer;
         try {
             renderer = new THREE.WebGLRenderer({
@@ -65,11 +69,10 @@
                 powerPreference: 'low-power'
             });
         } catch (e) {
-            console.warn('WebGL not supported for atmospheric canvas. Falling back gracefully.', e);
+            console.warn('WebGL not supported for atmospheric canvas. Graceful fallback enabled.', e);
             return;
         }
 
-        // Configuration
         const DPR = Math.min(window.devicePixelRatio || 1, 2);
         renderer.setPixelRatio(DPR);
 
@@ -81,18 +84,18 @@
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
         camera.position.set(0, 0, 10);
 
-        // Procedural soft-edge circular particle texture (no external image request needed)
-        function createPollenTexture() {
+        // Procedural soft-edge particle texture
+        function createPollenTexture(r, g, b) {
             const texCanvas = document.createElement('canvas');
             texCanvas.width = 64;
             texCanvas.height = 64;
             const ctx = texCanvas.getContext('2d');
 
             const radGrad = ctx.createRadialGradient(32, 32, 0, 32, 32, 30);
-            radGrad.addColorStop(0, 'rgba(255, 248, 225, 0.95)');
-            radGrad.addColorStop(0.3, 'rgba(235, 205, 140, 0.7)');
-            radGrad.addColorStop(0.65, 'rgba(217, 181, 110, 0.25)');
-            radGrad.addColorStop(1, 'rgba(217, 181, 110, 0)');
+            radGrad.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.95)`);
+            radGrad.addColorStop(0.3, `rgba(${Math.min(255, r + 20)}, ${g}, ${Math.max(0, b - 20)}, 0.7)`);
+            radGrad.addColorStop(0.7, `rgba(${r}, ${g}, ${b}, 0.2)`);
+            radGrad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
             ctx.fillStyle = radGrad;
             ctx.beginPath();
@@ -104,9 +107,13 @@
             return texture;
         }
 
-        const pollenTexture = createPollenTexture();
+        const dayTexture = createPollenTexture(255, 240, 200);
+        const duskTexture = createPollenTexture(255, 175, 110);
+        const nightTexture = createPollenTexture(180, 245, 90); // Fireflies (Hotaru)
 
-        // Particle System (Warm afternoon golden motes drifting through window)
+        let currentMood = 'day';
+
+        // Particle System
         const particleCount = prefersReducedMotion ? 40 : 130;
         const positions = new Float32Array(particleCount * 3);
         const velocities = new Float32Array(particleCount * 3);
@@ -122,8 +129,8 @@
             positions[i3 + 1] = (Math.random() - 0.5) * boundY * 2;
             positions[i3 + 2] = (Math.random() - 0.5) * boundZ * 2;
 
-            velocities[i3] = (Math.random() - 0.5) * 0.003;      // gentle lateral drift
-            velocities[i3 + 1] = 0.002 + Math.random() * 0.005;  // gentle upward warm air thermal
+            velocities[i3] = (Math.random() - 0.5) * 0.003;
+            velocities[i3 + 1] = 0.002 + Math.random() * 0.005;
             velocities[i3 + 2] = (Math.random() - 0.5) * 0.002;
 
             phases[i] = Math.random() * Math.PI * 2;
@@ -133,8 +140,8 @@
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.16,
-            map: pollenTexture,
+            size: 0.17,
+            map: dayTexture,
             transparent: true,
             opacity: 0.8,
             blending: THREE.AdditiveBlending,
@@ -144,11 +151,28 @@
         const particleSystem = new THREE.Points(geometry, material);
         scene.add(particleSystem);
 
-        // Interactive subtle parallax mouse response
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetMouseX = 0;
-        let targetMouseY = 0;
+        // Update Mood Hook
+        updateAtmosphereMood = function (mood) {
+            currentMood = mood;
+            if (mood === 'day') {
+                material.map = dayTexture;
+                material.size = 0.17;
+                material.opacity = 0.8;
+            } else if (mood === 'dusk') {
+                material.map = duskTexture;
+                material.size = 0.20;
+                material.opacity = 0.85;
+            } else if (mood === 'night') {
+                material.map = nightTexture;
+                material.size = 0.24; // Fireflies look larger with bioluminescence
+                material.opacity = 0.95;
+            }
+            material.needsUpdate = true;
+        };
+
+        // Subtle mouse parallax
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
 
         container.addEventListener('mousemove', function (e) {
             const rect = container.getBoundingClientRect();
@@ -161,7 +185,6 @@
             targetMouseY = 0;
         });
 
-        // Resize handler
         function onResize() {
             if (!container) return;
             width = container.clientWidth;
@@ -172,10 +195,9 @@
             camera.updateProjectionMatrix();
             renderer.setSize(width, height);
         }
-
         window.addEventListener('resize', onResize, { passive: true });
 
-        // Animation Loop with IntersectionObserver pausing (Critical for 60fps & battery saving)
+        // Animation Loop with IntersectionObserver
         let isHeroInView = true;
         let animationFrameId = null;
         let clock = 0;
@@ -200,30 +222,36 @@
             }
 
             animationFrameId = requestAnimationFrame(animate);
+            clock += 0.014;
 
-            clock += 0.012;
-
-            // Camera subtle damping toward mouse
             mouseX += (targetMouseX - mouseX) * 0.05;
             mouseY += (targetMouseY - mouseY) * 0.05;
             camera.position.x = mouseX * 0.6;
             camera.position.y = mouseY * 0.4;
             camera.lookAt(0, 0, 0);
 
-            // Update particles drift
             const posAttr = geometry.attributes.position;
             const posArray = posAttr.array;
+
+            const isNight = currentMood === 'night';
 
             for (let i = 0; i < particleCount; i++) {
                 const i3 = i * 3;
                 const phase = phases[i] + clock;
 
-                // Drift with thermal sway
-                posArray[i3] += velocities[i3] + Math.sin(phase) * 0.002;
-                posArray[i3 + 1] += velocities[i3 + 1] + Math.cos(phase * 0.7) * 0.001;
-                posArray[i3 + 2] += velocities[i3 + 2];
+                if (isNight) {
+                    // Fireflies wander with organic hovering Lissajous curve
+                    posArray[i3] += Math.sin(phase * 0.8) * 0.006 + velocities[i3];
+                    posArray[i3 + 1] += Math.cos(phase * 0.6) * 0.005 + (velocities[i3 + 1] * 0.3);
+                    posArray[i3 + 2] += Math.sin(phase * 0.5) * 0.004;
+                } else {
+                    // Sunlit pollen rises smoothly on thermal updrafts
+                    posArray[i3] += velocities[i3] + Math.sin(phase) * 0.002;
+                    posArray[i3 + 1] += velocities[i3 + 1] + Math.cos(phase * 0.7) * 0.001;
+                    posArray[i3 + 2] += velocities[i3 + 2];
+                }
 
-                // Wrap around volume bounds
+                // Boundary wrapping
                 if (posArray[i3 + 1] > boundY) {
                     posArray[i3 + 1] = -boundY;
                     posArray[i3] = (Math.random() - 0.5) * boundX * 2;
@@ -239,21 +267,487 @@
         if (!prefersReducedMotion) {
             animate();
         } else {
-            // Render one single subtle static frame for reduced motion users
             renderer.render(scene, camera);
         }
 
-        // Cleanup on page unload
         window.addEventListener('beforeunload', function () {
             if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            if (geometry) geometry.dispose();
-            if (material) material.dispose();
-            if (pollenTexture) pollenTexture.dispose();
-            if (renderer) renderer.dispose();
+            geometry.dispose();
+            material.dispose();
+            dayTexture.dispose();
+            duskTexture.dispose();
+            nightTexture.dispose();
+            renderer.dispose();
         });
     }
 
-    // ===== 4. GSAP & SCROLLTRIGGER SCENE CHOREOGRAPHY =====
+    // ===== 4. ATMOSPHERE MOOD CONTROLLER =====
+    function initAtmosphereMoodController() {
+        const buttons = document.querySelectorAll('.atmosphere-btn');
+        if (!buttons.length) return;
+
+        buttons.forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const mood = this.getAttribute('data-mood');
+                buttons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                document.body.setAttribute('data-mood', mood);
+
+                if (typeof updateAtmosphereMood === 'function') {
+                    updateAtmosphereMood(mood);
+                }
+            });
+        });
+    }
+
+    // ===== 5. PROCEDURAL STUDIO GHIBLI COUNTRYSIDE SOUNDSCAPE (WEB AUDIO API) =====
+    function initProceduralSoundscape() {
+        const toggleBtn = document.getElementById('audioToggleBtn');
+        if (!toggleBtn) return;
+
+        let audioCtx = null;
+        let isPlaying = false;
+        let windGain = null;
+        let chimeInterval = null;
+
+        // Pentatonic Chime Frequencies (Japanese In/Yo Scale: A, B, C, E, F)
+        const chimeNotes = [880, 987.77, 1046.50, 1318.51, 1396.91, 1760, 2093];
+
+        function playChime() {
+            if (!audioCtx || !isPlaying) return;
+
+            const now = audioCtx.currentTime;
+            const note = chimeNotes[Math.floor(Math.random() * chimeNotes.length)];
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(note, now);
+
+            // Shimmer harmonics
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(0.04, now + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + 3.0);
+        }
+
+        function startAudio() {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // Synthesize Soft Summer Wind (Bandpass Pink Noise)
+            const bufferSize = audioCtx.sampleRate * 2;
+            const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            let b0 = 0, b1 = 0, b2 = 0;
+            for (let i = 0; i < bufferSize; i++) {
+                const white = Math.random() * 2 - 1;
+                b0 = 0.99886 * b0 + white * 0.0555179;
+                b1 = 0.99332 * b1 + white * 0.0750759;
+                b2 = 0.96900 * b2 + white * 0.1538520;
+                output[i] = (b0 + b1 + b2) * 0.08;
+            }
+
+            const whiteNoise = audioCtx.createBufferSource();
+            whiteNoise.buffer = noiseBuffer;
+            whiteNoise.loop = true;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(420, audioCtx.currentTime);
+            filter.Q.setValueAtTime(1.8, audioCtx.currentTime);
+
+            // Slow wind swell LFO
+            const lfo = audioCtx.createOscillator();
+            lfo.frequency.setValueAtTime(0.12, audioCtx.currentTime);
+            const lfoGain = audioCtx.createGain();
+            lfoGain.gain.setValueAtTime(180, audioCtx.currentTime);
+            lfo.connect(lfoGain);
+            lfoGain.connect(filter.frequency);
+
+            windGain = audioCtx.createGain();
+            windGain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+
+            whiteNoise.connect(filter);
+            filter.connect(windGain);
+            windGain.connect(audioCtx.destination);
+
+            whiteNoise.start();
+            lfo.start();
+
+            // Periodic delicate windchime rings (every 6 to 14 seconds)
+            chimeInterval = setInterval(() => {
+                if (Math.random() > 0.3) {
+                    playChime();
+                }
+            }, 7500);
+
+            // Initial greeting chime
+            setTimeout(playChime, 800);
+
+            isPlaying = true;
+            toggleBtn.classList.add('active');
+            toggleBtn.querySelector('.ambience-text').textContent = 'Ambience: Calm ♫';
+        }
+
+        function stopAudio() {
+            if (audioCtx && audioCtx.state === 'running') {
+                audioCtx.suspend();
+            }
+            if (chimeInterval) clearInterval(chimeInterval);
+            isPlaying = false;
+            toggleBtn.classList.remove('active');
+            toggleBtn.querySelector('.ambience-text').textContent = 'Ambience: Off';
+        }
+
+        toggleBtn.addEventListener('click', function () {
+            if (!isPlaying) {
+                startAudio();
+            } else {
+                stopAudio();
+            }
+        });
+    }
+
+    // ===== 6. RETRO CRT FIELD DIAGNOSTICS TERMINAL =====
+    function initRetroCrtTerminal() {
+        const hotspot = document.getElementById('crtHotspot');
+        const modal = document.getElementById('crtTerminalModal');
+        const closeBtn = document.getElementById('crtCloseBtn');
+        const backdrop = document.getElementById('crtModalBackdrop');
+        const outputLog = document.getElementById('crtOutputLog');
+
+        if (!modal) return;
+
+        function openTerminal() {
+            modal.removeAttribute('hidden');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeTerminal() {
+            modal.setAttribute('hidden', '');
+            if (hotspot) hotspot.focus();
+        }
+
+        if (hotspot) {
+            hotspot.addEventListener('click', openTerminal);
+            hotspot.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openTerminal();
+                }
+            });
+        }
+
+        if (closeBtn) closeBtn.addEventListener('click', closeTerminal);
+        if (backdrop) backdrop.addEventListener('click', closeTerminal);
+
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+                closeTerminal();
+            }
+        });
+
+        // Command buttons
+        const cmdButtons = modal.querySelectorAll('.crt-tool-btn');
+        cmdButtons.forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const cmd = this.getAttribute('data-cmd');
+                handleCommand(cmd);
+            });
+        });
+
+        function handleCommand(cmd) {
+            if (!outputLog) return;
+
+            if (cmd === 'clear') {
+                outputLog.textContent = 'khanh@field-station:~$ _';
+                return;
+            }
+
+            if (cmd === 'diagnostics') {
+                outputLog.textContent += `\n\nkhanh@field-station:~$ ./diagnostics.sh --run-unit-tests
+[TEST EXECUTION: Solution SkaEV.sln]
+  -> Domain.UnitTests: 18/18 PASSED (24ms)
+  -> Application.Commands.UnitTests: 32/32 PASSED (48ms)
+  -> Infrastructure.IntegrationTests: 14/14 PASSED (112ms)
+  -> MediatR Handlers: Clean validation pipeline confirmed
+  -> EF Core: Spatial Index ST_DWithin query verified
+[OVERALL RESULT] All 64 tests PASSED. Zero memory leaks detected.
+khanh@field-station:~$ _`;
+            } else if (cmd === 'benchmark') {
+                outputLog.textContent += `\n\nkhanh@field-station:~$ ./benchmark_spatial.sh --radius 10km
+[BENCHMARK: NetTopologySuite vs Linear Lat/Lng Table Scan]
+  -> In-Memory Linear Scan (10,000 nodes): 42.8 ms
+  -> SQL Server Spatial Point (SRID 4326): 3.1 ms
+  -> Performance Acceleration: 13.8x faster with PostGIS/SQL Spatial indexes!
+khanh@field-station:~$ _`;
+            } else if (cmd === 'notes') {
+                outputLog.textContent += `\n\nkhanh@field-station:~$ cat ~/field_notes/why_backend.txt
+"I chose Backend .NET because I love the quiet, rigorous certainty of data pipelines.
+A user interface might delight for seconds, but a rock-solid transactional boundary,
+zero concurrency conflicts, and 12ms WebSocket telemetry guarantees trust forever."
+— Lê Quốc Khánh // Saigon, 2026
+khanh@field-station:~$ _`;
+            }
+
+            outputLog.scrollTop = outputLog.scrollHeight;
+        }
+    }
+
+    // ===== 7. SKAEV INTERACTIVE CAPSTONE WORKBENCH =====
+    function initSkaevInteractiveWorkbench() {
+        const tabs = document.querySelectorAll('.skaev-tab');
+        const panels = document.querySelectorAll('.skaev-panel');
+
+        if (!tabs.length || !panels.length) return;
+
+        // Tab Switching
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', function () {
+                const targetTab = this.getAttribute('data-tab');
+
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                panels.forEach(p => p.setAttribute('hidden', ''));
+
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+
+                const activePanel = document.getElementById(`skaevPanel${targetTab.charAt(0).toUpperCase() + targetTab.slice(1)}`);
+                if (activePanel) {
+                    activePanel.removeAttribute('hidden');
+                }
+            });
+        });
+
+        // --- Panel 1: Live Telemetry Simulation ---
+        let isSimRunning = true;
+        let soc = 68;
+        let power = 48.4;
+        let voltage = 399.1;
+        let temp = 33.2;
+
+        const socFill = document.getElementById('socGaugeFill');
+        const socText = document.getElementById('socPercentText');
+        const pwrText = document.getElementById('telemetryPowerVal');
+        const voltText = document.getElementById('telemetryVoltageVal');
+        const tempText = document.getElementById('telemetryTempVal');
+        const logFeed = document.getElementById('telemetryLogFeed');
+        const toggleBtn = document.getElementById('toggleChargeSimBtn');
+        const resetBtn = document.getElementById('resetChargeSimBtn');
+
+        function updateGauge(val) {
+            if (!socFill || !socText) return;
+            // Arc circumference = 2 * PI * 50 = 314
+            const offset = 314 - (314 * (val / 100));
+            socFill.style.strokeDashoffset = offset;
+            socText.textContent = `${Math.round(val)}%`;
+        }
+        updateGauge(soc);
+
+        function appendLog(lineHtml) {
+            if (!logFeed) return;
+            const row = document.createElement('div');
+            row.className = 'terminal-log-line';
+            row.innerHTML = lineHtml;
+            logFeed.appendChild(row);
+
+            // Keep log tidy
+            if (logFeed.children.length > 25) {
+                logFeed.removeChild(logFeed.firstChild);
+            }
+            logFeed.scrollTop = logFeed.scrollHeight;
+        }
+
+        // Initial Seed Logs
+        appendLog(`<span class="log-time">[19:42:01]</span> <span class="log-info">SignalR Hub: Driver #092 linked to Bay-03</span>`);
+        appendLog(`<span class="log-time">[19:42:02]</span> <span class="log-info">Handshake verified: ISO 15118 Protocol</span>`);
+        appendLog(`<span class="log-time">[19:42:04]</span> <span class="log-kw">48.2 kW</span> | <span class="log-soc">SoC 68%</span> | Telemetry frame pushed`);
+
+        const telemetryInterval = setInterval(() => {
+            if (!isSimRunning) return;
+
+            soc += 0.5;
+            if (soc > 98) soc = 35; // Loop for continuous live feel
+
+            power = (47.5 + Math.random() * 2.1).toFixed(1);
+            voltage = (398.5 + Math.random() * 1.5).toFixed(1);
+            temp = (33.0 + Math.random() * 0.8).toFixed(1);
+
+            updateGauge(soc);
+            if (pwrText) pwrText.textContent = `${power} kW`;
+            if (voltText) voltText.textContent = `${voltage} V`;
+            if (tempText) tempText.textContent = `${temp}°C`;
+
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            appendLog(`<span class="log-time">[${timeStr}]</span> <span class="log-kw">${power} kW</span> | <span class="log-soc">SoC ${Math.round(soc)}%</span> | 399V / 121A`);
+        }, 1800);
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+                isSimRunning = !isSimRunning;
+                if (isSimRunning) {
+                    this.textContent = '⚡ Pause Feed';
+                    this.classList.add('active');
+                } else {
+                    this.textContent = '▶ Resume Feed';
+                    this.classList.remove('active');
+                }
+            });
+        }
+
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function () {
+                soc = 35;
+                updateGauge(soc);
+                appendLog(`<span class="log-time">[${new Date().toTimeString().split(' ')[0]}]</span> <span class="log-info">Session reset by user. Initializing new charging handshake...</span>`);
+            });
+        }
+
+        // --- Panel 2: NetTopologySuite Radar Spatial Search ---
+        const slider = document.getElementById('radarRadiusSlider');
+        const radiusDisplay = document.getElementById('radiusValDisplay');
+        const boundaryRing = document.getElementById('radarBoundaryRing');
+        const stationBadge = document.getElementById('radarStationCountBadge');
+        const stationList = document.getElementById('radarStationList');
+
+        const stations = [
+            { id: 'stationD1', name: 'District 1 (Bitexco Hub)', dist: 3.2, bays: 4 },
+            { id: 'stationTD', name: 'Thu Duc Innovation Park', dist: 8.4, bays: 6 },
+            { id: 'stationD7', name: 'District 7 (Crescent Mall)', dist: 11.5, bays: 2 },
+            { id: 'stationTB', name: 'Tan Binh Freight Terminal', dist: 14.2, bays: 5 }
+        ];
+
+        function updateGeospatialRadar(radiusKm) {
+            if (radiusDisplay) radiusDisplay.textContent = `${radiusKm} km`;
+
+            // Max slider value 18km maps to 90% radius
+            const pct = (radiusKm / 18) * 90;
+            if (boundaryRing) {
+                boundaryRing.style.width = `${pct}%`;
+                boundaryRing.style.height = `${pct}%`;
+            }
+
+            let inCount = 0;
+            let listHtml = '';
+
+            stations.forEach((st) => {
+                const el = document.getElementById(st.id);
+                const isInside = st.dist <= radiusKm;
+
+                if (el) {
+                    if (isInside) {
+                        el.classList.add('inside');
+                        el.classList.remove('outside');
+                    } else {
+                        el.classList.remove('inside');
+                        el.classList.add('outside');
+                    }
+                }
+
+                if (isInside) inCount++;
+
+                listHtml += `
+                    <li class="station-item-line">
+                        <span>${st.name} · <strong>${st.dist} km</strong></span>
+                        <span class="status-badge ${isInside ? 'in' : 'out'}">${isInside ? `Available (${st.bays} bays)` : 'Out of Radius'}</span>
+                    </li>
+                `;
+            });
+
+            if (stationBadge) stationBadge.textContent = `${inCount} Station${inCount !== 1 ? 's' : ''} Found in Buffer`;
+            if (stationList) stationList.innerHTML = listHtml;
+        }
+
+        if (slider) {
+            slider.addEventListener('input', function () {
+                updateGeospatialRadar(parseFloat(this.value));
+            });
+            updateGeospatialRadar(parseFloat(slider.value));
+        }
+
+        // --- Panel 3: Clean Architecture Pipeline Flow ---
+        const pipelineSteps = document.querySelectorAll('.step-card');
+        const stageTag = document.getElementById('stageTag');
+        const stageName = document.getElementById('stageName');
+        const stageDesc = document.getElementById('stageDesc');
+        const stageTesting = document.getElementById('stageTesting');
+
+        const pipelineStages = {
+            '1': {
+                tag: 'Layer 01 · Presentation / API',
+                name: 'ReservationsController.cs',
+                desc: 'Receives incoming HTTP requests. Enforces JWT Bearer authentication, extracts user claims, and dispatches a strongly-typed ReserveChargingBayCommand via MediatR without direct database dependency.',
+                testing: 'Integration testing with WebApplicationFactory<Program> to verify HTTP status codes (200, 400, 401) and model binding.'
+            },
+            '2': {
+                tag: 'Layer 02 · Cross-Cutting Validation',
+                name: 'ReserveChargingBayValidator.cs (FluentValidation)',
+                desc: 'Pre-execution pipeline guard. Validates that vehicle battery state, booking time slot, and charging station ID meet domain constraints before hitting database.',
+                testing: 'Fast in-memory unit tests using ShouldHaveValidationErrorFor() checking edge-case invalid time windows.'
+            },
+            '3': {
+                tag: 'Layer 03 · Application Core',
+                name: 'ReserveChargingBayCommandHandler.cs (MediatR)',
+                desc: 'Orchestrates the business use case. Loads Station aggregate from repository, validates slot availability, calls Domain payment calculations, and persists transaction via UnitOfWork.',
+                testing: 'Unit testing with Mock<IStationRepository> and Mock<IUnitOfWork> to ensure rollback on failure.'
+            },
+            '4': {
+                tag: 'Layer 04 · Domain Layer (Zero Dependencies)',
+                name: 'ChargingStation.cs & Reservation.cs (Aggregate Root)',
+                desc: 'Pure C# domain entities. Enforces business invariants: a station bay cannot double-book overlapping times, and driver balance must cover charging deposit.',
+                testing: 'Pure xUnit tests with zero mocks. Executes in less than 2 milliseconds.'
+            },
+            '5': {
+                tag: 'Layer 05 · Persistence & Infrastructure',
+                name: 'SkaEvDbContext.cs & SQL Server Stored Procedures',
+                desc: 'Encapsulates relational persistence. Uses ACID transactions with serialized isolation levels during booking payment to guarantee zero race-condition double bookings.',
+                testing: 'Integration testing using Respawn and Testcontainers to execute against real temporary SQL Server instances.'
+            },
+            '6': {
+                tag: 'Layer 06 · Real-Time WebSockets',
+                name: 'ChargingHub.cs (SignalR)',
+                desc: 'Broadcasts telemetry pulses and station occupancy updates to connected web clients with sub-20ms latency.',
+                testing: 'Client-server integration testing using Microsoft.AspNetCore.SignalR.Client to verify broadcast messages.'
+            }
+        };
+
+        pipelineSteps.forEach((step) => {
+            step.addEventListener('click', function () {
+                const stepNum = this.getAttribute('data-step');
+                pipelineSteps.forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+
+                const data = pipelineStages[stepNum];
+                if (data && stageTag && stageName && stageDesc && stageTesting) {
+                    stageTag.textContent = data.tag;
+                    stageName.textContent = data.name;
+                    stageDesc.innerHTML = data.desc;
+                    stageTesting.innerHTML = `<strong>Testing Focus:</strong> ${data.testing}`;
+                }
+            });
+        });
+    }
+
+    // ===== 8. GSAP & SCROLLTRIGGER SCENE CHOREOGRAPHY =====
     function initGsapChoreography() {
         if (typeof window.gsap === 'undefined') return;
 
@@ -261,7 +755,6 @@
             gsap.registerPlugin(ScrollTrigger);
         }
 
-        // If reduced motion is requested, ensure everything is fully placed and visible
         if (prefersReducedMotion) {
             gsap.set('.hero-identity-overlay, .project-spec-card, .project-card-secondary, .timeline-milestone, .workbench-category-tray, .journal-card', {
                 opacity: 1,
@@ -271,7 +764,7 @@
             return;
         }
 
-        // --- Hero Entrance Timeline ---
+        // Hero Entrance Timeline
         const entranceTl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
         entranceTl
@@ -295,12 +788,11 @@
                 '-=0.3'
             );
 
-        // --- Hero Scroll Depth Parallax (Camera Dolly into Scene 02) ---
+        // Scroll Depth Parallax
         if (typeof window.ScrollTrigger !== 'undefined') {
             const heroSection = document.getElementById('hero');
 
             if (heroSection) {
-                // Background painting parallax moves down slowly as we scroll
                 gsap.to('#heroPlaneBack', {
                     yPercent: 12,
                     scale: 1.05,
@@ -313,7 +805,6 @@
                     }
                 });
 
-                // Clouds drift laterally and vertically
                 gsap.to('#heroPlaneClouds', {
                     yPercent: 8,
                     xPercent: -4,
@@ -326,7 +817,6 @@
                     }
                 });
 
-                // Atmosphere plane moves with midground
                 gsap.to('#heroPlaneAtmosphere', {
                     yPercent: 6,
                     ease: 'none',
@@ -337,89 +827,17 @@
                         scrub: true
                     }
                 });
-
-                // Identity Card softens and lifts slightly as we transition to Selected Projects
-                gsap.to('#heroIdentityOverlay', {
-                    yPercent: -10,
-                    opacity: 0.85,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: heroSection,
-                        start: 'center top',
-                        end: 'bottom top',
-                        scrub: true
-                    }
-                });
             }
 
-            // --- Scene 02: Project Cards Batch Reveal ---
-            const projectCards = document.querySelectorAll('.project-spec-card, .project-card-secondary');
-            projectCards.forEach((card) => {
+            // Reveal cards on scroll
+            const cards = document.querySelectorAll('.featured-project-plate, .notebook-project-card, .timeline-milestone, .workbench-category-tray, .journal-card');
+            cards.forEach((card) => {
                 gsap.fromTo(card,
-                    { opacity: 0, y: 35 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.85,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 86%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-
-            // --- Scene 03: Experience Timeline Milestones ---
-            const milestones = document.querySelectorAll('.timeline-milestone');
-            milestones.forEach((item) => {
-                gsap.fromTo(item,
-                    { opacity: 0, x: -24 },
-                    {
-                        opacity: 1,
-                        x: 0,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: item,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-
-            // --- Scene 04: Workbench Category Trays ---
-            const trays = document.querySelectorAll('.workbench-category-tray');
-            trays.forEach((tray, index) => {
-                gsap.fromTo(tray,
                     { opacity: 0, y: 30 },
                     {
                         opacity: 1,
                         y: 0,
                         duration: 0.75,
-                        delay: index * 0.1,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: tray,
-                            start: 'top 88%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-
-            // --- Scene 05: Journal Cards ---
-            const journalCards = document.querySelectorAll('.journal-card');
-            journalCards.forEach((card, index) => {
-                gsap.fromTo(card,
-                    { opacity: 0, y: 25 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.7,
-                        delay: index * 0.08,
                         ease: 'power2.out',
                         scrollTrigger: {
                             trigger: card,
@@ -432,7 +850,7 @@
         }
     }
 
-    // ===== 5. NAVIGATION & MOBILE DRAWER WITH SCROLLSPY =====
+    // ===== 9. NAVIGATION, SCROLLSPY & CORRESPONDENCE =====
     function initNavigation() {
         const header = document.getElementById('siteHeader');
         const sections = document.querySelectorAll('section[id]');
@@ -440,7 +858,6 @@
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
 
-        // Sticky Navbar subtle elevation on scroll
         function handleScroll() {
             if (!header) return;
             if (window.scrollY > 40) {
@@ -449,7 +866,6 @@
                 header.classList.remove('scrolled');
             }
 
-            // Scrollspy active anchor
             const scrollPos = window.scrollY + 180;
             sections.forEach((section) => {
                 const top = section.offsetTop;
@@ -472,14 +888,12 @@
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
 
-        // Mobile Nav Drawer Toggle
         if (navToggle && navMenu) {
             navToggle.addEventListener('click', function () {
                 const isOpen = navMenu.classList.toggle('open');
                 navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             });
 
-            // Close mobile nav when clicking any link
             navAnchors.forEach((link) => {
                 link.addEventListener('click', function () {
                     navMenu.classList.remove('open');
@@ -487,7 +901,6 @@
                 });
             });
 
-            // Close mobile nav when pressing Escape
             window.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && navMenu.classList.contains('open')) {
                     navMenu.classList.remove('open');
@@ -497,7 +910,6 @@
             });
         }
 
-        // Smooth scroll handling for internal anchor links with offset
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -518,7 +930,6 @@
         });
     }
 
-    // ===== 6. STATIONERY CORRESPONDENCE FORM =====
     function initContactForm() {
         const form = document.getElementById('contactForm');
         const statusMsg = document.getElementById('formStatus');
@@ -562,7 +973,6 @@
                     statusMsg.style.color = 'var(--moss-deep)';
                 }
 
-                // Construct mailto link
                 const subject = encodeURIComponent(`Correspondence from ${name} [Portfolio Inquiry]`);
                 const body = encodeURIComponent(`Hello Khanh,\n\nFrom: ${name}\nEmail: ${email}\n\nNote:\n${message}\n\nSent via Developer Portfolio Workspace`);
                 const mailtoUrl = `mailto:lqkhanh292005@gmail.com?subject=${subject}&body=${body}`;
@@ -584,6 +994,10 @@
         initNavigation();
         initContactForm();
         initAtmosphericScene();
+        initAtmosphereMoodController();
+        initProceduralSoundscape();
+        initRetroCrtTerminal();
+        initSkaevInteractiveWorkbench();
         initGsapChoreography();
     }
 
