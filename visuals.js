@@ -3,8 +3,8 @@
  * GSAP + ScrollTrigger choreograph the page; Three.js adds a low-cost layer
  * of drifting pollen in the hero. All motion respects reduced-motion settings.
  */
-import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.13.0/index.js";
-import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.13.0/ScrollTrigger.js";
+import { gsap } from "https://esm.sh/gsap@3.13.0";
+import { ScrollTrigger } from "https://esm.sh/gsap@3.13.0/ScrollTrigger";
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
 
 gsap.registerPlugin(ScrollTrigger);
