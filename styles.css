@@ -8,51 +8,26 @@
 
 /* ===== 1. DESIGN TOKENS ===== */
 :root {
-    /* Paper & Canvas Surfaces */
-    --bg-canvas: #FAF7F2;
-    /* Natural warm cream/ivory */
-    --bg-page: #FFFFFF;
-    /* Pure paper white for cards/plates */
-    --bg-parchment: #F4EFE6;
-    /* Slightly aged paper tone */
-    --bg-subtle: #F0EAE0;
-    /* Soft paper wash */
-
-    /* Charcoal Ink & Graphite Typography */
-    --ink-primary: #262422;
-    /* Deep warm charcoal ink */
-    --ink-secondary: #5A554E;
-    /* Soft graphite / muted pencil */
-    --ink-muted: #88827A;
-    /* Faint margin notes / metadata */
-    --ink-faint: #BFB8AE;
-    /* Very faint rules & accents */
-
-    /* Paper Dividing Lines */
-    --rule-light: #E8E2D8;
-    /* Whisper-light paper rule */
-    --rule-medium: #D9D2C6;
-    /* Structural division line */
-    --rule-dark: #A69E92;
-    /* Bold editorial underline */
-
-    /* Storybook Watercolor Accents (Earthy, Muted, Never Neon) */
-    --moss-green: #3D5A45;
-    /* Muted forest moss */
-    --moss-tint: #EEF3EF;
-    /* Pale moss wash */
-    --indigo-blue: #456277;
-    /* Faded denim blue */
-    --indigo-tint: #EDF3F7;
-    /* Pale sky wash */
-    --terracotta: #B65742;
-    /* Warm clay / terracotta */
-    --terracotta-tint: #FCEFEA;
-    /* Pale clay wash */
-    --warm-ochre: #8A623B;
-    /* Dusty leather / tea stain */
-    --ochre-tint: #F8F3EC;
-    /* Pale tea wash */
+    /* Atmospheric Color Tokens */
+    --c-paper-ivory: #F4EBD8;       /* Primary paper canvas */
+    --c-warm-cream: #E9DFC8;        /* Slightly deeper aged paper / card wash */
+    --c-paper-light: #FAF6ED;       /* Crisp reading plate */
+    --c-forest-green: #526B45;      /* Deep country foliage / primary brand accent */
+    --c-moss-green: #84966B;        /* Muted garden moss / secondary accent */
+    --c-moss-wash: #EDF2E8;         /* Whispering pale moss wash */
+    --c-sky-blue: #A8C9D8;          /* Pale afternoon sky */
+    --c-denim-blue: #66879A;        /* Faded twilight denim */
+    --c-sky-wash: #EDF4F8;          /* Soft sky wash */
+    --c-terracotta: #BD795B;        /* Warm roof tile / clay accent */
+    --c-terracotta-wash: #FBF0EB;   /* Pale clay wash */
+    --c-warm-ink: #393A30;          /* Warm charcoal ink for headings & text */
+    --c-ink-secondary: #5A5C4F;     /* Muted pencil graphite */
+    --c-ink-muted: #848775;         /* Metadata, rules & captions */
+    --c-ink-faint: #D4D1C3;         /* Very delicate borders & separators */
+    --c-sunlight-gold: #D9B56E;     /* Warm golden sunlight highlight */
+    --c-sunlight-glow: rgba(217, 181, 110, 0.28);
+    --c-wood-bark: #483A2C;         /* Weathered window timber */
+    --c-wood-warm: #70543E;         /* Desk timber */
 
     /* Typography */
     --font-display: 'Fraunces', Georgia, serif;
@@ -327,7 +302,7 @@ img {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 75% 25%, rgba(217, 181, 110, 0.24) 0%, rgba(217, 181, 110, 0.08) 45%, transparent 70%),
-        linear-gradient(135deg, rgba(255, 245, 215, 0.16) 0%, transparent 60%);
+                linear-gradient(135deg, rgba(255, 245, 215, 0.16) 0%, transparent 60%);
     mix-blend-mode: soft-light;
     animation: sunlight-breathe 8s ease-in-out infinite alternate;
 }
@@ -353,7 +328,7 @@ img {
     width: 140%;
     height: 40%;
     background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.22) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
+                radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
     filter: blur(12px);
     animation: cloud-drift 42s linear infinite;
 }
@@ -376,29 +351,10 @@ img {
     pointer-events: none;
 }
 
-.matte-tab.top-left {
-    top: 6px;
-    left: 6px;
-    border-width: 2px 0 0 2px;
-}
-
-.matte-tab.top-right {
-    top: 6px;
-    right: 6px;
-    border-width: 2px 2px 0 0;
-}
-
-.matte-tab.bottom-left {
-    bottom: 6px;
-    left: 6px;
-    border-width: 0 0 2px 2px;
-}
-
-.matte-tab.bottom-right {
-    bottom: 6px;
-    right: 6px;
-    border-width: 0 2px 2px 0;
-}
+.matte-tab.top-left { top: 6px; left: 6px; border-width: 2px 0 0 2px; }
+.matte-tab.top-right { top: 6px; right: 6px; border-width: 2px 2px 0 0; }
+.matte-tab.bottom-left { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; }
+.matte-tab.bottom-right { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
 
 /* Dedicated Developer Identity Plate (High Contrast, Human, Clear) */
 .hero-identity-overlay {
@@ -496,39 +452,41 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    background-color: var(--c-forest-green);
-    color: #FAF6ED;
-    padding: 0.65rem 1.4rem;
+    background-color: var(--c-forest-green, #526B45);
+    color: #FFFFFF;
+    padding: 0.7rem 1.45rem;
     border-radius: var(--radius-sm);
-    font-size: 0.92rem;
-    font-weight: 500;
-    box-shadow: 0 4px 14px rgba(82, 107, 69, 0.28);
+    font-size: 0.94rem;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(82, 107, 69, 0.32);
     transition: background-color var(--transition-gentle), transform var(--transition-gentle), box-shadow var(--transition-gentle);
 }
 
 .btn-anime-primary:hover {
     background-color: #3f5535;
+    color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(82, 107, 69, 0.35);
+    box-shadow: 0 6px 20px rgba(82, 107, 69, 0.42);
 }
 
 .btn-anime-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    background-color: transparent;
-    color: var(--c-warm-ink);
-    padding: 0.62rem 1.35rem;
+    background-color: rgba(250, 246, 237, 0.7);
+    color: var(--c-warm-ink, #393A30);
+    padding: 0.68rem 1.4rem;
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(57, 58, 48, 0.25);
-    font-size: 0.92rem;
-    font-weight: 500;
+    border: 1px solid rgba(57, 58, 48, 0.32);
+    font-size: 0.94rem;
+    font-weight: 600;
     transition: background-color var(--transition-gentle), border-color var(--transition-gentle), transform var(--transition-gentle);
 }
 
 .btn-anime-secondary:hover {
-    background-color: rgba(57, 58, 48, 0.05);
-    border-color: var(--c-warm-ink);
+    background-color: rgba(57, 58, 48, 0.1);
+    border-color: var(--c-warm-ink, #393A30);
+    color: var(--c-warm-ink, #393A30);
     transform: translateY(-2px);
 }
 
@@ -549,40 +507,21 @@ img {
     pointer-events: none;
 }
 
-.corner-top-left {
-    top: 8px;
-    left: 8px;
-    border-right: none;
-    border-bottom: none;
+/* ===== 5. SECTION HEADERS (THE 6 FILM SCENES) ===== */
+.scene-section {
+    padding: 6rem 0;
+    position: relative;
 }
 
-.corner-top-right {
-    top: 8px;
-    right: 8px;
-    border-left: none;
-    border-bottom: none;
+.scene-intro-block {
+    margin-bottom: 3.2rem;
 }
 
-.corner-bottom-left {
-    bottom: 8px;
-    left: 8px;
-    border-right: none;
-    border-top: none;
-}
-
-.corner-bottom-right {
-    bottom: 8px;
-    right: 8px;
-    border-left: none;
-    border-top: none;
-}
-
-.photo-matting {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--bg-parchment);
-    border: 1px solid var(--rule-light);
+.scene-intro-block.centered {
+    text-align: center;
+    max-width: var(--container-narrow);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .scene-chapter-tag {
@@ -936,11 +875,13 @@ img {
     bottom: 0;
     left: 11px;
     width: 2px;
-    background: repeating-linear-gradient(to bottom,
-            var(--c-forest-green) 0,
-            var(--c-forest-green) 8px,
-            transparent 8px,
-            transparent 14px);
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--c-forest-green) 0,
+        var(--c-forest-green) 8px,
+        transparent 8px,
+        transparent 14px
+    );
     opacity: 0.45;
 }
 
@@ -1295,11 +1236,11 @@ img {
     gap: 3.5rem;
 }
 
-.letter-body-content>p {
-    font-size: 1.12rem;
-    color: var(--ink-secondary);
-    line-height: 1.75;
-    margin-bottom: 28px;
+.stationery-note-intro {
+    font-size: 1.02rem;
+    line-height: 1.72;
+    color: var(--c-ink-secondary);
+    margin-bottom: 2rem;
 }
 
 .contact-channels-list {
@@ -1432,42 +1373,22 @@ img {
 
 /* ===== 12. ANIMATIONS & PERFORMANCE ===== */
 @keyframes cloud-drift {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(20%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20%); }
 }
 
 @keyframes sunlight-breathe {
-    0% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1.04);
-    }
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.04); }
 }
 
 @keyframes lamp-pulse {
-    0% {
-        opacity: 0.75;
-        transform: scale(0.96);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
+    0% { opacity: 0.75; transform: scale(0.96); }
+    100% { opacity: 1; transform: scale(1.05); }
 }
 
 /* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -1476,7 +1397,6 @@ img {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-
     .env-layer-clouds,
     .env-layer-sunlight,
     .env-layer-lampglow {
@@ -1506,7 +1426,7 @@ img {
         max-width: 100%;
         margin: 1.5rem 1.5rem 2rem;
     }
-
+    
     .hero-scenic-window {
         min-height: 420px;
     }
