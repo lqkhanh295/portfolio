@@ -21,6 +21,11 @@
 </head>
 
 <body class="anime-world-body">
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress-track" aria-hidden="true">
+        <div class="reading-progress-bar" id="readingProgressBar"></div>
+    </div>
+
     <!-- Navigation: Quiet and Integrated -->
     <header class="site-nav" id="siteHeader">
         <div class="container nav-inner">
@@ -60,67 +65,77 @@
              ========================================================================== -->
         <section class="scene-hero" id="hero">
             <div class="container">
-                <div class="hero-viewport-frame">
-                    <!-- The 16:9 Illustrated Anime Canvas -->
-                    <div class="hero-scenic-window">
-                        <img src="hero-anime-workspace.jpg"
-                            alt="Japanese anime-style hand-painted countryside developer workspace with an open wooden window overlooking rolling green hills and blue sky"
-                            class="hero-bg-painting" loading="eager">
+                <div class="hero-viewport-frame" id="heroViewportFrame">
+                    <!-- The 16:9 Illustrated Anime Canvas with Dimensional Depth Layers -->
+                    <div class="hero-scenic-window" id="heroScenicWindow">
+                        <!-- Plane 1: Far Environment / Background Painting -->
+                        <div class="hero-plane hero-plane-back" id="heroPlaneBack">
+                            <img src="hero-anime-workspace.jpg"
+                                alt="Japanese anime-style hand-painted countryside developer workspace with an open wooden window overlooking rolling green hills and blue sky"
+                                class="hero-bg-painting" id="heroBgPainting" loading="eager">
+                        </div>
 
-                        <!-- Environmental Atmosphere Overlays -->
-                        <div class="hero-environment-layers" aria-hidden="true">
-                            <div class="env-layer-sunlight"></div>
+                        <!-- Plane 2: Clouds -->
+                        <div class="hero-plane hero-plane-clouds" id="heroPlaneClouds" aria-hidden="true">
                             <div class="env-layer-clouds"></div>
+                        </div>
+
+                        <!-- Plane 3: Three.js Atmosphere & Sunlight Shimmer -->
+                        <div class="hero-plane hero-plane-atmosphere" id="heroPlaneAtmosphere" aria-hidden="true">
+                            <canvas id="heroAtmosphereCanvas" class="hero-three-canvas"></canvas>
+                            <div class="env-layer-sunlight"></div>
                             <div class="env-layer-lampglow"></div>
                         </div>
 
-                        <!-- Window Timber Matte & Corner Tabs -->
-                        <div class="hero-window-matte" aria-hidden="true">
-                            <span class="matte-tab top-left"></span>
-                            <span class="matte-tab top-right"></span>
-                            <span class="matte-tab bottom-left"></span>
-                            <span class="matte-tab bottom-right"></span>
+                        <!-- Plane 4: Midground Framing & Timber Window Matte -->
+                        <div class="hero-plane hero-plane-mid" id="heroPlaneMid" aria-hidden="true">
+                            <div class="hero-window-matte">
+                                <span class="matte-tab top-left"></span>
+                                <span class="matte-tab top-right"></span>
+                                <span class="matte-tab bottom-left"></span>
+                                <span class="matte-tab bottom-right"></span>
+                            </div>
                         </div>
 
                         <!-- Vignette Stamp -->
                         <div class="hero-vignette-stamp" aria-hidden="true">
                             SAIGON · 2026 // FIELD LOG
                         </div>
+                    </div>
 
-                        <!-- Integrated Developer Identity Card (High Contrast & Readable) -->
-                        <div class="hero-identity-overlay">
-                            <div class="hero-chapter-pill">
-                                <span class="pill-leaf" aria-hidden="true"></span>
-                                Scene 01 · The Workspace
-                            </div>
+                    <!-- Plane 5: Dedicated Developer Identity Card (Desktop: Overlaid / Mobile: Stacked) -->
+                    <div class="hero-identity-overlay" id="heroIdentityOverlay">
+                        <div class="hero-chapter-pill">
+                            <span class="pill-leaf" aria-hidden="true"></span>
+                            Scene 01 · The Workspace
+                        </div>
 
-                            <h1 class="hero-developer-name">LE QUOC KHANH</h1>
+                        <h1 class="hero-developer-name">LE QUOC KHANH</h1>
 
-                            <div class="hero-developer-role">
-                                <span>Software Engineer</span>
-                                <span class="role-dot" aria-hidden="true">·</span>
-                                <span>Backend-focused · .NET / C#</span>
-                            </div>
+                        <div class="hero-developer-role">
+                            <span>Software Engineer</span>
+                            <span class="role-dot" aria-hidden="true">·</span>
+                            <span>Backend-focused · .NET / C#</span>
+                        </div>
 
-                            <blockquote class="hero-philosophy-quote">
-                                “I like understanding how things work, then building something useful from that
-                                understanding.”
-                            </blockquote>
+                        <blockquote class="hero-philosophy-quote">
+                            “I like understanding how things work, then building something useful from that
+                            understanding.”
+                        </blockquote>
 
-                            <p class="hero-narrative-lead">
-                                Final-year Software Engineering student at <strong>FPT University</strong>. Former QA
-                                Tester Intern at <strong>FPT Software</strong>. Building quiet, dependable backend
-                                systems centered on <strong>.NET 9, Clean Architecture, and relational integrity</strong>.
-                            </p>
+                        <p class="hero-narrative-lead">
+                            Final-year Software Engineering student at <strong>FPT University</strong>. Former QA
+                            Tester Intern at <strong>FPT Software</strong>. Building quiet, dependable backend
+                            systems centered on <strong>.NET 9, Clean Architecture, and relational integrity</strong>.
+                        </p>
 
-                            <div class="hero-action-group">
-                                <a href="#projects" class="btn-anime-primary">
-                                    Explore My Projects →
-                                </a>
-                                <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="btn-anime-secondary">
-                                    Download CV (PDF)
-                                </a>
-                            </div>
+                        <div class="hero-action-group">
+                            <a href="#projects" class="btn-anime-primary">
+                                Explore Selected Works ↓
+                            </a>
+                            <a href="Lê Quốc Khánh.pdf" download="Le_Quoc_Khanh_CV.pdf" class="btn-anime-secondary">
+                                Download CV (PDF)
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -143,10 +158,19 @@
                 </div>
 
                 <!-- Featured Project: SkaEV -->
-                <article class="featured-project-plate">
+                <article class="featured-project-plate" id="featuredProjectPlate">
+                    <div class="featured-photo-frame">
+                        <img src="skaev-preview.jpg"
+                            alt="SkaEV EV Charging Station Operations Command Center UI showing live geospatial station map and battery telemetry"
+                            class="featured-photo-img" loading="lazy">
+                        <div class="photo-caption-strip">
+                            <span>Fig 01. SkaEV Operations Dashboard</span>
+                            <span>.NET 9 · React · SignalR</span>
+                        </div>
+                    </div>
+
                     <div class="featured-project-info">
                         <div class="featured-meta-chips">
-                            <span class="card-index" style="align-self: center; margin-right: 0.35rem;">01 / 06</span>
                             <span class="project-chip chip-primary">Featured Case Study</span>
                             <span class="project-chip">Team Lead &amp; Backend</span>
                             <span class="project-chip chip-warm">.NET 9</span>
@@ -191,7 +215,7 @@
                 </article>
 
                 <!-- Secondary Projects Grid (5 Projects) -->
-                <div class="projects-notebook-grid">
+                <div class="projects-notebook-grid" id="projectsNotebookGrid">
                     <!-- Project 02: OmniStock -->
                     <article class="notebook-project-card">
                         <div>
@@ -397,6 +421,9 @@
                 </div>
 
                 <div class="garden-path-timeline">
+                    <!-- Animated Ink Spine -->
+                    <div class="timeline-ink-spine" id="timelineInkSpine" aria-hidden="true"></div>
+
                     <!-- Milestone 1: FPT Software QA Internship -->
                     <div class="timeline-milestone">
                         <div class="milestone-stepper" aria-hidden="true"></div>
@@ -452,31 +479,33 @@
                     <span class="scene-chapter-tag">Scene 04 · The Workbench</span>
                     <h2 class="scene-title">Technical Repertoire</h2>
                     <p class="scene-subtitle">
-                        A grounded technical foundation built through university projects and software testing internship,
-                        focused on .NET backend, database fundamentals, and clean code practices.
+                        A practical skillset built through university projects and internship experience, centered on
+                        .NET, relational databases, clean coding principles, and web standards.
                     </p>
                 </div>
 
-                <div class="workbench-grid">
+                <div class="workbench-grid" id="workbenchGrid">
                     <!-- Group 1: Backend -->
                     <div class="workbench-tool-tray">
                         <div>
-                            <span class="tray-domain-kicker">Core Specialization</span>
+                            <span class="tray-domain-kicker">Primary Focus</span>
                             <h3 class="tray-domain-title">Backend Development (.NET)</h3>
                             <div class="tray-tools-cluster">
-                                <span class="tool-tag">C# / .NET 8 &amp; 9</span>
+                                <span class="tool-tag">C# (.NET 8 / 9)</span>
                                 <span class="tool-tag">ASP.NET Core Web API</span>
                                 <span class="tool-tag">Entity Framework Core</span>
                                 <span class="tool-tag">RESTful API Design</span>
-                                <span class="tool-tag">LINQ &amp; Async/Await</span>
-                                <span class="tool-tag">JWT Authentication</span>
+                                <span class="tool-tag">SignalR (WebSockets)</span>
                                 <span class="tool-tag">Dependency Injection</span>
-                                <span class="tool-tag">SignalR (Basics)</span>
+                                <span class="tool-tag">Repository &amp; Unit of Work</span>
+                                <span class="tool-tag">FluentValidation</span>
+                                <span class="tool-tag">Serilog (Logging)</span>
+                                <span class="tool-tag">JWT Authentication</span>
                             </div>
                         </div>
                         <p class="tray-practical-note">
-                            Hands-on practice designing RESTful APIs, securing endpoints with JWT, and handling asynchronous
-                            database operations with EF Core in capstone and team projects.
+                            Applied in university capstone and personal projects with clear layered structure, async/await
+                            pipelines, and secure authentication.
                         </p>
                     </div>
 
@@ -484,80 +513,80 @@
                     <div class="workbench-tool-tray">
                         <div>
                             <span class="tray-domain-kicker">Data &amp; Persistence</span>
-                            <h3 class="tray-domain-title">Databases &amp; Storage</h3>
+                            <h3 class="tray-domain-title">Databases &amp; ORM</h3>
                             <div class="tray-tools-cluster">
                                 <span class="tool-tag">SQL Server (T-SQL)</span>
                                 <span class="tool-tag">PostgreSQL</span>
                                 <span class="tool-tag">Relational Schema Design</span>
-                                <span class="tool-tag">Complex Queries &amp; Joins</span>
-                                <span class="tool-tag">Stored Procedures</span>
-                                <span class="tool-tag">Database Transactions</span>
-                                <span class="tool-tag">EF Core Migrations</span>
+                                <span class="tool-tag">Stored Procedures &amp; Transactions</span>
+                                <span class="tool-tag">Basic Query Optimization</span>
+                                <span class="tool-tag">PostGIS &amp; NetTopologySuite</span>
+                                <span class="tool-tag">Firebase Firestore</span>
                             </div>
                         </div>
                         <p class="tray-practical-note">
-                            Comfortable writing multi-table queries, procedures, and basic transactions. Familiar with schema
-                            normalization and inspecting database state to verify data integrity.
+                            Experience designing normalized relational tables, writing multi-table joins, managing ACID
+                            transactions, and spatial radius queries.
                         </p>
                     </div>
 
                     <!-- Group 3: Architecture -->
                     <div class="workbench-tool-tray">
                         <div>
-                            <span class="tray-domain-kicker">Foundations &amp; Quality</span>
-                            <h3 class="tray-domain-title">Engineering Fundamentals</h3>
+                            <span class="tray-domain-kicker">Methodology</span>
+                            <h3 class="tray-domain-title">Software Design &amp; Principles</h3>
                             <div class="tray-tools-cluster">
+                                <span class="tool-tag">Clean Architecture (Layered)</span>
+                                <span class="tool-tag">SOLID Principles</span>
                                 <span class="tool-tag">OOP Fundamentals</span>
-                                <span class="tool-tag">Layered Architecture</span>
-                                <span class="tool-tag">SOLID Foundations</span>
-                                <span class="tool-tag">Separation of Concerns</span>
-                                <span class="tool-tag">Repository &amp; DI Patterns</span>
-                                <span class="tool-tag">Exception &amp; Error Handling</span>
+                                <span class="tool-tag">CQRS Pattern (MediatR basics)</span>
+                                <span class="tool-tag">Common Design Patterns</span>
+                                <span class="tool-tag">API Error &amp; Exception Handling</span>
                             </div>
                         </div>
                         <p class="tray-practical-note">
-                            Dedicated to writing clean, readable code with proper OOP principles, separating business logic from
-                            data access layers, and handling edge cases with structured error responses.
+                            Emphasis on writing maintainable, readable code by separating domain logic from external
+                            libraries, database drivers, and UI layers.
                         </p>
                     </div>
 
                     <!-- Group 4: Frontend -->
                     <div class="workbench-tool-tray">
                         <div>
-                            <span class="tray-domain-kicker">Client-Side Support</span>
+                            <span class="tray-domain-kicker">User Interface</span>
                             <h3 class="tray-domain-title">Frontend &amp; Web UI</h3>
                             <div class="tray-tools-cluster">
                                 <span class="tool-tag">React.js</span>
                                 <span class="tool-tag">TypeScript / JavaScript</span>
                                 <span class="tool-tag">HTML5 &amp; CSS3</span>
                                 <span class="tool-tag">Tailwind CSS</span>
-                                <span class="tool-tag">REST API Integration</span>
-                                <span class="tool-tag">Responsive Layouts</span>
+                                <span class="tool-tag">Zustand (State Management)</span>
+                                <span class="tool-tag">Three.js / R3F (Basic 3D)</span>
                             </div>
                         </div>
                         <p class="tray-practical-note">
-                            Capable of building responsive client interfaces, connecting components to backend endpoints,
-                            and managing application state for full-stack coursework projects.
+                            Capable of building responsive web interfaces, consuming RESTful APIs, and integrating
+                            interactive UI components including basic 3D room viewers.
                         </p>
                     </div>
 
                     <!-- Group 5: Tools & QA -->
                     <div class="workbench-tool-tray">
                         <div>
-                            <span class="tray-domain-kicker">Workflow &amp; Quality</span>
-                            <h3 class="tray-domain-title">Tools, Testing &amp; Collaboration</h3>
+                            <span class="tray-domain-kicker">Verification &amp; Delivery</span>
+                            <h3 class="tray-domain-title">Tools, Testing &amp; Workflow</h3>
                             <div class="tray-tools-cluster">
                                 <span class="tool-tag">Git &amp; GitHub</span>
                                 <span class="tool-tag">Postman &amp; Swagger</span>
-                                <span class="tool-tag">Unit Testing (xUnit)</span>
-                                <span class="tool-tag">Azure DevOps &amp; Jira</span>
-                                <span class="tool-tag">Docker (Basic Containers)</span>
-                                <span class="tool-tag">Agile / Scrum Mindset</span>
+                                <span class="tool-tag">xUnit (Unit Testing)</span>
+                                <span class="tool-tag">Azure DevOps (Task Tracking)</span>
+                                <span class="tool-tag">Docker (Fundamentals)</span>
+                                <span class="tool-tag">Agile / Scrum Sprints</span>
                             </div>
                         </div>
                         <p class="tray-practical-note">
-                            Grounded in practical QA internship experience at FPT Software: validating API payloads, identifying
-                            edge cases, logging defects, and collaborating in sprint teams.
+                            Practical experience from software QA internship: verifying API payloads, writing clear bug
+                            reports, and collaborating across sprint ceremonies.
                         </p>
                     </div>
 
@@ -565,16 +594,16 @@
                     <div class="workbench-tool-tray">
                         <div>
                             <span class="tray-domain-kicker">Communication</span>
-                            <h3 class="tray-domain-title">Languages &amp; Working Culture</h3>
+                            <h3 class="tray-domain-title">Spoken Languages</h3>
                             <div class="tray-tools-cluster">
                                 <span class="tool-tag">Vietnamese (Native)</span>
-                                <span class="tool-tag">English (Technical &amp; Working)</span>
+                                <span class="tool-tag">English (Professional Working)</span>
                                 <span class="tool-tag">Japanese (Basic / Elementary)</span>
                             </div>
                         </div>
                         <p class="tray-practical-note">
                             Comfortable reading technical documentation, writing clear commit/PR messages, and
-                            collaborating constructively in professional team environments.
+                            collaborating in professional environments.
                         </p>
                     </div>
                 </div>
@@ -598,7 +627,7 @@
 
                 <div class="journal-layout-grid">
                     <!-- Left: 4 Thought Principles -->
-                    <div class="principles-stack">
+                    <div class="principles-stack" id="principlesStack">
                         <div class="principle-entry">
                             <span class="principle-num">01</span>
                             <div>
@@ -780,7 +809,12 @@
         </div>
     </footer>
 
-    <!-- Interactive Script -->
+    <!-- Vendor Libraries (Three.js, GSAP, ScrollTrigger) with Local & CDN Fallback -->
+    <script src="vendor/three.min.js"></script>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
+
+    <!-- Core Interactive Experience Script -->
     <script src="script.js"></script>
 </body>
 

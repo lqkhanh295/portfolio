@@ -1,5 +1,5 @@
 /* ==========================================================================
-   JAPANESE ANIMATED STORYBOOK WORLD · PORTFOLIO STYLES
+   JAPANESE ANIMATED STORYBOOK WORLD · CINEMATIC DEVELOPER EXPERIENCE
    Developer: Lê Quốc Khánh // Software Engineer (.NET Backend)
    Art Direction: 1980s–1990s Japanese Animation & Studio Ghibli Countryside
    Typography: Fraunces (Editorial Display) & DM Sans (Humanist Body/UI)
@@ -35,8 +35,8 @@
     --font-mono: 'JetBrains Mono', monospace;
 
     /* Sizing & Geometry */
-    --container-max: 1140px;
-    --container-narrow: 840px;
+    --container-max: 1160px;
+    --container-narrow: 860px;
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
@@ -74,7 +74,7 @@ body.anime-world-body {
     line-height: 1.74;
     color: var(--c-warm-ink);
     background-color: var(--c-paper-ivory);
-    /* Subtle natural handmade paper grain overlay */
+    /* Natural handmade paper grain texture via SVG noise filter */
     background-image:
         radial-gradient(ellipse at 8% 12%, rgba(189, 121, 91, 0.025) 0%, transparent 60%),
         radial-gradient(ellipse at 92% 88%, rgba(82, 107, 69, 0.035) 0%, transparent 60%),
@@ -118,7 +118,28 @@ img {
     padding: 0 1.5rem;
 }
 
-/* ===== 3. NAVIGATION (QUIET & INTEGRATED) ===== */
+/* ===== 3. READING PROGRESS BAR ===== */
+.reading-progress-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(57, 58, 48, 0.06);
+    z-index: 101;
+    pointer-events: none;
+}
+
+.reading-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--c-forest-green), var(--c-moss-green), var(--c-terracotta));
+    transform-origin: left center;
+    transform: scaleX(0);
+    will-change: transform;
+}
+
+/* ===== 4. NAVIGATION (QUIET & INTEGRATED) ===== */
 .site-nav {
     position: fixed;
     top: 0;
@@ -172,7 +193,12 @@ img {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 1.8rem;
+    gap: 1.6rem;
+    white-space: nowrap;
+}
+
+.nav-item {
+    white-space: nowrap;
 }
 
 .nav-item a {
@@ -184,6 +210,7 @@ img {
     color: var(--c-ink-secondary);
     position: relative;
     padding: 0.3rem 0;
+    white-space: nowrap;
 }
 
 .nav-item a::after {
@@ -251,7 +278,7 @@ img {
     transition: transform var(--transition-gentle), opacity var(--transition-gentle);
 }
 
-/* ===== 4. SCENE 01: THE WORKSPACE (HERO) ===== */
+/* ===== 5. SCENE 01: THE WORKSPACE (HERO DEPTH) ===== */
 .scene-hero {
     position: relative;
     padding-top: 5.5rem;
@@ -259,6 +286,7 @@ img {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .hero-viewport-frame {
@@ -268,6 +296,7 @@ img {
     border: 1px solid rgba(72, 58, 44, 0.22);
     box-shadow: var(--shadow-cinematic);
     overflow: hidden;
+    will-change: transform;
 }
 
 /* The 16:9 Illustrated Anime Canvas */
@@ -275,9 +304,22 @@ img {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    min-height: 520px;
+    min-height: 540px;
     background-color: #2F382E;
     overflow: hidden;
+}
+
+/* Visual Depth Planes */
+.hero-plane {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Plane 1: Far Background Painting */
+.hero-plane-back {
+    z-index: 1;
 }
 
 .hero-bg-painting {
@@ -286,18 +328,41 @@ img {
     object-fit: cover;
     object-position: center bottom;
     display: block;
-    transform: scale(1.02);
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1.03);
+    will-change: transform;
 }
 
-/* Environmental Anime Overlays */
-.hero-environment-layers {
+/* Plane 2: Clouds */
+.hero-plane-clouds {
+    z-index: 2;
+}
+
+.env-layer-clouds {
+    position: absolute;
+    top: 4%;
+    left: -20%;
+    width: 140%;
+    height: 40%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.24) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
+    filter: blur(14px);
+    animation: cloud-drift 48s linear infinite;
+}
+
+/* Plane 3: Three.js Atmosphere & Sunlight */
+.hero-plane-atmosphere {
+    z-index: 3;
+}
+
+.hero-three-canvas {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
     pointer-events: none;
 }
 
-/* Subtle Sunlight Rays */
 .env-layer-sunlight {
     position: absolute;
     inset: 0;
@@ -307,7 +372,6 @@ img {
     animation: sunlight-breathe 8s ease-in-out infinite alternate;
 }
 
-/* Warm Lamp Glow */
 .env-layer-lampglow {
     position: absolute;
     right: 28%;
@@ -320,26 +384,17 @@ img {
     animation: lamp-pulse 6s ease-in-out infinite alternate;
 }
 
-/* Drifting Gouache Cloud Overlay */
-.env-layer-clouds {
-    position: absolute;
-    top: 5%;
-    left: -20%;
-    width: 140%;
-    height: 40%;
-    background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.22) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
-    filter: blur(12px);
-    animation: cloud-drift 42s linear infinite;
+/* Plane 4: Midground Timber Frame */
+.hero-plane-mid {
+    z-index: 4;
 }
 
-/* Window Timber Matting & Corner Tabs */
 .hero-window-matte {
     position: absolute;
     inset: 0;
     border: 8px solid rgba(72, 58, 44, 0.14);
     pointer-events: none;
-    box-shadow: inset 0 0 30px rgba(40, 32, 22, 0.22);
+    box-shadow: inset 0 0 32px rgba(40, 32, 22, 0.24);
 }
 
 .matte-tab {
@@ -356,20 +411,38 @@ img {
 .matte-tab.bottom-left { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; }
 .matte-tab.bottom-right { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
 
-/* Dedicated Developer Identity Plate (High Contrast, Human, Clear) */
+.hero-vignette-stamp {
+    position: absolute;
+    right: 2.2rem;
+    top: 2.2rem;
+    background: rgba(250, 246, 237, 0.88);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px dashed rgba(72, 58, 44, 0.28);
+    font-size: 0.76rem;
+    font-family: var(--font-mono);
+    color: var(--c-ink-muted);
+    letter-spacing: 0.04em;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Plane 6: Dedicated Developer Identity Card */
 .hero-identity-overlay {
     position: absolute;
-    left: 2.2rem;
-    bottom: 2.2rem;
-    max-width: 480px;
-    background: rgba(250, 246, 237, 0.95);
+    left: 2.4rem;
+    bottom: 2.4rem;
+    max-width: 490px;
+    background: rgba(250, 246, 237, 0.96);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-md);
     border: 1px solid rgba(72, 58, 44, 0.18);
-    box-shadow: 0 10px 32px rgba(40, 32, 22, 0.22);
-    padding: 2rem 2.2rem;
+    box-shadow: 0 12px 36px rgba(40, 32, 22, 0.24);
+    padding: 2.2rem 2.4rem;
     z-index: 10;
+    will-change: transform, opacity;
 }
 
 .hero-chapter-pill {
@@ -394,7 +467,7 @@ img {
 
 .hero-developer-name {
     font-family: var(--font-display);
-    font-size: 2.3rem;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: 1.12;
     letter-spacing: -0.02em;
@@ -452,64 +525,49 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    background-color: var(--c-forest-green, #526B45);
-    color: #FFFFFF;
-    padding: 0.7rem 1.45rem;
+    background-color: var(--c-forest-green);
+    color: #FAF6ED !important;
+    padding: 0.72rem 1.45rem;
     border-radius: var(--radius-sm);
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    box-shadow: 0 4px 14px rgba(82, 107, 69, 0.32);
+    box-shadow: 0 4px 14px rgba(82, 107, 69, 0.28);
     transition: background-color var(--transition-gentle), transform var(--transition-gentle), box-shadow var(--transition-gentle);
+    text-decoration: none !important;
 }
 
 .btn-anime-primary:hover {
-    background-color: #3f5535;
-    color: #FFFFFF;
+    background-color: #3e5334;
+    color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(82, 107, 69, 0.42);
+    box-shadow: 0 6px 20px rgba(82, 107, 69, 0.35);
 }
 
 .btn-anime-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    background-color: rgba(250, 246, 237, 0.7);
-    color: var(--c-warm-ink, #393A30);
-    padding: 0.68rem 1.4rem;
+    background-color: rgba(250, 246, 237, 0.9);
+    color: var(--c-warm-ink) !important;
+    padding: 0.7rem 1.4rem;
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(57, 58, 48, 0.32);
-    font-size: 0.94rem;
+    border: 1.5px solid rgba(57, 58, 48, 0.35);
+    font-size: 0.92rem;
     font-weight: 600;
     transition: background-color var(--transition-gentle), border-color var(--transition-gentle), transform var(--transition-gentle);
+    text-decoration: none !important;
 }
 
 .btn-anime-secondary:hover {
-    background-color: rgba(57, 58, 48, 0.1);
-    border-color: var(--c-warm-ink, #393A30);
-    color: var(--c-warm-ink, #393A30);
+    background-color: #FAF6ED;
+    border-color: var(--c-warm-ink);
+    color: var(--c-forest-green) !important;
     transform: translateY(-2px);
 }
 
-/* Hero Vignette Stamp */
-.hero-vignette-stamp {
-    position: absolute;
-    right: 2.2rem;
-    top: 2.2rem;
-    background: rgba(250, 246, 237, 0.85);
-    backdrop-filter: blur(8px);
-    padding: 0.5rem 0.9rem;
-    border-radius: var(--radius-sm);
-    border: 1px dashed rgba(72, 58, 44, 0.28);
-    font-size: 0.76rem;
-    font-family: var(--font-mono);
-    color: var(--c-ink-muted);
-    letter-spacing: 0.03em;
-    pointer-events: none;
-}
-
-/* ===== 5. SECTION HEADERS (THE 6 FILM SCENES) ===== */
+/* ===== 6. SECTION HEADERS ===== */
 .scene-section {
-    padding: 6rem 0;
+    padding: 6.5rem 0;
     position: relative;
 }
 
@@ -537,7 +595,7 @@ img {
 
 .scene-title {
     font-family: var(--font-display);
-    font-size: 2.4rem;
+    font-size: 2.45rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -556,20 +614,24 @@ img {
     margin: 0 auto;
 }
 
-/* ===== 6. SCENE 02: THE PROJECT NOTEBOOK (SELECTED PROJECTS) ===== */
+/* ===== 7. SCENE 02: THE PROJECT NOTEBOOK ===== */
 .scene-projects {
     background-color: var(--c-paper-ivory);
     border-top: var(--border-faint);
 }
 
-/* Featured Project: SkaEV */
+/* Featured Project Plate */
 .featured-project-plate {
     background-color: var(--c-paper-light);
     border-radius: var(--radius-lg);
     border: var(--border-ink);
     box-shadow: var(--shadow-card);
-    padding: 2.5rem;
+    padding: 2.6rem;
     margin-bottom: 3.5rem;
+    display: grid;
+    grid-template-columns: 1.18fr 1fr;
+    gap: 3rem;
+    align-items: center;
     position: relative;
 }
 
@@ -605,11 +667,11 @@ img {
 }
 
 .photo-caption-strip {
-    padding: 0.6rem 0.8rem;
+    padding: 0.65rem 0.9rem;
     background-color: var(--c-warm-cream);
     border-top: var(--border-faint);
     font-family: var(--font-mono);
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     color: var(--c-ink-secondary);
     display: flex;
     justify-content: space-between;
@@ -670,7 +732,7 @@ img {
 .technical-field-notes {
     background-color: var(--c-warm-cream);
     border-radius: var(--radius-sm);
-    padding: 1.1rem 1.3rem;
+    padding: 1.2rem 1.4rem;
     margin-bottom: 1.4rem;
     border-left: 3px solid var(--c-forest-green);
 }
@@ -682,14 +744,14 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--c-forest-green);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.55rem;
 }
 
 .notes-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
 }
 
 .notes-list li {
@@ -697,7 +759,7 @@ img {
     line-height: 1.6;
     color: var(--c-ink-secondary);
     position: relative;
-    padding-left: 1.1rem;
+    padding-left: 1.15rem;
 }
 
 .notes-list li::before {
@@ -765,7 +827,7 @@ img {
     opacity: 1;
 }
 
-/* Secondary Projects Grid (5 Projects) */
+/* Secondary Projects Grid */
 .projects-notebook-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -777,16 +839,17 @@ img {
     border-radius: var(--radius-md);
     border: var(--border-ink);
     box-shadow: var(--shadow-soft);
-    padding: 1.8rem;
+    padding: 1.9rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
     transition: transform var(--transition-gentle), box-shadow var(--transition-gentle);
+    will-change: transform;
 }
 
 .notebook-project-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-card);
 }
 
@@ -829,7 +892,7 @@ img {
 
 .card-tech-points {
     background-color: var(--c-warm-cream);
-    padding: 0.8rem 1rem;
+    padding: 0.85rem 1rem;
     border-radius: var(--radius-sm);
     margin-bottom: 1.1rem;
     font-size: 0.84rem;
@@ -854,7 +917,7 @@ img {
     border-top: var(--border-faint);
 }
 
-/* ===== 7. SCENE 03: THE PATH THROUGH THE GARDEN (EXPERIENCE) ===== */
+/* ===== 8. SCENE 03: THE PATH THROUGH THE GARDEN (EXPERIENCE) ===== */
 .scene-chronicle {
     background-color: var(--c-warm-cream);
     border-top: var(--border-faint);
@@ -864,15 +927,14 @@ img {
     position: relative;
     max-width: var(--container-narrow);
     margin: 0 auto;
-    padding-left: 2.8rem;
+    padding-left: 3rem;
 }
 
-/* Hand-drawn ink spine */
-.garden-path-timeline::before {
-    content: '';
+/* Animated Ink Spine via SVG / CSS */
+.timeline-ink-spine {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 10px;
+    bottom: 20px;
     left: 11px;
     width: 2px;
     background: repeating-linear-gradient(
@@ -882,23 +944,22 @@ img {
         transparent 8px,
         transparent 14px
     );
-    opacity: 0.45;
+    opacity: 0.55;
 }
 
 .timeline-milestone {
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 3.2rem;
 }
 
 .timeline-milestone:last-child {
     margin-bottom: 0;
 }
 
-/* Marker Leaf / Stepping Stone */
 .milestone-stepper {
     position: absolute;
-    left: -2.8rem;
-    top: 0.35rem;
+    left: -3rem;
+    top: 0.4rem;
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -908,6 +969,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }
 
 .milestone-stepper::after {
@@ -923,7 +985,13 @@ img {
     border-radius: var(--radius-md);
     border: var(--border-ink);
     box-shadow: var(--shadow-soft);
-    padding: 2rem 2.2rem;
+    padding: 2.2rem 2.4rem;
+    transition: transform var(--transition-gentle), box-shadow var(--transition-gentle);
+}
+
+.milestone-content-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
 }
 
 .milestone-time-badge {
@@ -940,7 +1008,7 @@ img {
 
 .milestone-role {
     font-family: var(--font-display);
-    font-size: 1.45rem;
+    font-size: 1.48rem;
     font-weight: 700;
     color: var(--c-warm-ink);
     margin-bottom: 0.2rem;
@@ -949,7 +1017,7 @@ img {
 .milestone-org {
     font-size: 0.95rem;
     color: var(--c-ink-muted);
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.95rem;
     font-weight: 500;
 }
 
@@ -983,7 +1051,7 @@ img {
     font-weight: 700;
 }
 
-/* ===== 8. SCENE 04: THE WORKBENCH (TECHNICAL REPERTOIRE) ===== */
+/* ===== 9. SCENE 04: THE WORKBENCH (TECHNICAL REPERTOIRE) ===== */
 .scene-workbench {
     background-color: var(--c-paper-ivory);
     border-top: var(--border-faint);
@@ -1000,16 +1068,17 @@ img {
     border-radius: var(--radius-md);
     border: var(--border-ink);
     box-shadow: var(--shadow-soft);
-    padding: 2rem;
+    padding: 2.1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
     transition: transform var(--transition-gentle), box-shadow var(--transition-gentle);
+    will-change: transform;
 }
 
 .workbench-tool-tray:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-card);
 }
 
@@ -1024,7 +1093,7 @@ img {
 
 .tray-domain-title {
     font-family: var(--font-display);
-    font-size: 1.32rem;
+    font-size: 1.34rem;
     font-weight: 700;
     color: var(--c-warm-ink);
     margin-bottom: 1.2rem;
@@ -1034,7 +1103,7 @@ img {
 .tray-tools-cluster {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
+    gap: 0.48rem;
     margin-bottom: 1.3rem;
 }
 
@@ -1042,7 +1111,7 @@ img {
     font-size: 0.85rem;
     color: var(--c-warm-ink);
     background-color: var(--c-warm-cream);
-    padding: 0.28rem 0.65rem;
+    padding: 0.28rem 0.68rem;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(57, 58, 48, 0.12);
     font-weight: 500;
@@ -1062,7 +1131,7 @@ img {
     border-top: var(--border-faint);
 }
 
-/* ===== 9. SCENE 05: THE PERSONAL JOURNAL (ABOUT & PHILOSOPHY) ===== */
+/* ===== 10. SCENE 05: THE PERSONAL JOURNAL (ABOUT & PHILOSOPHY) ===== */
 .scene-journal {
     background-color: var(--c-warm-cream);
     border-top: var(--border-faint);
@@ -1075,7 +1144,6 @@ img {
     align-items: start;
 }
 
-/* Thought Principles (1, 2, 3, 4) */
 .principles-stack {
     display: flex;
     flex-direction: column;
@@ -1091,6 +1159,11 @@ img {
     display: flex;
     gap: 1.4rem;
     align-items: flex-start;
+    transition: transform var(--transition-gentle);
+}
+
+.principle-entry:hover {
+    transform: translateX(4px);
 }
 
 .principle-num {
@@ -1123,7 +1196,7 @@ img {
     color: var(--c-ink-secondary);
 }
 
-/* Personal Dossier & Authentic Portrait */
+/* Personal Dossier & Portrait */
 .personal-dossier-card {
     background-color: var(--c-paper-light);
     border-radius: var(--radius-md);
@@ -1169,11 +1242,11 @@ img {
     gap: 0.9rem;
 }
 
-/* ===== 10. SCENE 06: THE EVENING WINDOW (CONTACT & LETTER) ===== */
+/* ===== 11. SCENE 06: THE EVENING WINDOW (CONTACT) ===== */
 .scene-evening-window {
     background-color: var(--c-paper-ivory);
     border-top: var(--border-faint);
-    padding-bottom: 6rem;
+    padding-bottom: 6.5rem;
 }
 
 .evening-scenic-banner {
@@ -1198,10 +1271,10 @@ img {
 .evening-banner-scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(30, 32, 26, 0.78) 0%, rgba(30, 32, 26, 0.18) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(30, 32, 26, 0.82) 0%, rgba(30, 32, 26, 0.22) 60%, transparent 100%);
     display: flex;
     align-items: flex-end;
-    padding: 2.4rem;
+    padding: 2.6rem;
 }
 
 .evening-banner-content {
@@ -1219,12 +1292,12 @@ img {
 
 .evening-heading {
     font-family: var(--font-display);
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     font-weight: 700;
     line-height: 1.25;
 }
 
-/* Contact Letter & Stationery */
+/* Correspondence Card & Form */
 .correspondence-card {
     background-color: var(--c-paper-light);
     border-radius: var(--radius-lg);
@@ -1303,7 +1376,7 @@ img {
 
 .paper-input {
     width: 100%;
-    padding: 0.75rem 0.95rem;
+    padding: 0.78rem 1rem;
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: var(--c-warm-ink);
@@ -1338,7 +1411,7 @@ img {
     font-weight: 500;
 }
 
-/* ===== 11. FOOTER ===== */
+/* ===== 12. FOOTER ===== */
 .site-footer {
     background-color: var(--c-warm-cream);
     border-top: var(--border-ink);
@@ -1371,7 +1444,7 @@ img {
     color: var(--c-forest-green);
 }
 
-/* ===== 12. ANIMATIONS & PERFORMANCE ===== */
+/* ===== 13. ANIMATIONS & PERFORMANCE ===== */
 @keyframes cloud-drift {
     0% { transform: translateX(0); }
     100% { transform: translateX(20%); }
@@ -1402,10 +1475,18 @@ img {
     .env-layer-lampglow {
         animation: none !important;
     }
+    .hero-three-canvas {
+        display: none !important;
+    }
 }
 
-/* ===== 13. RESPONSIVE BREAKPOINTS ===== */
+/* ===== 14. RESPONSIVE BREAKPOINTS ===== */
 @media (max-width: 1024px) {
+    .featured-project-plate {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+
     .journal-layout-grid {
         grid-template-columns: 1fr;
     }
@@ -1419,16 +1500,28 @@ img {
         gap: 2.5rem;
     }
 
+    .hero-viewport-frame {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .hero-scenic-window {
+        aspect-ratio: 16 / 10;
+        min-height: 320px;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(72, 58, 44, 0.22);
+        box-shadow: var(--shadow-cinematic);
+    }
+
     .hero-identity-overlay {
         position: relative;
         left: auto;
         bottom: auto;
         max-width: 100%;
-        margin: 1.5rem 1.5rem 2rem;
-    }
-    
-    .hero-scenic-window {
-        min-height: 420px;
+        margin-top: 1.6rem;
+        padding: 2rem;
     }
 }
 
@@ -1457,7 +1550,7 @@ img {
     }
 
     .scene-title {
-        font-size: 2rem;
+        font-size: 2.05rem;
     }
 
     .hero-developer-name {
@@ -1465,8 +1558,25 @@ img {
     }
 
     .hero-scenic-window {
-        aspect-ratio: 4 / 3;
-        min-height: 320px;
+        aspect-ratio: 16 / 9;
+        min-height: 220px;
+    }
+
+    .hero-identity-overlay {
+        padding: 1.5rem 1.3rem;
+        margin-top: 1.2rem;
+    }
+
+    .hero-action-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-anime-primary,
+    .btn-anime-secondary {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
     }
 
     .hero-vignette-stamp {
@@ -1478,7 +1588,7 @@ img {
     }
 
     .featured-project-plate {
-        padding: 1.5rem;
+        padding: 1.6rem;
     }
 
     .correspondence-card {
@@ -1486,10 +1596,10 @@ img {
     }
 
     .garden-path-timeline {
-        padding-left: 2.2rem;
+        padding-left: 2.4rem;
     }
 
     .milestone-stepper {
-        left: -2.2rem;
+        left: -2.4rem;
     }
 }

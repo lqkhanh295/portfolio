@@ -1,0 +1,14 @@
+# Dependency and build directories
+node_modules/
+.agents/
+_skills_research/
+.env
+.env.local
+
+# Temporary files and logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
