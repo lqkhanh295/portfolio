@@ -9,25 +9,43 @@
 /* ===== 1. DESIGN TOKENS ===== */
 :root {
     /* Atmospheric Color Tokens */
-    --c-paper-ivory: #F4EBD8;       /* Primary paper canvas */
-    --c-warm-cream: #E9DFC8;        /* Slightly deeper aged paper / card wash */
-    --c-paper-light: #FAF6ED;       /* Crisp reading plate */
-    --c-forest-green: #526B45;      /* Deep country foliage / primary brand accent */
-    --c-moss-green: #84966B;        /* Muted garden moss / secondary accent */
-    --c-moss-wash: #EDF2E8;         /* Whispering pale moss wash */
-    --c-sky-blue: #A8C9D8;          /* Pale afternoon sky */
-    --c-denim-blue: #66879A;        /* Faded twilight denim */
-    --c-sky-wash: #EDF4F8;          /* Soft sky wash */
-    --c-terracotta: #BD795B;        /* Warm roof tile / clay accent */
-    --c-terracotta-wash: #FBF0EB;   /* Pale clay wash */
-    --c-warm-ink: #393A30;          /* Warm charcoal ink for headings & text */
-    --c-ink-secondary: #5A5C4F;     /* Muted pencil graphite */
-    --c-ink-muted: #848775;         /* Metadata, rules & captions */
-    --c-ink-faint: #D4D1C3;         /* Very delicate borders & separators */
-    --c-sunlight-gold: #D9B56E;     /* Warm golden sunlight highlight */
+    --c-paper-ivory: #F4EBD8;
+    /* Primary paper canvas */
+    --c-warm-cream: #E9DFC8;
+    /* Slightly deeper aged paper / card wash */
+    --c-paper-light: #FAF6ED;
+    /* Crisp reading plate */
+    --c-forest-green: #526B45;
+    /* Deep country foliage / primary brand accent */
+    --c-moss-green: #84966B;
+    /* Muted garden moss / secondary accent */
+    --c-moss-wash: #EDF2E8;
+    /* Whispering pale moss wash */
+    --c-sky-blue: #a5cadb;
+    /* Pale afternoon sky */
+    --c-denim-blue: #66879A;
+    /* Faded twilight denim */
+    --c-sky-wash: #EDF4F8;
+    /* Soft sky wash */
+    --c-terracotta: #BD795B;
+    /* Warm roof tile / clay accent */
+    --c-terracotta-wash: #FBF0EB;
+    /* Pale clay wash */
+    --c-warm-ink: #393A30;
+    /* Warm charcoal ink for headings & text */
+    --c-ink-secondary: #5A5C4F;
+    /* Muted pencil graphite */
+    --c-ink-muted: #848775;
+    /* Metadata, rules & captions */
+    --c-ink-faint: #D4D1C3;
+    /* Very delicate borders & separators */
+    --c-sunlight-gold: #D9B56E;
+    /* Warm golden sunlight highlight */
     --c-sunlight-glow: rgba(217, 181, 110, 0.28);
-    --c-wood-bark: #483A2C;         /* Weathered window timber */
-    --c-wood-warm: #70543E;         /* Desk timber */
+    --c-wood-bark: #483A2C;
+    /* Weathered window timber */
+    --c-wood-warm: #70543E;
+    /* Desk timber */
 
     /* Typography */
     --font-display: 'Fraunces', Georgia, serif;
@@ -344,7 +362,7 @@ img {
     width: 140%;
     height: 40%;
     background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.24) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
+        radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
     filter: blur(14px);
     animation: cloud-drift 48s linear infinite;
 }
@@ -367,7 +385,7 @@ img {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 75% 25%, rgba(217, 181, 110, 0.24) 0%, rgba(217, 181, 110, 0.08) 45%, transparent 70%),
-                linear-gradient(135deg, rgba(255, 245, 215, 0.16) 0%, transparent 60%);
+        linear-gradient(135deg, rgba(255, 245, 215, 0.16) 0%, transparent 60%);
     mix-blend-mode: soft-light;
     animation: sunlight-breathe 8s ease-in-out infinite alternate;
 }
@@ -406,10 +424,29 @@ img {
     pointer-events: none;
 }
 
-.matte-tab.top-left { top: 6px; left: 6px; border-width: 2px 0 0 2px; }
-.matte-tab.top-right { top: 6px; right: 6px; border-width: 2px 2px 0 0; }
-.matte-tab.bottom-left { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; }
-.matte-tab.bottom-right { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
+.matte-tab.top-left {
+    top: 6px;
+    left: 6px;
+    border-width: 2px 0 0 2px;
+}
+
+.matte-tab.top-right {
+    top: 6px;
+    right: 6px;
+    border-width: 2px 2px 0 0;
+}
+
+.matte-tab.bottom-left {
+    bottom: 6px;
+    left: 6px;
+    border-width: 0 0 2px 2px;
+}
+
+.matte-tab.bottom-right {
+    bottom: 6px;
+    right: 6px;
+    border-width: 0 2px 2px 0;
+}
 
 .hero-vignette-stamp {
     position: absolute;
@@ -933,13 +970,11 @@ img {
     bottom: 20px;
     left: 11px;
     width: 2px;
-    background: repeating-linear-gradient(
-        to bottom,
-        var(--c-forest-green) 0,
-        var(--c-forest-green) 8px,
-        transparent 8px,
-        transparent 14px
-    );
+    background: repeating-linear-gradient(to bottom,
+            var(--c-forest-green) 0,
+            var(--c-forest-green) 8px,
+            transparent 8px,
+            transparent 14px);
     opacity: 0.55;
 }
 
@@ -1442,22 +1477,42 @@ img {
 
 /* ===== 13. ANIMATIONS & PERFORMANCE ===== */
 @keyframes cloud-drift {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(20%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(20%);
+    }
 }
 
 @keyframes sunlight-breathe {
-    0% { opacity: 0.8; transform: scale(1); }
-    100% { opacity: 1; transform: scale(1.04); }
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
 }
 
 @keyframes lamp-pulse {
-    0% { opacity: 0.75; transform: scale(0.96); }
-    100% { opacity: 1; transform: scale(1.05); }
+    0% {
+        opacity: 0.75;
+        transform: scale(0.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
 }
 
 /* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -1466,11 +1521,13 @@ img {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+
     .env-layer-clouds,
     .env-layer-sunlight,
     .env-layer-lampglow {
         animation: none !important;
     }
+
     .hero-three-canvas {
         display: none !important;
     }
@@ -1639,8 +1696,13 @@ img {
 }
 
 @keyframes gentle-bob {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-2px) rotate(10deg); }
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-2px) rotate(10deg);
+    }
 }
 
 /* Personalized Japanese Red Hanko Seal (印鑑) */
